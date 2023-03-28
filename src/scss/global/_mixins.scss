@@ -1,0 +1,60 @@
+// break points styles
+$breakpoints-up: ("medium": "40em", "large": "64em", "xlarge": "87.5em");
+
+$breakpoints-down: ("small": "39.997em", "medium": "63.9375em", "large": "87.4375em");
+    
+@mixin breakpoint-up($size){
+    @media (min-width: map-get($breakpoints-up, $size)){
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size){
+    @media (max-width: map-get($breakpoints-down, $size)){
+        @content;
+    }
+}
+
+
+.h-f-m{
+    @include breakpoint-down(medium){
+        display: none;
+    }
+}
+
+//##############
+//style for hiding elements on various
+//size
+
+//style to hide for mobile
+.h-f-m{
+    @include breakpoint-down(small){
+        display: none;
+    }
+}
+
+.h-f-tm{
+    @include breakpoint-down(medium){
+        display: none;
+    }
+}
+
+.h-f-dm{
+    @include breakpoint-down(small){
+        display: none !important;
+    }
+}
+
+//style to hide for tablet
+.h-f-t{
+    @include breakpoint-up(medium){
+        display: none;
+    }
+}
+
+//style to hide for desktop
+.h-f-d{
+    @include breakpoint-up(large){
+        display: none;
+    }
+}

@@ -1,0 +1,44 @@
+// to import the font style from fonawesome
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+$green: #0C9B18;
+$yellow:#FDC50D;
+
+body{
+    margin: 0;
+    font-family: 'Inter', sans-serif;    
+    position: relative;
+    overflow-x: hidden !important;
+    background: #fcfcfc;
+
+    &.noscroll{
+        overflow-y: hidden;
+    }
+
+    a, p, h1, input, span{
+        cursor: pointer;
+    }
+}
+
+//style for class container
+.container{
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.f{
+    &-jc-c{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-jc-sb{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+p{
+    line-height: 1.3;
+}
