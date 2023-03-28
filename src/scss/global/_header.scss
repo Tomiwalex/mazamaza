@@ -100,15 +100,28 @@
 
 // style for the second nav bar || header
 .header2{
-    background: $yellow;
+    background: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    overflow: auto;
+    @include breakpoint-up(medium){
+        position: unset;
+        background: $yellow;
+    }
     .container{
-        max-width: unset;
+        max-width: 1400px;
+        margin: 0 auto;
     }
     .header{
-        margin: 0 25px;
         white-space: nowrap;
         overflow: auto;
         transition: all 300ms ease-in-out;
+        @include breakpoint-up(medium){
+            margin: 0 25px;
+        }
         &:hover{
             &::-webkit-scrollbar-thumb{
                 opacity: 1;
@@ -134,14 +147,20 @@
             color: black;
             font-weight: 500;
             font-size: 15px;
-            padding: 19px 10px;
-            margin: 0 2px;
-            display: inline-block;
+            padding: 20px 25px;
+            display: block;
             transition:300ms all ease-in-out;
             &:hover{
                 background-color: $green;
                 color: white;
             }
+            @include breakpoint-up(medium){
+                padding: 19px 10px;
+                margin: 0 2px;
+                display: inline-block;
+            }
         }
+
+        
     }
 }

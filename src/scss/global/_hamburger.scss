@@ -42,24 +42,24 @@ transform: rotate(45deg);
     &.active{
         .top {
             stroke-dashoffset: -132px;
-            stroke:green;
+            stroke:$green;
         }
         .middle {
         stroke-dashoffset: -71px;
-        stroke:green;
+        stroke:$green;
         }
         .bottom {
         stroke-dashoffset: -132px;
-        stroke:green;
+        stroke:$green;
         }
     }
 }
-.ham6.active .top {
-    stroke: white;
-}
-.ham6.active .middle {
-    stroke: white;
-}
-.ham6.active .bottom {
-    stroke: white;
-}
+// .ham6.active .top {
+//     stroke: white;
+// }
+// .ham6.active .middle {
+//     stroke: white;
+// }
+// .ham6.active .bottom {
+//     stroke: white;
+// }
