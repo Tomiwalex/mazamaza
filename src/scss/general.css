@@ -315,13 +315,19 @@ p {
 .heros .hero .text h1 {
   color: white;
   font-weight: 600;
-  font-size: 35px;
+  font-size: 37px;
   max-width: 607px;
+}
+@media (min-width: 40em) {
+  .heros .hero .text h1 {
+    font-size: 50px;
+  }
 }
 @media (min-width: 64em) {
   .heros .hero .text h1 {
     font-size: 96px;
     max-width: 607px;
+    margin-bottom: 15px;
   }
 }
 .heros .hero .text button {
@@ -337,11 +343,11 @@ p {
 }
 .heros .hero .text button:hover {
   color: white;
-  background: #25252E;
+  background: #FDC50D;
 }
 @media (min-width: 64em) {
   .heros .hero .text button {
-    padding: 20px 10px;
+    padding: 15px 10px;
     font-size: 16px;
   }
 }
