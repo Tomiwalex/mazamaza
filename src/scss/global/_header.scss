@@ -1,4 +1,10 @@
 .header1{
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
     .header{
         margin: 7px 25px;
         .logo-div{
@@ -16,13 +22,27 @@
         }
 
         .search-box{
+
             border: 1px solid white;
             transition: all 300ms ease-in-out;
             padding: 10px 5px;
+            position: absolute;
+            top: 62px;
+            border-radius: 6px;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+            
+
+            @include breakpoint-up(medium){
+                position: unset;
+                left: 0;
+                transform: none;
+            }
 
             &:focus, &:hover{
                 border: 1px solid $green;
-                border-radius: 6px;
+               
             }
 
             img{
@@ -63,10 +83,13 @@
                 font-size: 14px;
                 line-height: 22px;
                 transition: all 300ms ease-in-out;
-                margin-right: 13px;
+                margin-right: 2px;
                 padding: 10px 5px;
                 border-radius: 8px;
                 border: 1px solid white;
+                @include breakpoint-up(medium){
+                    margin-right: 13px;
+                }
                 @include breakpoint-up(large){
                     &:hover{
                         color: $green;
@@ -89,9 +112,20 @@
                     margin-right: 1px;
                     position: relative;
                     top: 3px;
+                    
                     @include breakpoint-up(medium){
                         top: 1px;
                     }
+                }
+                .img1{
+                    top:4px;
+                }
+            }
+            .search-icon{
+                img{
+                    width: 18px;
+                    height: 18px;
+                    top: 5px;
                 }
             }
         }
@@ -100,16 +134,17 @@
 
 // style for the second nav bar || header
 .header2{
-    background: white;
+    background: #f1f1f1;
     position: fixed;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 60px;
     bottom: 0;
     overflow: auto;
     @include breakpoint-up(medium){
-        position: unset;
+        // position: unset;
         background: $yellow;
+        bottom: auto;
     }
     .container{
         max-width: 1400px;
@@ -121,6 +156,9 @@
         transition: all 300ms ease-in-out;
         @include breakpoint-up(medium){
             margin: 0 25px;
+            img{
+                display: none;
+            }
         }
         &:hover{
             &::-webkit-scrollbar-thumb{
@@ -148,8 +186,9 @@
             font-weight: 500;
             font-size: 15px;
             padding: 20px 25px;
-            display: block;
+            display: flex;
             transition:300ms all ease-in-out;
+            justify-content: space-between;
             &:hover{
                 background-color: $green;
                 color: white;
@@ -162,5 +201,64 @@
         }
 
         
+    }
+}
+
+// STYLE FOR THE CATEGORYPOPUP
+.categoryspopup{
+    background: #f1f1f1;
+    position: fixed;
+    left: 5%;
+    border: 5px;
+    box-shadow: 1px 1px 8px 1px #0000007a;
+    right: 5%;
+    top: 60px;
+    bottom: 0;
+    overflow: auto;
+    transition: all 300ms ease-in-out;
+    @include breakpoint-up(medium){
+        top: 120px;
+        visibility: hidden;
+        opacity: 0;
+
+    }
+
+    .categorypopup{
+        padding: 25px;
+        @include breakpoint-up(medium){
+            display: flex;
+            column-gap: 20px;
+        }
+
+        .navigationlist{
+            border-right: 1px solid rgb(194, 192, 192);
+            flex-basis: 40%;
+            span{
+                display: block;
+                padding: 10px 0;
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+
+        .navigationlist-sub-section{
+            span{
+                display: block;
+                padding: 10px 0;
+            }
+            @include breakpoint-up(medium){
+                flex-basis: 50%;
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+#display{
+    @include breakpoint-up(medium){
+        transition: all 300ms ease-in-out;
+        visibility: visible;
+        opacity: 1;
     }
 }

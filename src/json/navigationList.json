@@ -1,0 +1,167 @@
+[
+    {
+        "sublistTag": "allCategories",
+        "heading": "All Categories",
+        "sublist": [
+            "Textiles",
+            "Creative",
+            "crafts",
+            "Papercrafts",
+            "Fashion",
+            "Crafts"
+        ]
+    },
+
+    {
+        "sublistTag":"handCrafts",
+        "heading": "HandCrafts",
+        "sublist": [
+            "Textiles",
+            "Creative",
+            "crafts",
+            "Papercrafts",
+            "Fashion",
+            "Crafts"
+        ]
+    },
+
+    {
+        "sublistTag":"art",
+        "heading": "Art",
+        "sublist": [
+            "Painting",
+            "Sculpture",        
+            "Major arts"
+        ]
+    },
+
+    {
+        "sublistTag":"footwear",
+        "heading": "Footwear",
+        "sublist": [
+            "Women Footwear",
+            "Men Footwear",
+            "Children footwear"
+        ]
+    },
+
+    {
+        "sublistTag":"accessories",
+        "heading": "Accessories",
+        "sublist": [
+            "Women Fashion",
+            "Men Fashion",
+            "Children Fashion",
+            "Women handbag",
+            "Men Hand bag",
+            "Unisex Hand bag",
+            "Travelling bag",
+            "School bag",
+            "Women Jewelry",
+            "Men Jewelry",
+            "Wallet/purse",
+            "Leather Products",
+            "Perfume",
+            "Make ups",
+            "Skin care",
+            "Hats & caps"    
+        ]
+    },
+
+    {
+        "sublistTag":"hairZones",
+        "heading": "Hair Zones",
+        "sublist": [
+            "Wigs",
+            "Brazilian hair",
+            "Braids",
+            "Dreadlocks",
+            "Ghana weave",
+            "Natural hair",
+            "Head tie",
+            "Facinator",
+            "Head band",
+            "Hair accessories"
+        ]
+    },
+
+    {
+        "sublistTag":"fashion",
+        "heading": "Fashion",
+        "sublist": [
+            "Women Fashion",
+            "Men Fashion",
+            "Children Fashion"
+        ]
+    },
+
+    {
+        "sublistTag":"printFabrics",
+        "heading": "Print Fabrics",
+        "sublist": [
+            "Ankara",
+            "Adire",
+            "Isi Agu",
+            "Lace",
+            "Aso-Oke",
+            "Kente"
+        ]
+    },
+
+    {
+        "sublistTag":"foodStuff",
+        "heading": "Food Stuff & Allied Agro Products",
+        "sublist": [
+            "Fast food & Restaurant",
+            "Unprocessed food / Products",
+            "Dairy Food",
+            "Dry Fish",
+            "Grain & Flour",
+            "Nuts & Seed",
+            "Processed Food & products"
+        ]
+    },
+
+    {
+        "sublistTag":"herbs",
+        "heading": "Herbs/Spices & Spiritual",
+        "sublist": [
+            "Roots & Plants",
+            "Seed & Leaves",
+            "Honey",
+            "Garlic",
+            "Ginger",
+            "Paprinka",
+            "Peppercorns",
+            "Incense",
+            "Candles",
+            "Beads",
+            "Oil",
+            "Fragrance"
+        ]
+    },
+
+    {
+        "sublistTag":"education",
+        "heading": "Education",
+        "sublist": [
+            "Novels",
+            "Books",
+            "Magazines",
+            "Children Books",
+            "Making Money online",
+            "Bestsellers",
+            "How to make something"
+        ]
+    },
+
+    {
+        "sublistTag":"generalServices",
+        "heading": "General Services",
+        "sublist":[
+            "Buy & Sell Properties",
+            "Rent Properties",
+            "Advertise"
+        ]
+    } 
+]

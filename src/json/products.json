@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "image": "../src/images/productimg.png",
+        "name": "Genuine Pure Skin Red Hag",
+        "price": "$109.19"
+    },
+    {
+        "id": 2,
+        "image": "../src/images/productimg.png",
+        "name": "Golden Wig",
+        "price": "$109.19"
+    },
+
+    {
+        "id": 3,
+        "image": "../src/images/productimg.png",
+        "name": "Green Tea With Moringa",
+        "price": "$109.19"
+    },
+    {
+        "id": 4,
+        "image": "../src/images/productimg.png",
+        "name": "Alaari Dansiki Aso Oke",
+        "price": "$109.19"
+    }
+]

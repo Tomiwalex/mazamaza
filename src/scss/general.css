@@ -41,6 +41,7 @@ body {
   position: relative;
   overflow-x: hidden !important;
   background: #fcfcfc;
+  padding-top: 60px;
 }
 body.noscroll {
   overflow-y: hidden;
@@ -69,6 +70,41 @@ p {
   line-height: 1.3;
 }
 
+@media (max-width: 63.9375em) {
+  .fade-out {
+    animation: fade-out 300ms ease-in-out forwards;
+  }
+}
+
+.fade-in {
+  animation: fade-in 300ms ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.header1 {
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 .header1 .header {
   margin: 7px 25px;
 }
@@ -86,10 +122,22 @@ p {
   border: 1px solid white;
   transition: all 300ms ease-in-out;
   padding: 10px 5px;
+  position: absolute;
+  top: 62px;
+  border-radius: 6px;
+  background: white;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (min-width: 40em) {
+  .header1 .header .search-box {
+    position: unset;
+    left: 0;
+    transform: none;
+  }
 }
 .header1 .header .search-box:focus, .header1 .header .search-box:hover {
   border: 1px solid #0C9B18;
-  border-radius: 6px;
 }
 .header1 .header .search-box img {
   width: 16px;
@@ -126,10 +174,15 @@ p {
   font-size: 14px;
   line-height: 22px;
   transition: all 300ms ease-in-out;
-  margin-right: 13px;
+  margin-right: 2px;
   padding: 10px 5px;
   border-radius: 8px;
   border: 1px solid white;
+}
+@media (min-width: 40em) {
+  .header1 .header .links span {
+    margin-right: 13px;
+  }
 }
 @media (min-width: 64em) {
   .header1 .header .links span:hover {
@@ -157,20 +210,28 @@ p {
     top: 1px;
   }
 }
+.header1 .header .links span .img1 {
+  top: 4px;
+}
+.header1 .header .links .search-icon img {
+  width: 18px;
+  height: 18px;
+  top: 5px;
+}
 
 .header2 {
-  background: white;
+  background: #f1f1f1;
   position: fixed;
   left: 0;
   right: 0;
-  top: 50px;
+  top: 60px;
   bottom: 0;
   overflow: auto;
 }
 @media (min-width: 40em) {
   .header2 {
-    position: unset;
     background: #FDC50D;
+    bottom: auto;
   }
 }
 .header2 .container {
@@ -185,6 +246,9 @@ p {
 @media (min-width: 40em) {
   .header2 .header {
     margin: 0 25px;
+  }
+  .header2 .header img {
+    display: none;
   }
 }
 .header2 .header:hover::-webkit-scrollbar-thumb {
@@ -207,8 +271,9 @@ p {
   font-weight: 500;
   font-size: 15px;
   padding: 20px 25px;
-  display: block;
+  display: flex;
   transition: 300ms all ease-in-out;
+  justify-content: space-between;
 }
 .header2 .header span:hover {
   background-color: #0C9B18;
@@ -222,39 +287,65 @@ p {
   }
 }
 
-.fade-out {
-  animation: fade-out 300ms ease-in-out forwards;
+.categoryspopup {
+  background: #f1f1f1;
+  position: fixed;
+  left: 5%;
+  border: 5px;
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.4784313725);
+  right: 5%;
+  top: 60px;
+  bottom: 0;
+  overflow: auto;
+  transition: all 300ms ease-in-out;
 }
 @media (min-width: 40em) {
-  .fade-out {
-    animation: fade-out 300ms ease-in-out backwards;
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.fade-in {
-  animation: fade-in 300ms ease-in-out forwards;
-}
-
-@keyframes fade-in {
-  0% {
-    visibility: visible;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+  .categoryspopup {
+    top: 120px;
     visibility: hidden;
+    opacity: 0;
   }
 }
+.categoryspopup .categorypopup {
+  padding: 25px;
+}
+@media (min-width: 40em) {
+  .categoryspopup .categorypopup {
+    display: flex;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
+}
+.categoryspopup .categorypopup .navigationlist {
+  border-right: 1px solid rgb(194, 192, 192);
+  flex-basis: 40%;
+}
+.categoryspopup .categorypopup .navigationlist span {
+  display: block;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: 15px;
+}
+.categoryspopup .categorypopup .navigationlist-sub-section span {
+  display: block;
+  padding: 10px 0;
+}
+@media (min-width: 40em) {
+  .categoryspopup .categorypopup .navigationlist-sub-section {
+    flex-basis: 50%;
+    font-weight: 500;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 40em) {
+  #display {
+    transition: all 300ms ease-in-out;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .ham {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -356,4 +447,82 @@ p {
 }
 .heros .hero .image img {
   max-width: 100%;
+}
+
+.top-products .top-product-header {
+  padding: 9px 25px;
+  color: white;
+  font-weight: 600;
+  background: #FDC50D;
+}
+@media (min-width: 64em) {
+  .top-products .top-product-header {
+    padding: 11px 25px;
+  }
+}
+.top-products .top-product-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+@media (min-width: 64em) {
+  .top-products .top-product-header h2 {
+    font-weight: 600;
+    font-size: 32px;
+  }
+}
+.top-products .top-product-header p {
+  margin: 0;
+  font-size: 13px;
+  transition: all 300ms ease-in-out;
+}
+@media (min-width: 64em) {
+  .top-products .top-product-header p {
+    font-size: 16px;
+  }
+}
+.top-products .top-product-header p:hover {
+  color: #0C9B18;
+}
+.top-products .top-product-content {
+  padding: 25px;
+  flex-wrap: wrap;
+}
+.top-products .top-product-content .product {
+  flex-basis: 47%;
+  height: 250px;
+}
+@media (min-width: 40em) {
+  .top-products .top-product-content .product {
+    flex-basis: 32%;
+  }
+}
+@media (min-width: 40em) {
+  .top-products .top-product-content .product {
+    flex-basis: 24%;
+    max-width: 255px;
+  }
+}
+.top-products .top-product-content .product-image {
+  width: 100%;
+  border-radius: 10px;
+}
+.top-products .top-product-content .product-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #25252E;
+}
+@media (min-width: 64em) {
+  .top-products .top-product-content .product-name {
+    font-size: 16px;
+  }
+}
+.top-products .top-product-content .product-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1E1E1E;
+}
+@media (min-width: 64em) {
+  .top-products .top-product-content .product-price {
+    font-size: 18px;
+  }
 }/*# sourceMappingURL=general.css.map */

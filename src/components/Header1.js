@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../images/logo-img.svg';
 import searchIcon from '../images/search-icon.svg';
-import blogIcon from '../images/blog-icon.png';
-import wishlistIcon from '../images/wishlist-icon.png';
-import accountIcon from '../images/account-icon.png';
+import blogIcon from '../images/blog-icon.svg';
+import wishlistIcon from '../images/wishlist-icon.svg';
+import accountIcon from '../images/account-icon.svg';
+import backIcon from '../images/back-arrow.svg'
 
-const Header1 = ({ hamMenu, setHamMenu }) => {
+
+const Header1 = ({ hamMenu, setHamMenu, setShowNavigationSubPage, showNavigationSubPage }) => {
     // handle
+    const [mobilesearch, setMobilesearch] = useState(false);
 
   return (
     <div className='header1'>
@@ -20,7 +23,9 @@ const Header1 = ({ hamMenu, setHamMenu }) => {
                 </div>
 
                 {/* The search box area */}
-                <div className='search-box h-f-dm f-jc-sb '>
+                <div
+                    className={mobilesearch ? 'search-box f-jc-sb fade-in' : 'search-box f-jc-sb fade-out'}
+                >
                     <img src={searchIcon} alt='search-icon'/>
 
                     {/* this is the search box input */}
@@ -39,8 +44,13 @@ const Header1 = ({ hamMenu, setHamMenu }) => {
                 {/* icons */}
                 <div className='links f-jc-sb'>
                     <span className='h-f-dm'>Become a Seller</span>
+                    <span className='h-f-t search-icon'
+                    onClick={() => (setMobilesearch(!mobilesearch),
+                        setHamMenu(false)
+                    )}
+                    ><img src={searchIcon} alt='search-icon'/></span>
 
-                    <span><img src={accountIcon}/> <span className='h-f-tm'>Account</span></span>
+                    <span><img className='img1' src={accountIcon}/> <span className='h-f-tm'>Account</span></span>
 
                     <span><img src={wishlistIcon}/><span className='h-f-tm'>Wishlist</span></span>
 
@@ -48,10 +58,13 @@ const Header1 = ({ hamMenu, setHamMenu }) => {
                 </div>
 
 
-                {/* hamburger menu button for mobile view */}
+                {/* hamburger menu button for showing the mnu list on mobile view */}
+                { !showNavigationSubPage && 
                 <div className='h-f-t ham-menu-btn'>
                         <svg className={hamMenu ? "ham ham6 active" : "ham ham6"} viewBox="0 0 100 100" width="80" 
-                        onClick={() => setHamMenu(!hamMenu)}
+                        onClick={() => (
+                            setHamMenu(!hamMenu)
+                             )}
                         >
                             <path
                                 className="line top"
@@ -63,7 +76,16 @@ const Header1 = ({ hamMenu, setHamMenu }) => {
                                 className="line bottom"
                                 d="m 69.575405,67.073826 h -40 c -13.100415,0 -14.380204,-31.80258 -6.899646,-33.421777 24.612039,-5.327373 -9.016154,52.337577 12.75751,30.563913 l 28.284272,-28.284272" />
                         </svg>
-                </div>
+                </div>}
+
+                {/* button to hide the sublist menu on mobile */}
+                {
+                showNavigationSubPage && 
+                <img
+                 onClick={() => setShowNavigationSubPage(false)}
+                 className='h-f-t'
+                 src={backIcon}/>
+                 }
             </div>
         </div>
     </div>

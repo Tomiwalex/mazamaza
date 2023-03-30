@@ -1,11 +1,14 @@
 .fade-out{
-    animation: fade-out 300ms ease-in-out forwards;
+    @include breakpoint-down(medium){
+        animation: fade-out 300ms ease-in-out forwards;
 
-    @include breakpoint-up(medium){
-        animation: fade-out 300ms ease-in-out backwards;
-        opacity: 1;
-        visibility: visible;
     }
+
+    // @include breakpoint-up(medium){
+    //     animation: fade-out 300ms ease-in-out backwards;
+    //     opacity: 1;
+    //     visibility: visible;
+    // }
 }
 
 .fade-in{
