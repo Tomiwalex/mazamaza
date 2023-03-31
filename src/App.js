@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import { useState } from "react";
 import TopProduct from "./components/TopProduct";
 import Categorypop from "./components/Categorypop";
+import { TrendingProduct } from "./components/TrendingProduct";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     const [showNavigationSubPage, setShowNavigationSubPage] = useState(false)
 
     // state to hide and display the sub list when the categories is hovered on
-    const [showOnHover, setShowOnHover] = useState(true)
+    const [showOnHover, setShowOnHover] = useState(false)
 
 
   return (
@@ -33,7 +34,7 @@ function App() {
        showOnHover={showOnHover}
        setShowOnHover={setShowOnHover}
        />{/*This is the product navigation bar in the page */}
-       
+
        <Categorypop
         navigationSubPage={navigationSubPage}
         setNavigationSubPage={setNavigationSubPage}
@@ -43,8 +44,14 @@ function App() {
         setShowOnHover={setShowOnHover}
        />{/*the category section pop up */}
 
-       <Hero/>
+       <Hero background={'#6ACC1A'}/>
        <TopProduct/>
+       <TrendingProduct/>
+       <Hero 
+       background={'#FDC50D'}
+       h1font={70}
+       />
+
     </div>
   );
 }

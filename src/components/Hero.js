@@ -2,13 +2,17 @@ import React from 'react';
 import heroImg from '../images/hero-img.png';
 import arrowIcon from '../images/arrow-icon.svg';
 
-const Hero = () => {
+const Hero = ({ background, h1font }) => {
   return (
-    <div className='hero1 heros'>
+    <div className='hero1 heros'
+    style={{background: background}}
+    >
         <div className='container'>
             <div className='hero f-jc-sb'>
                 <div className='text'>
-                  <h1>Hunger Killer</h1>
+                  <h1
+                  style={{fontSize: h1font}}
+                  >Hunger Killer</h1>
 
                   <button className='f-jc-sb'>Shop Now <img src={arrowIcon}/></button>
                 </div>

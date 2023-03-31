@@ -1,6 +1,7 @@
 .header1{
     background: white;
     position: fixed;
+    z-index: 2;
     top: 0;
     left: 0;
     right: 0;
@@ -136,6 +137,7 @@
 .header2{
     background: #f1f1f1;
     position: fixed;
+    z-index: 2;
     left: 0;
     right: 0;
     top: 60px;

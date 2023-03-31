@@ -101,6 +101,7 @@ p {
 .header1 {
   background: white;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;
@@ -222,6 +223,7 @@ p {
 .header2 {
   background: #f1f1f1;
   position: fixed;
+  z-index: 2;
   left: 0;
   right: 0;
   top: 60px;
@@ -494,11 +496,12 @@ p {
 @media (min-width: 40em) {
   .top-products .top-product-content .product {
     flex-basis: 32%;
+    height: 300px;
   }
 }
-@media (min-width: 40em) {
+@media (min-width: 64em) {
   .top-products .top-product-content .product {
-    flex-basis: 24%;
+    flex-basis: 19%;
     max-width: 255px;
   }
 }
@@ -525,4 +528,61 @@ p {
   .top-products .top-product-content .product-price {
     font-size: 18px;
   }
+}
+
+.trending-products {
+  background: #F0FFF3;
+}
+.trending-products .swiper {
+  padding: 0 10px;
+}
+.trending-products .swiper-wrapper {
+  margin-top: 30px;
+  flex-direction: column;
+  row-gap: 5px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  height: 260px;
+  width: 100%;
+}
+@media (min-width: 40em) {
+  .trending-products .swiper-wrapper {
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+  }
+}
+.trending-products .swiper-wrapper .swiper-slide {
+  /* Center slide text vertically */
+  display: flex;
+  align-items: center;
+  height: 108px;
+  background: white;
+  border-radius: 5px;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.trending-products .swiper-wrapper .swiper-slide .img {
+  flex-basis: 30%;
+}
+.trending-products .swiper-wrapper .swiper-slide .img img {
+  width: calc(100% - 10px);
+  margin-left: 10px;
+}
+.trending-products .swiper-wrapper .swiper-slide .text .product-name {
+  color: black;
+}
+.trending-products .swiper-button-next, .trending-products .swiper-button-prev {
+  right: 30px !important;
+  height: 25px;
+  width: 25px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e1e1e1;
+  border-radius: 50%;
+}
+.trending-products .swiper-button-next::after, .trending-products .swiper-button-prev::after {
+  font-size: 13px !important;
+  font-weight: 600 !important;
 }/*# sourceMappingURL=general.css.map */

@@ -37,10 +37,11 @@
             
             @include breakpoint-up(medium){
                 flex-basis: 32%;
+                height:300px;
             }
 
-            @include breakpoint-up(medium){
-                flex-basis: 24%;
+            @include breakpoint-up(large){
+                flex-basis: 19%;
                 max-width: 255px;
             }
         }

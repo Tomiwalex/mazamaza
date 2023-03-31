@@ -23,5 +23,11 @@
         "image": "../src/images/productimg.png",
         "name": "Alaari Dansiki Aso Oke",
         "price": "$109.19"
+    },
+    {
+        "id": 5,
+        "image": "../src/images/productimg.png",
+        "name": "Alaari Dansiki Aso Oke",
+        "price": "$109.19"
     }
 ]
