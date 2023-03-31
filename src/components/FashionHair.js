@@ -1,7 +1,8 @@
+import React from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import products from '../json/products.json';
-import productImg from '../images/productimg.png'
+import productImg from '../images/fashioncategory.png'
 
 // Import Swiper styles
 import "swiper/css";
@@ -9,23 +10,20 @@ import "swiper/css/grid";
 import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper";
 
-
-
-
-export const TrendingProduct = () => {
-    return (
-        <div className="trending-products top-products slider-type-1">
-            <div 
-            style={{background:'#6ACC1A'}}
+const FashionHair = () => {
+  return (
+    <div className='fashion-hair'>
+       <div 
             className='top-product-header '>
                 <div className='container f-jc-sb'>
-                    <h2>Trending Products</h2>
+                    <h2>Fashion Fair</h2>
                     <p>See more {'>'}</p>
                 </div>
              </div>
+        <div className='container'>
 
-            <div className="container">
-                <>
+            <div className='hair-content'>
+            <>
                 <Swiper
                     navigation={true}
                     slidesPerView={1}
@@ -45,6 +43,7 @@ export const TrendingProduct = () => {
                       }}
                     modules={[Grid, Navigation]}
                     className="mySwiper"
+                    
                 >
                     {
                         products.map((item, index) => {
@@ -70,5 +69,8 @@ export const TrendingProduct = () => {
                 </>
             </div>
         </div>
-    )
+    </div>
+  )
 }
+
+export default FashionHair

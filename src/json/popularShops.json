@@ -1,0 +1,27 @@
+[
+    {
+        "imagesrc":"../images/shop1.png",
+        "shop-name":"Sentinels Collection",
+        "star":"4"
+    },
+    {
+        "imagesrc":"../images/shop2.png",
+        "shop-name":"Sentinels Collection",
+        "star":"4"
+    },
+    {
+        "imagesrc":"../images/shop3.png",
+        "shop-name":"Sentinels Collection",
+        "star":"2"
+    },
+    {
+        "imagesrc":"../images/shop4.png",
+        "shop-name":"Sentinels Collection",
+        "star":"3"
+    },
+    {
+        "imagesrc":"../images/shop5.png",
+        "shop-name":"Sentinels Collection",
+        "star":"3"
+    }
+]

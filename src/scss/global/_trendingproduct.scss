@@ -1,28 +1,30 @@
 
-  .trending-products{
+  .slider-type-1{
     background: #F0FFF3;
-    .swiper{
-        padding: 0 10px;
-    }
     .swiper-wrapper{
         margin-top: 30px;
-        flex-direction: column;
         row-gap: 5px;
-        column-gap: 10px;
-        height: 260px;
+        height: 250px;
+        position: relative;
         width: 100%;
-        @include breakpoint-up(medium){
-            column-gap: 5px;
-        }
 
         .swiper-slide{
-            /* Center slide text vertically */
-            display: flex;
-            align-items: center;
+            /* Center slide text vertically */   
             height: 108px;
-            background: white;
-            border-radius: 5px;
-            column-gap: 8px;
+            .content{
+                display: flex;
+                align-items: center;
+                width: 95%;
+                margin: 0 2.5%;
+                column-gap: 8px;
+                background: white;
+                border-radius: 5px;
+                height: 100%;
+                @include breakpoint-up(medium){
+                    max-width: 100%;
+                    margin: 0;
+                }
+            }
             .img{
                 flex-basis: 30%;
                 img{
@@ -33,13 +35,26 @@
 
             .text{
                 .product-name{
-                    color: black;
+                    color: #25252E;
+                    font-size: 12px;
+                    @include breakpoint-up(large){
+                        font-Size: 13px;
+                      }
+                }
+                .product-price{
+                  font-weight: 600;
+                  font-Size: 13px;
+                  color: #585866;
+                  @include breakpoint-up(large){
+                    font-Size: 15px;
+                  }
                 }
             }
         }
+
+        
     }
     .swiper-button-next, .swiper-button-prev {
-        right: 30px !important;
         height: 25px;
         width: 25px;
         color: black;

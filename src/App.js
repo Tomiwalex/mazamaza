@@ -7,6 +7,13 @@ import { useState } from "react";
 import TopProduct from "./components/TopProduct";
 import Categorypop from "./components/Categorypop";
 import { TrendingProduct } from "./components/TrendingProduct";
+import PopularProduct from "./components/PopularProduct";
+import PopularShops from "./components/PopularShops";
+import FeaturedCategory from "./components/FeaturedCategory";
+import FashionHair from "./components/FashionHair";
+import BestSellers from "./components/BestSellers";
+import NewArrivals from "./components/NewArrivals";
+import { FashionTrend } from "./components/FashionTrend";
 
 
 function App() {
@@ -49,8 +56,39 @@ function App() {
        <TrendingProduct/>
        <Hero 
        background={'#FDC50D'}
-       h1font={70}
+       heroh1Small={'hero-small'}
+       h1color={'white'}
        />
+       <PopularProduct/>
+       <PopularShops/>
+       <Hero 
+       background={'#F4F5F9'}
+       heroh1Small={'hero-small'}
+       h1color={'black'}
+       buttoncolor={'#03750D'}
+       color={'white'}
+       />
+       <FeaturedCategory/>
+       <FashionHair/>
+       <Hero 
+       background={'#F4F5F9'}
+       heroh1Small={'hero-small'}
+       h1color={'black'}
+       buttoncolor={'#03750D'}
+       color={'white'}
+       />
+       <NewArrivals/>
+       <BestSellers/>
+       <FashionTrend/>
+       <Hero 
+        background={'#F4F5F9'}
+        heroh1Small={'hero-small'}
+        h1color={'black'}
+        buttoncolor={'#03750D'}
+       color={'white'}
+       />
+
+
 
     </div>
   );

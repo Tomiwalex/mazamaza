@@ -32,7 +32,7 @@ const Header2 = ({ hamMenu, setNavigationSubPage, showNavigationSubPage, setShow
                         onMouseLeave={() => setShowOnHover(false)}
                         onClick={() => (
                         showSubList(item.sublistTag),
-                        setShowNavigationSubPage(!showNavigationSubPage)
+                        setShowNavigationSubPage(true)
                         )} 
                         
                         key={index}>

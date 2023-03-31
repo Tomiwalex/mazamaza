@@ -46,3 +46,24 @@
         }
     }
 }
+
+.hero-small{
+    .hero{
+        .text{
+            h1{
+                color: white;
+                font-weight: 600;
+                font-size: 25px;
+                max-width: 607px;
+                @include breakpoint-up(medium){
+                    font-size: 40px;
+                }
+                @include breakpoint-up(large){
+                    font-size: 70px;
+                    max-width: 607px;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    } 
+}
