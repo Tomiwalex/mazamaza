@@ -22,6 +22,11 @@ import SweetHome from "./components/SweetHome";
 import Reviews from "./components/Reviews";
 import LatestBlog from "./components/LatestBlog";
 import Footer from "./components/Footer";
+import Hero1 from "./components/Heros/Hero1";
+import Hero2 from "./components/Heros/Hero2";
+import Hero3 from "./components/Heros/Hero3";
+import Hero4 from "./components/Heros/Hero4";
+import Hero5 from "./components/Heros/Hero5";
 
 
 const HaomePage = () => {
@@ -38,10 +43,12 @@ const HaomePage = () => {
     <div>
        <Header1 hamMenu={hamMenu} setHamMenu={setHamMenu}
        setShowNavigationSubPage={setShowNavigationSubPage}
+       setShowOnHover={setShowOnHover}
        showNavigationSubPage={showNavigationSubPage}
        /> {/*This is the first navigation bar in the page */}
 
-       <Header2 hamMenu={hamMenu}
+       <Header2 
+       hamMenu={hamMenu}
        navigationSubPage={navigationSubPage}
        setNavigationSubPage={setNavigationSubPage}
        showNavigationSubPage={showNavigationSubPage}
@@ -59,42 +66,20 @@ const HaomePage = () => {
         setShowOnHover={setShowOnHover}
        />{/*the category section pop up */}
 
-       <Hero background={'#6ACC1A'}/>
+       <Hero/>
        <TopProduct/>
        <TrendingProduct/>
-       <Hero 
-       background={'#FDC50D'}
-       heroh1Small={'hero-small'}
-       h1color={'white'}
-       />
+       <Hero2/>
        <PopularProduct/>
        <PopularShops/>
-       <Hero 
-       background={'#F4F5F9'}
-       heroh1Small={'hero-small'}
-       h1color={'black'}
-       buttoncolor={'#03750D'}
-       color={'white'}
-       />
+       <Hero1/>
        <FeaturedCategory/>
        <FashionHair/>
-       <Hero 
-       background={'#F4F5F9'}
-       heroh1Small={'hero-small'}
-       h1color={'black'}
-       buttoncolor={'#03750D'}
-       color={'white'}
-       />
+       <Hero3/>
        <NewArrivals/>
        <BestSellers/>
        <FashionTrend/>
-       <Hero 
-        background={'#F4F5F9'}
-        heroh1Small={'hero-small'}
-        h1color={'black'}
-        buttoncolor={'#03750D'}
-       color={'white'}
-       />
+       <Hero4/>
        <BroadWay/>
        <SuperShop/>
        <BestBuy/>
@@ -102,6 +87,7 @@ const HaomePage = () => {
        <SweetHome/>
        <Reviews/>
        <LatestBlog/>
+       <Hero5/>
        <Footer/>
     </div>
   );

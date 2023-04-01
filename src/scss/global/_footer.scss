@@ -12,6 +12,7 @@
         }
         @include breakpoint-up(large){
             justify-content: space-between;
+            padding: 70px 20px;
         }
 
         div{

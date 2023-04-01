@@ -28,7 +28,7 @@ const Header2 = ({ hamMenu, setNavigationSubPage, showNavigationSubPage, setShow
                     navigationList.map((item, index) => {
                        return <span 
                         onMouseOver={() => (
-                            setShowOnHover(true), showSubList(item.sublistTag)) }
+                        setShowOnHover(true), showSubList(item.sublistTag)) }
                         onMouseLeave={() => setShowOnHover(false)}
                         onClick={() => (
                         showSubList(item.sublistTag),

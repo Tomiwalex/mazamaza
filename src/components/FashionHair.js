@@ -26,7 +26,7 @@ const FashionHair = () => {
             <>
                 <Swiper
                     navigation={true}
-                    slidesPerView={1}
+                    slidesPerView={2}
                     grid={{
                     rows: 2,
                     }}

@@ -208,20 +208,24 @@
 
 // STYLE FOR THE CATEGORYPOPUP
 .categoryspopup{
+
     background: #f1f1f1;
     position: fixed;
-    left: 5%;
+    left: 0;
     border: 5px;
-    box-shadow: 1px 1px 8px 1px #0000007a;
-    right: 5%;
+    right: 0;
     top: 60px;
     bottom: 0;
+    z-index: 2;
     overflow: auto;
     transition: all 300ms ease-in-out;
     @include breakpoint-up(medium){
+        left: 40%;
+        right: 0;
         top: 120px;
         visibility: hidden;
         opacity: 0;
+        z-index: 2;
 
     }
 
@@ -237,16 +241,21 @@
             flex-basis: 40%;
             span{
                 display: block;
-                padding: 10px 0;
+                padding: 10px 0 10px 20px;
                 font-weight: 500;
                 font-size: 15px;
+                transition: all 300ms ease-in-out;
+                &:hover{
+                    background: $green;
+                    color: white;
+                }
             }
         }
 
         .navigationlist-sub-section{
             span{
                 display: block;
-                padding: 10px 0;
+                padding: 20px 0;
             }
             @include breakpoint-up(medium){
                 flex-basis: 50%;
