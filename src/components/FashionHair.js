@@ -2,7 +2,7 @@ import React from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import products from '../json/products.json';
-import productImg from '../images/fashioncategory.png'
+import productImg from '../images/braided.png'
 
 // Import Swiper styles
 import "swiper/css";
