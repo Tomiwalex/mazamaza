@@ -1,0 +1,61 @@
+.Blogs{
+    .blog{
+        padding: 20px;
+
+        h2{
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            color:#25252E;
+    
+            @include breakpoint-up(large){
+                font-size: 22px;
+            }
+        }
+
+        .blog-content{
+            flex-wrap: wrap;
+            .content{
+                flex-basis: 100%;
+                transition: all 300ms ease-in-out;
+                &:hover{
+                    transform: scale(1.01);
+                }
+                img{
+                    width: 100%;
+                }
+                .date{
+                    font-weight: 400;
+                    color: #25252E;
+                    font-size: 13px;
+                    padding: 0 5px;
+
+                    span{
+                        color: #81818F;
+                        margin-left: 5px;
+                    }
+                    
+                }
+                .blog {
+                    color: #25252E;
+                    font-weight: 600;
+                    font-size: 18px;
+                    padding: 0 5px;
+                }
+                @include breakpoint-up(medium){
+                    flex-basis: 45%;
+                }
+                @include breakpoint-up(large){
+                    flex-basis: 24%;
+                    .date{
+                        font-size: 14px;
+                    }
+                    .blog {
+                        font-size: 20px;
+                    }
+                    
+                }
+            }
+        }
+    }
+}

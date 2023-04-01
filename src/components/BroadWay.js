@@ -3,13 +3,15 @@ import popularShop from '../json/popularShops.json'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-const PopularShops = () => {
+const BroadWay = () => {
   return (
-    <div className='popular-shops' id='featured-shops'>
+    <div className='popular-shops'
+    style={{background:'rgb(240, 255, 243)'}}
+    >
       <div className='container'>
         <div className='shop'>
             <div className='top-product-header f-jc-sb'>
-                <h2>Popular Shops</h2>
+                <h2>Broad Way</h2>
                 <p>See more {'>'}</p>  
              </div>
 
@@ -40,10 +42,8 @@ const PopularShops = () => {
                                     <div  className='popular-shop'>
     
                                         <img 
-                                        src={require('../images/shop1.png')}/>
+                                        src={require('../images/shop2.png')}/>
                                         <p>{shop['shop-name']}</p>
-
-                                        {/* {p * shop.star} */}
 
                                     </div>
                                 </SwiperSlide>
@@ -59,4 +59,4 @@ const PopularShops = () => {
   )
 }
 
-export default PopularShops
+export default BroadWay

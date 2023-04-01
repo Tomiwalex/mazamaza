@@ -1,15 +1,15 @@
 import React from 'react'
-import popularShop from '../json/popularShops.json'
+import products from '../json/products.json';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-const PopularShops = () => {
+const HumanBraids = () => {
   return (
-    <div className='popular-shops' id='featured-shops'>
+    <div className='popular-shops'>
       <div className='container'>
         <div className='shop'>
             <div className='top-product-header f-jc-sb'>
-                <h2>Popular Shops</h2>
+                <h2>Human Braids</h2>
                 <p>See more {'>'}</p>  
              </div>
 
@@ -32,7 +32,7 @@ const PopularShops = () => {
                 
                     {/* getting the popularshop list from popularshops.json and mapping through the array */}
                     {
-                        popularShop.map((shop, index) => {
+                        products.map((shop, index) => {
                             return (
                                 <SwiperSlide
                                     key={index}
@@ -40,8 +40,9 @@ const PopularShops = () => {
                                     <div  className='popular-shop'>
     
                                         <img 
-                                        src={require('../images/shop1.png')}/>
-                                        <p>{shop['shop-name']}</p>
+                                        src={require('../images/braided.png')}/>
+                                        <p>{shop.name}</p>
+                                        <p>{shop.price}</p>
 
                                         {/* {p * shop.star} */}
 
@@ -59,4 +60,4 @@ const PopularShops = () => {
   )
 }
 
-export default PopularShops
+export default HumanBraids

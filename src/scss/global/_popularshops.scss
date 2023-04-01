@@ -45,6 +45,7 @@
                     p{
                         font-weight: 600;
                         font-size: 13px;
+                        margin-bottom: 2px;
                         @include breakpoint-up(large){
                             font-size: 15px;
                         }

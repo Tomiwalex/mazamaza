@@ -8,7 +8,9 @@ import "swiper/css";
 
 const FeaturedCategory = () => {
   return (
-    <div className='featured-category'>
+    <div className='featured-category'
+    id='featured-category'
+    >
         <div className='container'>
             <div className='content'>
                 <div className='top-product-header f-jc-sb'>

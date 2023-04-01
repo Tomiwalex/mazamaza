@@ -758,6 +758,7 @@ p {
 .popular-shops .shop .shop-content .swiper-slide .popular-shop p {
   font-weight: 600;
   font-size: 13px;
+  margin-bottom: 2px;
 }
 @media (min-width: 64em) {
   .popular-shops .shop .shop-content .swiper-slide .popular-shop p {
@@ -909,4 +910,184 @@ p {
 .fashion-hair .container .hair-content .swiper .swiper-button-next::after, .fashion-hair .container .hair-content .swiper .swiper-button-prev::after {
   font-size: 13px !important;
   font-weight: 600 !important;
+}
+
+.reviews {
+  background: linear-gradient(267.38deg, #DFE9F3 -6.01%, #FFFFFF 117.83%);
+}
+.reviews .review {
+  padding: 20px;
+}
+.reviews .review h2 {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #25252E;
+}
+@media (min-width: 64em) {
+  .reviews .review h2 {
+    font-size: 22px;
+  }
+}
+.reviews .review .review-content {
+  flex-wrap: wrap;
+}
+.reviews .review .review-content .content {
+  flex-basis: 90%;
+  padding: 15px;
+  transition: all 300ms ease-in-out;
+}
+.reviews .review .review-content .content:hover {
+  transform: scale(1.01);
+}
+.reviews .review .review-content .content img {
+  width: 86px;
+}
+.reviews .review .review-content .content small, .reviews .review .review-content .content .reviewer {
+  font-weight: 400;
+  color: #81818F;
+  font-size: 14px;
+}
+.reviews .review .review-content .content .content {
+  color: #25252E;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0;
+}
+@media (min-width: 40em) {
+  .reviews .review .review-content .content {
+    flex-basis: 41%;
+  }
+}
+@media (min-width: 64em) {
+  .reviews .review .review-content .content {
+    flex-basis: 21%;
+  }
+  .reviews .review .review-content .content small, .reviews .review .review-content .content .reviewer {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .reviews .review .review-content .content .content {
+    font-size: 14px;
+  }
+}
+
+.Blogs .blog {
+  padding: 20px;
+}
+.Blogs .blog h2 {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #25252E;
+}
+@media (min-width: 64em) {
+  .Blogs .blog h2 {
+    font-size: 22px;
+  }
+}
+.Blogs .blog .blog-content {
+  flex-wrap: wrap;
+}
+.Blogs .blog .blog-content .content {
+  flex-basis: 100%;
+  transition: all 300ms ease-in-out;
+}
+.Blogs .blog .blog-content .content:hover {
+  transform: scale(1.01);
+}
+.Blogs .blog .blog-content .content img {
+  width: 100%;
+}
+.Blogs .blog .blog-content .content .date {
+  font-weight: 400;
+  color: #25252E;
+  font-size: 13px;
+  padding: 0 5px;
+}
+.Blogs .blog .blog-content .content .date span {
+  color: #81818F;
+  margin-left: 5px;
+}
+.Blogs .blog .blog-content .content .blog {
+  color: #25252E;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 5px;
+}
+@media (min-width: 40em) {
+  .Blogs .blog .blog-content .content {
+    flex-basis: 45%;
+  }
+}
+@media (min-width: 64em) {
+  .Blogs .blog .blog-content .content {
+    flex-basis: 24%;
+  }
+  .Blogs .blog .blog-content .content .date {
+    font-size: 14px;
+  }
+  .Blogs .blog .blog-content .content .blog {
+    font-size: 20px;
+  }
+}
+
+.footers {
+  background: linear-gradient(86.28deg, #F6FEE0 -2.83%, #ADEDD5 118.05%);
+}
+.footers .footer {
+  align-items: flex-start;
+  padding: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+@media (min-width: 40em) {
+  .footers .footer {
+    justify-content: left;
+  }
+}
+@media (min-width: 64em) {
+  .footers .footer {
+    justify-content: space-between;
+  }
+}
+.footers .footer div {
+  flex-basis: 48%;
+}
+@media (min-width: 40em) {
+  .footers .footer div {
+    flex-basis: 33%;
+  }
+}
+@media (min-width: 64em) {
+  .footers .footer div {
+    flex-basis: 18%;
+  }
+}
+.footers .footer div h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+}
+.footers .footer div a, .footers .footer div Link {
+  display: block;
+  color: rgba(0, 0, 0, 0.77);
+  font-size: 13px;
+  margin: 10px 0;
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+}
+.footers .footer div a:hover, .footers .footer div Link:hover {
+  color: #0C9B18;
+}
+.footers .footer .div5 a {
+  display: flex;
+  justify-content: left;
+}
+.footers .footer .div5 a img {
+  margin-right: 6px;
+}
+.footers .footer .div5 a p {
+  margin: 0;
 }/*# sourceMappingURL=general.css.map */
