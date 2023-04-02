@@ -39,7 +39,7 @@ const SellerSignUp = () => {
       );
       if (response) {
         console.log(response.data);
-        alert(response.data.message)
+        alert(`${response.data.message} \n your seller account has been created and added to queue for registration by the admin`)
 
         navigate("signin");
       }
