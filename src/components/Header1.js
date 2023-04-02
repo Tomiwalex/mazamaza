@@ -88,7 +88,7 @@ const Header1 = () => {
               <span
                 className="h-f-dm"
                 onClick={(e) => {
-                  navigate("seller-signup");
+                  navigate("../seller-signup");
                 }}
               >
                 Go to Shop
