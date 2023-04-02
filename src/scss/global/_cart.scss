@@ -1,0 +1,178 @@
+.carts{
+    background: #F8F8F8;
+    @include breakpoint-up(medium){
+        margin-top: 42px;
+    }
+    .cart{
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        h2{
+            font-weight: 500;
+            flex-basis: 100%;
+        }
+
+        .cart-content{
+            max-width: 670px;
+            margin: auto;
+            .cart-item{
+                margin: 25px auto;
+                width: calc(100% - 10px);
+                height: 110px;
+                display: flex;
+                border-radius: 4px;
+                padding: 5px;
+                column-gap: 0px;
+                border: 1px solid rgba(228, 228, 228, 0.329);
+                @include breakpoint-up(large){
+                    height: 180px;
+                    width: 100%;
+                    column-gap: 10px;
+                }
+
+                .product-image{
+                    height: 110px;
+                    width: 110px;
+                    margin-right: 10px;
+                    @include breakpoint-up(large){
+                        height: 170px;
+                        width: 170px;
+                    }
+                }
+                p{
+                    margin: 0;
+                }
+                .cart-details{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    .product-name{
+                        text-align: left;
+                        flex-basis: 50%;
+                        font-weight: 600;
+                        font-size: 14px;
+                        color: black;
+                        @include breakpoint-up(large){
+                            font-size: 18px;
+                        }
+                    }
+
+                    .product-price{
+                        text-align: right;
+                        flex-basis: 50%;
+                        font-weight: 600;
+                        font-size: 14px;
+                        color: black;
+                        @include breakpoint-up(large){
+                            font-size: 18px;
+                        }
+                    }
+
+                    .product-condition{
+                        text-align: left;
+                        flex-basis: 100%;
+                        font-weight: 600;
+                        color: rgb(199, 199, 199);
+                        font-size: 14px;
+                        span{
+                            color: black;
+                        }
+                        @include breakpoint-up(large){
+                            font-size: 18px;
+                        }
+                    }
+
+                    .product-counter{
+                        flex-basis: 50%;
+                        color: #585866;
+                        font-weight: 600;
+                        font-size: 13px;
+                        .minus, .plus{
+                            padding: 3px 6px;
+                            border-radius: 1px;
+                            background: #ebebeb8a;
+                            margin: 0 8px;
+                        }
+                        .count{
+                            font-size: 16px;
+                        }
+                    }
+                    
+                    .delete-product{
+                        flex-basis: 50%;
+                        text-align: right;
+                        justify-content: right;
+                        column-gap: 5px;
+                        font-size: 14px;
+                        img{
+                            width: 16px;
+                        }
+                        @include breakpoint-up(large){
+                            font-size: 16px;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .cart-summary{
+            background: white;
+            border-radius: 6px;
+            width:100%;
+            padding: 20px;
+           
+            @include breakpoint-up(medium){
+                max-width: 400px;
+                margin: auto;
+            }
+
+            hr{
+                border: 1px solid #e3e3e359;
+            }
+            h3{
+                font-weight: 600;
+                font-size: 18px;
+                margin: 0;
+                margin-bottom: 20px;
+                color: #25252E;
+                @include breakpoint-up(medium){
+                    font-size: 22px;
+                }
+            }
+            .sub-total{
+                font-weight: 600;
+                font-size: 18px;
+                color: #81818F;
+                @include breakpoint-up(medium){
+                    font-size: 20px;
+                }
+            }
+
+            .shipping{
+                font-weight: 400;
+                font-size: 14px;
+                color: #81818F;
+                p{
+                    margin: 10px 0;
+                }
+                @include breakpoint-up(medium){
+                    font-size: 16px;
+                }
+            }
+
+            button{
+                background: $green;
+                color: white;
+                padding: 10px;
+                width: 100%;
+                border-radius: 6px;
+                outline: none;
+                border: none;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+    }
+}

@@ -7,6 +7,7 @@ import accountIcon from '../images/account-icon.svg';
 import backIcon from '../images/back-arrow.svg'
 import { AppContext } from '../App';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Header1 = () => {
@@ -46,7 +47,8 @@ const Header1 = () => {
 
                 {/* icons */}
                 <div className='links f-jc-sb'>
-                    <span className='h-f-dm'>Become a Seller</span>
+                    <Link to='/signup'><span className='h-f-dm'>Become a Seller</span></Link>
+                    
                     <span className='h-f-t search-icon'
                     onClick={() => (setMobilesearch(!mobilesearch),
                         setHamMenu(false)
@@ -57,7 +59,7 @@ const Header1 = () => {
 
                     <span><img src={wishlistIcon}/><span className='h-f-tm'>Wishlist</span></span>
 
-                    <span><img src={blogIcon}/><span className='h-f-tm'>My Bag</span></span>
+                    <span><Link to='/cart'><img src={blogIcon}/><span className='h-f-tm'>My Bag</span></Link></span>
                 </div>
 
 

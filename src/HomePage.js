@@ -24,14 +24,16 @@ import Hero2 from "./components/Heros/Hero2";
 import Hero3 from "./components/Heros/Hero3";
 import Hero4 from "./components/Heros/Hero4";
 import Hero5 from "./components/Heros/Hero5";
+import Header1 from "./components/Header1";
+import Header2 from "./components/Header2";
 
 
 const HomePage = () => {
 
   return (
     <div>
-       
-
+        <Header1/> {/*This is the first navigation bar in the page */}
+        <Header2/>{/*This is the product navigation bar in the page */}
        <Categorypop/>{/*the category section pop up */}
        <Hero/>
        <TopProduct/>
