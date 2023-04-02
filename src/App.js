@@ -27,7 +27,8 @@ function App() {
     //  to set the sign in option to b requested
     const [signInOption, setSignInOption] = useState('email')
     const [user, setuser] = useState()
-  useCheckToken(()=>setSignedIn(true),()=>setSignedIn(false))
+    
+  useCheckToken((e)=>setSignedIn(true),(e)=>setSignedIn(false))
 
   const getUser= async ()=>{
     const token = localStorage.getItem("authToken");
@@ -52,7 +53,7 @@ function App() {
 
   useEffect(()=>{
     getUser()
-  },[])
+  },[signedIn])
 
 
 
@@ -69,7 +70,7 @@ function App() {
         <Routes>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<HomePage/>} />
-        <Route path='/seller-signup' element={<SellerSignUp/>} /> 
+            <Route path='/seller-signup' element={<SellerSignUp/>} /> 
         
             <Route path='/cart' element={<Cart/>} />
             <Route path='*' element={<h1>Page Not Found</h1>} />

@@ -14,7 +14,6 @@ import axios from "axios";
 
 const SellerSignUp = () => {
   const { setSignedIn,user } = useContext(AppContext);
-  setSignedIn(false);
   const navigate = useNavigate();
 
   // state for displaying the required field forms for buyer and seller
