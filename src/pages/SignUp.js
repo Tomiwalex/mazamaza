@@ -23,7 +23,7 @@ const SignUp = () => {
     console.log(Object.fromEntries(formData.entries()),e.target);
   
     try {
-      const response = await axios.post('http://localhost:4000/api/users/signup', Object.fromEntries(formData.entries()),{
+      const response = await axios.post('https://mazamaza-backend.onrender.com/api/users/signup', Object.fromEntries(formData.entries()),{
         // headers: {
         //   'Content-Type': 'multipart/form-data'
         // }

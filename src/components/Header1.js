@@ -59,7 +59,23 @@ const Header1 = () => {
 
           {/* icons */}
           <div className="links f-jc-sb">
-            {!user?.isSeller ? (
+
+            <span
+              className="h-f-t search-icon"
+              onClick={() => (
+                setMobilesearch(!mobilesearch), setHamMenu(false)
+              )}
+            >
+              <img src={searchIcon} alt="search-icon" />
+            </span>
+
+            <span>
+              <img className="img1" src={accountIcon} />{" "}
+              <span className="h-f-tm">{user?.firstName || "Account"}</span>
+            </span>
+                {/* icons */}
+                <div className='links f-jc-sb'>
+                {!user?.isSeller ? (
               <span
                 className="h-f-dm"
                 onClick={(e) => {
@@ -78,22 +94,6 @@ const Header1 = () => {
                 Go to Shop
               </span>
             )}
-            <span
-              className="h-f-t search-icon"
-              onClick={() => (
-                setMobilesearch(!mobilesearch), setHamMenu(false)
-              )}
-            >
-              <img src={searchIcon} alt="search-icon" />
-            </span>
-
-            <span>
-              <img className="img1" src={accountIcon} />{" "}
-              <span className="h-f-tm">{user?.firstName || "Account"}</span>
-            </span>
-                {/* icons */}
-                <div className='links f-jc-sb'>
-                    <Link to='/signup'><span className='h-f-dm'>Become a Seller</span></Link>
                     
                     <span className='h-f-t search-icon'
                     onClick={() => (setMobilesearch(!mobilesearch),
@@ -107,7 +107,6 @@ const Header1 = () => {
             </span>
 
             <span>
-              <img src={blogIcon} />
               <span className="h-f-tm"><Link to='/cart'><img src={blogIcon}/><span className='h-f-tm'>My Bag</span></Link></span>
             </span>
           </div>

@@ -30,7 +30,7 @@ const SellerSignUp = () => {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.post(
-        "http://localhost:4000/api/seller/register",
+        "https://mazamaza-backend.onrender.com/api/seller/register",
         Object.fromEntries(formData.entries()),
         {
           headers: {

@@ -33,7 +33,7 @@ function App() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/users/user",
+        "https://mazamaza-backend.onrender.com/api/users/user",
         {
           headers: {
             'x-auth-token': `${token}`,
