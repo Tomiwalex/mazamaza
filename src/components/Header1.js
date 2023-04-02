@@ -5,11 +5,14 @@ import blogIcon from '../images/blog-icon.svg';
 import wishlistIcon from '../images/wishlist-icon.svg';
 import accountIcon from '../images/account-icon.svg';
 import backIcon from '../images/back-arrow.svg'
+import { AppContext } from '../App';
+import { useContext } from 'react';
 
 
-const Header1 = ({ hamMenu, setHamMenu, setShowNavigationSubPage, showNavigationSubPage }) => {
+const Header1 = () => {
     // handle
     const [mobilesearch, setMobilesearch] = useState(false);
+    const { hamMenu, setHamMenu, setShowNavigationSubPage, showNavigationSubPage } = useContext(AppContext)
 
   return (
     <div className='header1'>

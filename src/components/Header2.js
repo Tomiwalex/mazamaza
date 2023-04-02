@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import navigationLists from '../json/navigationList.json'
 import graybackIcon from '../images/grayback-arrow.svg'
+import { AppContext } from '../App'
+import { useContext } from 'react'
 
 
-const Header2 = ({ hamMenu, setNavigationSubPage, showNavigationSubPage, setShowNavigationSubPage, setShowOnHover }) => {
+const Header2 = () => {
     
-
+    const { hamMenu, setNavigationSubPage, showNavigationSubPage, setShowNavigationSubPage, setShowOnHover } = useContext(AppContext)
     
     const [navigationList, setNavigationList] = useState(navigationLists);
 
@@ -25,6 +27,7 @@ const Header2 = ({ hamMenu, setNavigationSubPage, showNavigationSubPage, setShow
             <div className='header'>
                 {/* MAPPING THROUGH THE NAVIGATION LIST ARRAY */}
                 {
+
                     navigationList.map((item, index) => {
                        return <span 
                         onMouseOver={() => (

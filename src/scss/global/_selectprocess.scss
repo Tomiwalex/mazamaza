@@ -1,0 +1,133 @@
+.select-process{
+    .content{
+        text-align: center;
+        padding: 20px;
+
+        img{
+            width: 141px;
+        }
+
+        .details{
+            color: #585866;
+            font-size: 14px;
+            font-weight: 600;
+            @include breakpoint-up(large){
+                font-size: 18px;
+            }
+        }
+
+        h1{
+            font-size: 30px;
+            font-weight: 600;
+            color:#25252E;
+            @include breakpoint-up(large){
+                font-size: 48px;
+            }
+        }
+
+        .button{
+            display: block;
+            width: 100%;
+            max-width: 515px;
+            background: #F4F5F9;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #585866;
+            padding:16px 0;
+            margin: 10px auto;
+            text-decoration: none;
+            transition: all 300ms ease-in-out;
+            &:hover{
+                background: rgba(0, 128, 0, 0.274);
+            }
+        }
+
+        .green{
+            text-decoration: none;
+            color: $green;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 0 8px;
+            transition: all 300ms ease-in-out;
+            @include breakpoint-up(large){
+                font-size: 16px;
+            }
+
+            &:hover{
+                color: black
+            }
+        }
+
+        .gray{
+            color: #81818F;
+            font-weight: 400;
+            font-size: 14px;
+            transition: all 300ms ease-in-out;
+            @include breakpoint-up(large){
+                font-size: 16px;
+            }
+        }
+        hr{
+            border: 1px solid #8080802b;
+            width: 40%;
+        }
+
+        .down-image{
+            display: block;
+            width: 100%;
+            display: block;
+            width: calc(100% + 40px);
+            position: relative;
+            right: 20px;
+            height: 30px;
+            margin: 20px 0;
+            margin-top: 50px;
+            @include breakpoint-up(large){
+                height: 45px;
+            }
+        }
+
+        form{
+            input{
+                width: calc(100% - 20px);
+                max-width: 426px;
+                background: #F4F5F9;
+                border-radius: 6px;
+                font-weight: 600;
+                font-size: 16px;
+                color: #585866;
+                padding:16px 10px;
+                margin: 25px auto;
+                text-decoration: none;
+                display: block;
+                transition: all 300ms ease-in-out;
+                border: 1px solid #E4E4EE;
+                outline: none;
+                
+                &:hover{
+                    background: rgba(0, 128, 0, 0.055);
+                }
+                &::placeholder{
+                    color: #B2B2C2;
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+
+                &[type='submit']{
+                    background: $green;
+                    color: white;
+                    width: 100%;
+                    display: block;
+                    max-width: 446px;
+
+
+                    &:hover{
+                        transform: scale(0.98);
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,12 +1,15 @@
 import React from 'react'
 import { useState } from 'react';
 import navigationLists from '../json/navigationList.json'
+import { AppContext } from '../App';
+import { useContext } from 'react';
 
 
 
-const Categorypop = ({ setShowOnHover, navigationSubPage, setNavigationSubPage, showNavigationSubPage, showOnHover }) => {
+const Categorypop = () => {
 
     const [navigationList, setNavigationList] = useState(navigationLists);
+    const { setShowOnHover, navigationSubPage, setNavigationSubPage, showNavigationSubPage, showOnHover } = useContext(AppContext)
 
     // setting the sublist
     const showSubList = (id) => {

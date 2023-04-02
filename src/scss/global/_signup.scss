@@ -1,0 +1,170 @@
+.signup{
+    margin-top: -60px;
+    .content{
+        .image{
+            display: none;
+            // }
+            @include breakpoint-up(large){
+                flex: 1;
+                display: block;
+                height: 141vh;
+                background-size: cover;
+            }
+        }
+
+        .text{
+            text-align: center;
+            flex-basis: calc(100% - 40px);
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            background: white;
+            margin: auto;
+            @include breakpoint-up(medium){
+                width: calc(510px - 50px);
+                flex-basis: auto;
+                padding: 25px;
+            }
+
+            .logo{
+                width: 141px;
+            }
+
+            .switch{
+                background: #F6F7F9;
+                border-radius: 6px; 
+                padding: 6px;    
+                max-width: 250px;
+                margin: 15px auto;
+                column-gap: 8px;
+
+                p{
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #B2B2C2;
+                    background: transparent;
+                    border-radius: 6px;
+                    transition: all 300ms ease-in-out;
+                    margin: 0;
+                    padding: 6px 3px;
+                    width: 100%;
+                }
+                .p-active{
+                    color: $green;
+                    background: white;
+                }
+            }
+
+            .green{
+                text-decoration: none;
+                color: $green;
+                font-weight: 400;
+                font-size: 14px;
+                margin: 0 8px;
+                transition: all 300ms ease-in-out;
+                @include breakpoint-up(large){
+                    font-size: 16px;
+                }
+    
+                &:hover{
+                    color: black
+                }
+            }
+    
+            .gray{
+                color: #81818F;
+                font-weight: 400;
+                font-size: 14px;
+                transition: all 300ms ease-in-out;
+                @include breakpoint-up(large){
+                    font-size: 16px;
+                }
+            }
+
+            form{
+                input{
+                    width: calc(100% - 20px);
+                    max-width: 400px;
+                    background: #F4F5F9;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #585866;
+                    padding:16px 10px;
+                    margin: 25px auto;
+                    text-decoration: none;
+                    display: block;
+                    transition: all 300ms ease-in-out;
+                    border: 1px solid #E4E4EE;
+                    outline: none;
+                    
+                    &:hover{
+                        background: rgba(0, 128, 0, 0.055);
+                    }
+                    &::placeholder{
+                        color: #B2B2C2;
+                        font-size: 15px;
+                        font-weight: 400;
+                    }
+    
+                    &[type='submit']{
+                        background: $green;
+                        color: white;
+                        width: 100%;
+                        display: block;
+                        max-width: 430px;
+    
+    
+                        &:hover{
+                            transform: scale(0.98);
+                        }
+                    }
+                }
+
+                .check-boxes{
+                    justify-content: left;
+                    column-gap: 3px;
+                    max-width: 430px;
+                    margin: 0 auto;
+                    input{
+                        width: 15px;
+                        margin: 0;
+                    }
+                    p{
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #25252E;
+                        .red{
+                            font-weight: 400;
+                            font-size: 11px;
+                            text-decoration: none;
+                            color: #FF6666;
+                        }
+                    }
+                }
+
+            }
+
+            .or{
+                justify-content: center;
+                column-gap: 8px;
+                margin-bottom: 30px;
+                span{
+                    display: inline-block;
+                    width: 34%;
+                    background: #81818f5e;
+                    height: 1px
+                }
+            }
+
+            .icon{
+                justify-content: center;
+                align-items: center;
+                column-gap: 10px;
+                img{
+                    width: 27%;
+                }
+            }
+        }
+    }
+}
