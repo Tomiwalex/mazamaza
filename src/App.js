@@ -28,7 +28,7 @@ function App() {
     const [signInOption, setSignInOption] = useState('email')
     const [user, setuser] = useState()
     
-  useCheckToken((e)=>setSignedIn(true),(e)=>setSignedIn(false))
+  // useCheckToken((e)=>setSignedIn(true),(e)=>setSignedIn(false))
 
   const getUser= async ()=>{
     const token = localStorage.getItem("authToken");
