@@ -7,12 +7,14 @@ import accountIcon from '../images/account-icon.svg';
 import backIcon from '../images/back-arrow.svg'
 import { AppContext } from '../App';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router';
 
 
 const Header1 = () => {
     // handle
     const [mobilesearch, setMobilesearch] = useState(false);
     const { hamMenu, setHamMenu, setShowNavigationSubPage, showNavigationSubPage } = useContext(AppContext)
+    const navigate = useNavigate()
 
   return (
     <div className='header1'>
@@ -46,7 +48,7 @@ const Header1 = () => {
 
                 {/* icons */}
                 <div className='links f-jc-sb'>
-                    <span className='h-f-dm'>Become a Seller</span>
+                    <span className='h-f-dm' onClick={e=>{navigate('seller-signup')}}>Become a Seller</span>
                     <span className='h-f-t search-icon'
                     onClick={() => (setMobilesearch(!mobilesearch),
                         setHamMenu(false)

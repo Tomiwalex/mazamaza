@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../scss/general.css";
 import logo from "../images/logo-img.svg";
 import google from "../images/signupgoogle.png";
 import facebook from "../images/signupfacebook.png";
@@ -11,26 +12,31 @@ import { AppContext } from "../App";
 import { useContext } from "react";
 import axios from "axios";
 
-const SignUp = () => {
-  const { setSignedIn } = useContext(AppContext)
-  const navigate = useNavigate()
+const SellerSignUp = () => {
+  const { setSignedIn } = useContext(AppContext);
+  setSignedIn(false);
+  const navigate = useNavigate();
 
   // state for displaying the required field forms for buyer and seller
   //   const [signupForm, setSignupForm] = useState("buyer");
   const handleSignUp = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(Object.fromEntries(formData.entries()),e.target);
-  
+    console.log(Object.fromEntries(formData.entries()), e.target);
+
     try {
-      const response = await axios.post('http://localhost:4000/api/users/signup', Object.fromEntries(formData.entries()),{
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // }
-      });
+      const response = await axios.post(
+        "http://localhost:4000/api/users/signup",
+        Object.fromEntries(formData.entries()),
+        {
+          // headers: {
+          //   'Content-Type': 'multipart/form-data'
+          // }
+        }
+      );
       if (response) {
         console.log(response.data);
-        navigate('signin')
+        navigate("signin");
       }
     } catch (error) {
       console.log(error);
@@ -43,7 +49,7 @@ const SignUp = () => {
         <div
           className="image"
           style={{
-            background: `url(${hero})`,
+            background: `url(${heroseller})`,
           }}
         >
           {/* <img src={hero}/> */}
@@ -52,60 +58,22 @@ const SignUp = () => {
         <div className="text">
           <img className="logo" src={logo} />
 
-          {/* <div className="switch f-jc-sb">
-            <p
-              onClick={() => setSignupForm("buyer")}
-              className={signupForm == "buyer" && "p-active"}
-            >
-              Buyer
-            </p>
-
-            <p
-              onClick={() => setSignupForm("seller")}
-              className={signupForm == "seller" && "p-active"}
-            >
-              Business/Seller
-            </p>
-          </div> */}
+          <h2>Seller regristration</h2>
 
           <form
             onSubmit={(e) => {
-                handleSignUp(e)
+              handleSignUp(e);
               //   signupForm == 'seller' ? handleSellerSignUp(e): handleBuyerSignUp(e)
             }}
           >
-            {/* {signupForm == "seller" && (
-              <div>
-                <input type="text" placeholder="Shop Name" required />
-                <input
-                  type="text"
-                  placeholder="Legal Business Email"
-                  required
-                />
-              </div>
-            )}
-            {signupForm == "seller" && <textarea minLength={30} />} */}
-              <div>
-                <input
-                  name="firstName"
-                  type="text"
-                  placeholder="First name"
-                  required
-                />
-                <input
-                  name="lastName"
-                  type="text"
-                  placeholder="Last name"
-                  required
-                />
-                <input
-                  name="username"
-                  type="text"
-                  placeholder="Username"
-                  required
-                />
-                <input name="email" type="email" placeholder="Email" required />
-              </div>
+            <input type="text" placeholder="Shop Name" required />
+            <input type="email" autoComplete="email" placeholder="Legal Business Email" required />
+            <input type="text" placeholder="what will you be selling" required />
+            {/* <textarea
+              className="description"
+              minLength={30}
+              placeholder="Tell us about what you intend to sell"
+            /> */}
 
             <input
               name="password"
@@ -163,4 +131,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SellerSignUp;

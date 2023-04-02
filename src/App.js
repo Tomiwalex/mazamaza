@@ -7,6 +7,8 @@ import Header2 from "./components/Header2";
 import SelectProcess from "./pages/SelectProcess";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import { useCheckToken } from "./hooks/checkToken";
+import SellerSignUp from "./pages/SellerSignup";
 
 export const AppContext = createContext();
 
@@ -22,14 +24,22 @@ function App() {
     //  to tweaking signin and signed out
      const [signedIn, setSignedIn] = useState(false);
     //  to set the sign in option to b requested
-    const [signInOption, setSignInOption] = useState('phone')
+    const [signInOption, setSignInOption] = useState('email')
+    const [user, setuser] = useState()
+  useCheckToken(()=>setSignedIn(true),()=>setSignedIn(false))
+
+  const getUser= ()=>{
+    
+  }
+
+
 
 
   return (
     
     <AppContext.Provider 
     value={{
-        setHamMenu, setNavigationSubPage, setShowNavigationSubPage, setShowOnHover, navigationSubPage, showNavigationSubPage, setShowNavigationSubPage, showOnHover, setShowOnHover, signInOption, setSignInOption,
+        setHamMenu,setuser,user, setNavigationSubPage, setShowNavigationSubPage, setShowOnHover, navigationSubPage, showNavigationSubPage, setShowNavigationSubPage, showOnHover, setShowOnHover, signInOption, setSignInOption,
         signedIn, setSignedIn
         }}>
     { signedIn ?
@@ -39,6 +49,8 @@ function App() {
         <Routes>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<HomePage/>} />
+        <Route path='/seller-signup' element={<SellerSignUp/>} /> 
+        
         </Routes>
     </Router> :
 
@@ -47,6 +59,7 @@ function App() {
         <Route path='/' element={<SelectProcess/>} /> 
         <Route path='/signin' element={<SignIn/>} /> 
         <Route path='/signup' element={<SignUp/>} /> 
+
         </Routes>
     </Router>
     }

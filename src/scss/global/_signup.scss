@@ -82,7 +82,7 @@
             }
 
             form{
-                input{
+                input,textarea{
                     width: calc(100% - 20px);
                     max-width: 400px;
                     background: #F4F5F9;
