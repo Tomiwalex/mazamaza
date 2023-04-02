@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomePage from "./HomePage";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { useState, createContext} from "react";
@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { useCheckToken } from "./hooks/checkToken";
 import SellerSignUp from "./pages/SellerSignup";
+import axios from "axios";
 
 export const AppContext = createContext();
 
@@ -28,9 +29,30 @@ function App() {
     const [user, setuser] = useState()
   useCheckToken(()=>setSignedIn(true),()=>setSignedIn(false))
 
-  const getUser= ()=>{
+  const getUser= async ()=>{
+    const token = localStorage.getItem("authToken");
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/users/user",
+        {
+          headers: {
+            'x-auth-token': `${token}`,
+          },
+        }
+      )
+        if (response) {
+           setuser(response.data)
+          console.log(user)
+        }
     
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(()=>{
+    getUser()
+  },[])
 
 
 

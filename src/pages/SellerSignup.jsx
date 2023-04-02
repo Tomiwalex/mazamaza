@@ -13,7 +13,7 @@ import { useContext } from "react";
 import axios from "axios";
 
 const SellerSignUp = () => {
-  const { setSignedIn } = useContext(AppContext);
+  const { setSignedIn,user } = useContext(AppContext);
   setSignedIn(false);
   const navigate = useNavigate();
 
@@ -22,16 +22,20 @@ const SellerSignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    formData.append('firstName',user.firstName)
+    formData.append('lastName',user.lastName)
     console.log(Object.fromEntries(formData.entries()), e.target);
 
     try {
+      const token = localStorage.getItem("authToken");
+
       const response = await axios.post(
-        "http://localhost:4000/api/users/signup",
+        "http://localhost:4000/api/seller/register",
         Object.fromEntries(formData.entries()),
         {
-          // headers: {
-          //   'Content-Type': 'multipart/form-data'
-          // }
+          headers: {
+            "x-auth-token": `${token}`,
+          },
         }
       );
       if (response) {
@@ -66,9 +70,25 @@ const SellerSignUp = () => {
               //   signupForm == 'seller' ? handleSellerSignUp(e): handleBuyerSignUp(e)
             }}
           >
-            <input type="text" placeholder="Shop Name" required />
-            <input type="email" autoComplete="email" placeholder="Legal Business Email" required />
-            <input type="text" placeholder="what will you be selling" required />
+            <input
+              name="shopName"
+              type="text"
+              placeholder="Shop Name"
+              required
+            />
+            <input
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Legal Business Email"
+              required
+            />
+            <input
+              name="description"
+              type="text"
+              placeholder="what will you be selling"
+              required
+            />
             {/* <textarea
               className="description"
               minLength={30}
@@ -98,7 +118,7 @@ const SellerSignUp = () => {
               </p>
             </div>
 
-            <input type="submit" value="Register" />
+            <input type="submit" value="Request approval" />
           </form>
 
           <p className="gray">
@@ -121,7 +141,7 @@ const SellerSignUp = () => {
 
           <p className="gray">
             Already have an Account?{" "}
-            <Link className="green" to="/signin">
+            <Link className="green" to="../signin">
               <span>Sign In</span>
             </Link>
           </p>
