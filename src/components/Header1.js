@@ -71,7 +71,7 @@ const Header1 = () => {
 
             <span>
               <img className="img1" src={accountIcon} />{" "}
-              <span className="h-f-tm">{user?.firstName || "Account"}</span>
+              <span className="h-f-tm" onClick={e=>user?null:navigate('../signin')}>{user?.firstName || "Account"}</span>
             </span>
                 {/* icons */}
                 <div className='links f-jc-sb'>
