@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo-img.svg'
 import downimg from '../images/downimg.png'
 import { useContext } from 'react'
@@ -9,6 +9,7 @@ import axios from 'axios'
 
 const SignIn = () => {
   const { signInOption, setSignedIn } = useContext(AppContext)
+  const navigate = useNavigate()
 
 
   const handleSignin = async (e) => {
@@ -23,6 +24,8 @@ const SignIn = () => {
         localStorage.setItem('authToken',response.data.token)
         alert(response.data.message)
         setSignedIn(true);
+        navigate('../home')
+      
       }
     } catch (error) {
       console.log(error);
