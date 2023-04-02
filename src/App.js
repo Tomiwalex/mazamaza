@@ -71,7 +71,8 @@ function App() {
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<HomePage/>} />
             <Route path='/seller-signup' element={<SellerSignUp/>} /> 
-        
+        <Route path='/signin' element={<SignIn/>} /> 
+            
             <Route path='/cart' element={<Cart/>} />
             <Route path='*' element={<h1>Page Not Found</h1>} />
         </Routes>
