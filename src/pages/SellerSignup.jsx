@@ -39,10 +39,14 @@ const SellerSignUp = () => {
       );
       if (response) {
         console.log(response.data);
+        alert(response.data.message)
+
         navigate("signin");
       }
     } catch (error) {
       console.log(error);
+      alert(error.response?.data?.message)
+
     }
   };
 

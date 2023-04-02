@@ -30,10 +30,14 @@ const SignUp = () => {
       });
       if (response) {
         console.log(response.data);
-        navigate('signin')
+        alert(response.data.message)
+
+        navigate('../signin')
       }
     } catch (error) {
       console.log(error);
+      alert(error.response.data.message)
+
     }
   };
 

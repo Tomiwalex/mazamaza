@@ -21,10 +21,12 @@ const SignIn = () => {
       if (response) {
         console.log(response.data);
         localStorage.setItem('authToken',response.data.token)
+        alert(response.data.message)
         setSignedIn(true);
       }
     } catch (error) {
       console.log(error);
+      alert(error.response.data.message)
     }
   };
 
