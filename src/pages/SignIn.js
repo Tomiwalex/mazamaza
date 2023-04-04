@@ -1,12 +1,37 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo-img.svg'
 import downimg from '../images/downimg.png'
 import { useContext } from 'react'
 import { AppContext } from '../App'
+import axios from 'axios'
+// import { useCheckToken } from '../hooks/checkToken'
 
 const SignIn = () => {
   const { signInOption, setSignedIn } = useContext(AppContext)
+  const navigate = useNavigate()
+
+
+  const handleSignin = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    console.log(Object.fromEntries(formData.entries()),e.target);
+  
+    try {
+      const response = await axios.post('https://mazamaza-backend.onrender.com/api/users/login', Object.fromEntries(formData.entries()));
+      if (response) {
+        console.log(response.data);
+        localStorage.setItem('authToken',response.data.token)
+        alert(response.data.message)
+        setSignedIn(true);
+        navigate('../home')
+      
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.message)
+    }
+  };
 
   return (
     <div className='signin select-process'>
@@ -16,19 +41,19 @@ const SignIn = () => {
             <h1>Welcome!</h1>
 
             <form 
-            onSubmit={() => setSignedIn(true)}
+            onSubmit={(e) => handleSignin(e) }
             >
                 {
                   signInOption == 'email' &&
-                  <input placeholder='Username or Email' type='text' required/>
+                  <input name='emailOrUsername' placeholder='Username or Email' type='text' required/>
                 }
 
                 {
                   signInOption == 'phone' &&
-                  <input placeholder='phone' type='tel' required/>
+                  <input name='phone' placeholder='phone' type='tel' required/>
                 }
                 
-                <input placeholder='password' type='password' required/>
+                <input name='password' placeholder='password' type='password' required/>
 
                 <input type='submit' value='Sign In' />
             </form>

@@ -7,47 +7,93 @@ import accountIcon from '../images/account-icon.svg';
 import backIcon from '../images/back-arrow.svg'
 import { AppContext } from '../App';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Header1 = () => {
-    // handle
-    const [mobilesearch, setMobilesearch] = useState(false);
-    const { hamMenu, setHamMenu, setShowNavigationSubPage, showNavigationSubPage } = useContext(AppContext)
+  // handle
+  const [mobilesearch, setMobilesearch] = useState(false);
+  const {
+    hamMenu,
+    setHamMenu,
+    setShowNavigationSubPage,
+    showNavigationSubPage,
+    user,
+  } = useContext(AppContext);
+  const navigate = useNavigate();
 
   return (
-    <div className='header1'>
-        <div className='container'>
-            <div className='header f-jc-sb'>
+    <div className="header1">
+      <div className="container">
+        <div className="header f-jc-sb">
+          <div className="logo-div f-jc-sb">
+            <img src={logo} alt="logo-image" />
 
-                <div className='logo-div f-jc-sb'>
-                    <img src={logo} alt='logo-image'/>
+            <p className="h-f-m">Mazamaza</p>
+          </div>
 
-                    <p className='h-f-m'>Mazamaza</p>
-                </div>
+          {/* The search box area */}
+          <div
+            className={
+              mobilesearch
+                ? "search-box f-jc-sb fade-in"
+                : "search-box f-jc-sb fade-out"
+            }
+          >
+            <img src={searchIcon} alt="search-icon" />
 
-                {/* The search box area */}
-                <div
-                    className={mobilesearch ? 'search-box f-jc-sb fade-in' : 'search-box f-jc-sb fade-out'}
-                >
-                    <img src={searchIcon} alt='search-icon'/>
+            {/* this is the search box input */}
+            <input
+              onFocus={(e) => (e.target.placeholder = "Typing...")}
+              onBlur={(e) => (e.target.placeholder = "search..")}
+              type="text"
+              placeholder="search.."
+            />
 
-                    {/* this is the search box input */}
-                    <input 
-                    onFocus={(e) => e.target.placeholder = 'Typing...'}
-                    onBlur={(e) => e.target.placeholder = 'search..'} type='text'
-                    placeholder='search..'/>
+            <select>
+              <option value={"all"}>All</option>
+              <option value={"cloth"}>cloth</option>
+              <option value={"all"}>shoe</option>
+            </select>
+          </div>
 
-                    <select>
-                        <option value={'all'}>All</option>
-                        <option value={'cloth'}>cloth</option>
-                        <option value={'all'}>shoe</option>
-                    </select>
-                </div>
+          {/* icons */}
+          <div className="links f-jc-sb">
 
+            <span
+              className="h-f-t search-icon"
+              onClick={() => (
+                setMobilesearch(!mobilesearch), setHamMenu(false)
+              )}
+            >
+              <img src={searchIcon} alt="search-icon" />
+            </span>
+
+            <span>
+              <img className="img1" src={accountIcon} />{" "}
+              <span className="h-f-tm" onClick={e=>user?null:navigate('../signin')}>{user?.firstName || "Account"}</span>
+            </span>
                 {/* icons */}
                 <div className='links f-jc-sb'>
-                    <Link to='/signup'><span className='h-f-dm'>Become a Seller</span></Link>
+                {!user?.isSeller ? (
+              <span
+                className="h-f-dm"
+                onClick={(e) => {
+                  navigate("seller-signup");
+                }}
+              >
+                Become a Seller
+              </span>
+            ) : (
+              <span
+                className="h-f-dm"
+                onClick={(e) => {
+                  navigate("../seller-signup");
+                }}
+              >
+                Go to Shop
+              </span>
+            )}
                     
                     <span className='h-f-t search-icon'
                     onClick={() => (setMobilesearch(!mobilesearch),
@@ -55,12 +101,16 @@ const Header1 = () => {
                     )}
                     ><img src={searchIcon} alt='search-icon'/></span>
 
-                    <span><img className='img1' src={accountIcon}/> <span className='h-f-tm'>Account</span></span>
+            <span>
+              <img src={wishlistIcon} />
+              <span className="h-f-tm">Wishlist</span>
+            </span>
 
-                    <span><img src={wishlistIcon}/><span className='h-f-tm'>Wishlist</span></span>
+            <span>
+              <span className="h-f-tm"><Link to='/cart'><img src={blogIcon}/><span className='h-f-tm'>My Bag</span></Link></span>
+            </span>
+          </div>
 
-                    <span><Link to='/cart'><img src={blogIcon}/><span className='h-f-tm'>My Bag</span></Link></span>
-                </div>
 
 
                 {/* hamburger menu button for showing the mnu list on mobile view */}
@@ -92,9 +142,19 @@ const Header1 = () => {
                  src={backIcon}/>
                  }
             </div>
-        </div>
-    </div>
-  )
-}
 
-export default Header1
+          {/* button to hide the sublist menu on mobile */}
+          {showNavigationSubPage && (
+            <img
+              onClick={() => setShowNavigationSubPage(false)}
+              className="h-f-t"
+              src={backIcon}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header1;
