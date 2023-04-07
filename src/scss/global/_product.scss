@@ -163,12 +163,16 @@
 
                     span{
                         font-weight: 400;
-                        font-size: 17px;
+                        font-size: 14px;
                         margin-right: 6px;
                         color: #81818F;
+                        @include breakpoint-up(medium){
+                            font-size: 17px;
+                        }
                     }
 
                     select{
+                        background: white;
                         border: 1px solid #E4E4EE;
                         border-radius: 6px;
                         padding: 6px 8px 6px 12px;
@@ -188,16 +192,16 @@
                     row-gap: 20px;
                     flex-wrap: wrap;
                     .item{
-                        flex-basis: calc(48% - 20px);
-                        padding: 10px;
+                        flex-basis: calc(48% - 12px);
+                        padding: 6px;
                         max-width: 283px;
                         background: white;
                         border-radius: 2px;
                         @include breakpoint-up(medium){
-                            flex-basis: 32%;
+                            flex-basis: auto;
+                            max-width: 238px;
                         }
                         @include breakpoint-up(large){
-                            flex-basis: 24%;
                             max-width: 238px;
                         }
 

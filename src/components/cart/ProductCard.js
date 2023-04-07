@@ -1,9 +1,11 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useContext, useState } from "react";
 import logo from "../../images/logo-img.svg";
 import itemimg from "../../images/shop1.png";
 import products from "../../json/products.json";
+import { AppContext } from "../../App";
 
 const ProductCard = () => {
+  const { handleAddtoCart } = useContext(AppContext);
   const [items, setItems] = useState(products);
   return (
     <Suspense fallback={<p>loading....</p>}>
@@ -20,7 +22,9 @@ const ProductCard = () => {
 
               <p className="item-price">{item.price}</p>
 
-              <button>Add to My Bag</button>
+              <button onClick={() => handleAddtoCart(item)}>
+                Add to My Bag
+              </button>
             </div>
           );
         })}

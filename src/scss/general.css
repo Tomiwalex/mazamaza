@@ -51,6 +51,7 @@ body a, body p, body h1, body input, body span {
 }
 body a {
   text-decoration: none;
+  color: unset;
 }
 
 .container {
@@ -1533,7 +1534,11 @@ p {
 }
 .carts .cart .cart-content {
   max-width: 670px;
-  margin: auto;
+}
+@media (min-width: 64em) {
+  .carts .cart .cart-content {
+    margin: auto;
+  }
 }
 .carts .cart .cart-content .cart-item {
   margin: 25px auto;
@@ -1549,7 +1554,7 @@ p {
 @media (min-width: 64em) {
   .carts .cart .cart-content .cart-item {
     height: 180px;
-    width: 100%;
+    width: 97%;
     -moz-column-gap: 10px;
          column-gap: 10px;
   }
@@ -1653,6 +1658,10 @@ p {
 @media (min-width: 40em) {
   .carts .cart .cart-summary {
     max-width: 400px;
+  }
+}
+@media (min-width: 64em) {
+  .carts .cart .cart-summary {
     margin: auto;
   }
 }
@@ -1861,11 +1870,17 @@ p {
 }
 .products .product .content .content-head .sort span {
   font-weight: 400;
-  font-size: 17px;
+  font-size: 14px;
   margin-right: 6px;
   color: #81818F;
 }
+@media (min-width: 40em) {
+  .products .product .content .content-head .sort span {
+    font-size: 17px;
+  }
+}
 .products .product .content .content-head .sort select {
+  background: white;
   border: 1px solid #E4E4EE;
   border-radius: 6px;
   padding: 6px 8px 6px 12px;
@@ -1884,20 +1899,20 @@ p {
   flex-wrap: wrap;
 }
 .products .product .content .items .product-card .item {
-  flex-basis: calc(48% - 20px);
-  padding: 10px;
+  flex-basis: calc(48% - 12px);
+  padding: 6px;
   max-width: 283px;
   background: white;
   border-radius: 2px;
 }
 @media (min-width: 40em) {
   .products .product .content .items .product-card .item {
-    flex-basis: 32%;
+    flex-basis: auto;
+    max-width: 238px;
   }
 }
 @media (min-width: 64em) {
   .products .product .content .items .product-card .item {
-    flex-basis: 24%;
     max-width: 238px;
   }
 }

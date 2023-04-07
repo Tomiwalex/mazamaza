@@ -3,31 +3,36 @@
         "id": 1,
         "image": "../../images/productimg.png",
         "name": "Genuine Pure bag",
-        "price": "$19.19"
+        "price": "$19.19",
+        "condition": "new"
     },
     {
         "id": 2,
         "image": "../../images/productimg.png",
         "name": "Golden Wig",
-        "price": "$209.19"
+        "price": "$209.19",
+        "condition": "old"
     },
 
     {
         "id": 3,
         "image": "../../images/productimg.png",
         "name": "Green Tea",
-        "price": "$109.19"
+        "price": "$109.19",
+        "condition": "old"
     },
     {
         "id": 4,
         "image": "../../images/productimg.png",
         "name": "Alaari",
-        "price": "$109.19"
+        "price": "$109.19",
+        "condition": "old"
     },
     {
         "id": 5,
         "image": "../../images/productimg.png",
         "name": "Dansiki",
-        "price": "$17.19"
+        "price": "$17.19",
+        "condition": "new"
     }
 ]

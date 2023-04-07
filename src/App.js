@@ -11,21 +11,36 @@ import axios from "axios";
 import SignUpSuccessful from "./pages/SignUpSuccessful";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
+import CartItem from "./components/cart/CartItem";
 
 export const AppContext = createContext();
 
 function App() {
   // state for toggling menu in mobile view
   const [hamMenu, setHamMenu] = useState(false);
+
   const [navigationSubPage, setNavigationSubPage] = useState([]);
   const [showNavigationSubPage, setShowNavigationSubPage] = useState(false);
+
   // state to hide and display the sub list when the categories is hovered on
   const [showOnHover, setShowOnHover] = useState(false);
+
   //  to tweaking signin and signed out
   const [signedIn, setSignedIn] = useState(true);
+
   //  to set the sign in option to b requested
   const [signInOption, setSignInOption] = useState("email");
   const [user, setuser] = useState();
+
+  // state for storing cart items
+  const [cartItem, setCartItem] = useState([]);
+
+  // function for handling the add to cart feature
+  const handleAddtoCart = (item) => {
+    const newList = [...cartItem, item];
+    setCartItem(newList);
+    alert("Added to Cart");
+  };
 
   // state for storing searched item
   const [searchItem, setSearchItem] = useState("");
@@ -77,6 +92,9 @@ function App() {
         setSignedIn,
         searchItem,
         setSearchItem,
+        cartItem,
+        setCartItem,
+        handleAddtoCart,
       }}
     >
       {signedIn ? (
