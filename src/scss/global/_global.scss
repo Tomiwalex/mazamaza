@@ -19,11 +19,15 @@ body{
     a, p, h1, input, span{
         cursor: pointer;
     }
+
+    a{
+        text-decoration: none;
+    }
 }
 
 //style for class container
 .container{
-    max-width: 1220px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 

@@ -1,33 +1,33 @@
 [
     {
         "id": 1,
-        "image": "../src/images/productimg.png",
-        "name": "Genuine Pure Skin Red Hag",
-        "price": "$109.19"
+        "image": "../../images/productimg.png",
+        "name": "Genuine Pure bag",
+        "price": "$19.19"
     },
     {
         "id": 2,
-        "image": "../src/images/productimg.png",
+        "image": "../../images/productimg.png",
         "name": "Golden Wig",
-        "price": "$109.19"
+        "price": "$209.19"
     },
 
     {
         "id": 3,
-        "image": "../src/images/productimg.png",
-        "name": "Green Tea With Moringa",
+        "image": "../../images/productimg.png",
+        "name": "Green Tea",
         "price": "$109.19"
     },
     {
         "id": 4,
-        "image": "../src/images/productimg.png",
-        "name": "Alaari Dansiki Aso Oke",
+        "image": "../../images/productimg.png",
+        "name": "Alaari",
         "price": "$109.19"
     },
     {
         "id": 5,
-        "image": "../src/images/productimg.png",
-        "name": "Alaari Dansiki Aso Oke",
-        "price": "$109.19"
+        "image": "../../images/productimg.png",
+        "name": "Dansiki",
+        "price": "$17.19"
     }
 ]

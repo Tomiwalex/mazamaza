@@ -1,8 +1,13 @@
 .heros{
     overflow: hidden;
     background: linear-gradient(180deg, #DCDBD7 0%, #D7D3D0 100%);
-    max-height: 451px;
-    height: 195px;
+    .swiper-slide{
+        width:100%;
+        img{
+            width: 100%;
+        }
+    }
+    
     @include breakpoint-up(medium){
         height: unset;
     }
@@ -14,18 +19,21 @@
         @include breakpoint-up(large){
             position: relative;
             bottom: 40px;
+            width:18px;
+            height: 18px;
         }
     }
     .swiper-pagination-bullet{
         @include breakpoint-up(large){
+            width:15px;
+            height: 15px;
+            border-radius: 1px solid white;
             position: relative;
             bottom: 40px;
         }
     }
     .hero{
         padding: 25px;
-        
-
         .text{
             flex-basis: 50%;
             position: relative;

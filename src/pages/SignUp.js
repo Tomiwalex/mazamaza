@@ -12,32 +12,35 @@ import { useContext } from "react";
 import axios from "axios";
 
 const SignUp = () => {
-  const { setSignedIn } = useContext(AppContext)
-  const navigate = useNavigate()
+  const { setSignedIn } = useContext(AppContext);
+  const navigate = useNavigate();
 
   // state for displaying the required field forms for buyer and seller
   //   const [signupForm, setSignupForm] = useState("buyer");
   const handleSignUp = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(Object.fromEntries(formData.entries()),e.target);
-  
+    console.log(Object.fromEntries(formData.entries()), e.target);
+
     try {
-      const response = await axios.post('https://mazamaza-backend.onrender.com/api/users/signup', Object.fromEntries(formData.entries()),{
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // }
-      });
+      const response = await axios.post(
+        "https://mazamaza-backend.onrender.com/api/users/signup",
+        Object.fromEntries(formData.entries()),
+        {
+          // headers: {
+          //   'Content-Type': 'multipart/form-data'
+          // }
+        }
+      );
       if (response) {
         console.log(response.data);
-        alert(response.data.msg)
+        alert(response.data.msg);
 
-        navigate('../signin')
+        navigate("../signupsuccessful");
       }
     } catch (error) {
       console.log(error);
-      alert(error.response.data.msg)
-
+      alert(error.response.data.msg);
     }
   };
 
@@ -74,7 +77,7 @@ const SignUp = () => {
 
           <form
             onSubmit={(e) => {
-                handleSignUp(e)
+              handleSignUp(e);
               //   signupForm == 'seller' ? handleSellerSignUp(e): handleBuyerSignUp(e)
             }}
           >
@@ -89,27 +92,27 @@ const SignUp = () => {
               </div>
             )}
             {signupForm == "seller" && <textarea minLength={30} />} */}
-              <div>
-                <input
-                  name="firstName"
-                  type="text"
-                  placeholder="First name"
-                  required
-                />
-                <input
-                  name="lastName"
-                  type="text"
-                  placeholder="Last name"
-                  required
-                />
-                <input
-                  name="username"
-                  type="text"
-                  placeholder="Username"
-                  required
-                />
-                <input name="email" type="email" placeholder="Email" required />
-              </div>
+            <div>
+              <input
+                name="firstName"
+                type="text"
+                placeholder="First name"
+                required
+              />
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Last name"
+                required
+              />
+              <input
+                name="username"
+                type="text"
+                placeholder="Username"
+                required
+              />
+              <input name="email" type="email" placeholder="Email" required />
+            </div>
 
             <input
               name="password"
