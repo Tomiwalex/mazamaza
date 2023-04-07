@@ -14,7 +14,9 @@
 
         .cart-content{
             max-width: 670px;
-            margin: auto;
+            @include breakpoint-up(large){
+                margin: auto;
+            }
             .cart-item{
                 margin: 25px auto;
                 width: calc(100% - 10px);
@@ -26,7 +28,7 @@
                 border: 1px solid rgba(228, 228, 228, 0.329);
                 @include breakpoint-up(large){
                     height: 180px;
-                    width: 100%;
+                    width: 97%;
                     column-gap: 10px;
                 }
 
@@ -125,6 +127,8 @@
            
             @include breakpoint-up(medium){
                 max-width: 400px;
+            }
+            @include breakpoint-up(large){
                 margin: auto;
             }
 

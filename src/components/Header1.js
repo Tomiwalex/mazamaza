@@ -20,6 +20,7 @@ const Header1 = () => {
     user,
     searchItem,
     setSearchItem,
+    cartItem,
   } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -128,9 +129,34 @@ const Header1 = () => {
 
               {/* cart icon */}
               <span>
-                <span>
+                <span
+                  style={{
+                    position: "relative",
+                  }}
+                >
                   <Link to="/cart">
                     <img src={blogIcon} />
+                    {cartItem.length > 0 && (
+                      <span
+                        className="f-jc-c"
+                        style={{
+                          position: "absolute",
+                          height: "9px",
+                          width: "9px",
+                          top: "-7px",
+                          left: "12px",
+                          fontSize: "9px",
+                          padding: "3px",
+                          color: "black",
+                          borderRadius: "50%",
+                          fontWeight: 500,
+                          background: "#FDC50D",
+                        }}
+                      >
+                        {" "}
+                        {cartItem.length}
+                      </span>
+                    )}
                     <span className="h-f-tm">My Bag</span>
                   </Link>
                 </span>
