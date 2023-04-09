@@ -8,6 +8,7 @@ import icon1 from "../images/detf.svg";
 import icon2 from "../images/dett.svg";
 import icon3 from "../images/deti.svg";
 import icon4 from "../images/detm.svg";
+import Reviews from "../components/Reviews";
 
 const ItemDetails = () => {
   const starRating = [
@@ -130,15 +131,19 @@ const ItemDetails = () => {
 
             <div>
               <h3>Free Economy Int’l Delivery to United Kingdom</h3>
-              <h3 className="f">
-                Location:{" "}
-                <p className="gray">Hamtramck, Michigan, United States</p>
-              </h3>
-              <h3 className="f">
-                Ship to:{" "}
-                <p className="gray">United Kingdom and many other countries</p>
-              </h3>
             </div>
+          </div>
+
+          {/* location */}
+          <div className="item-condition">
+            <p className="title"> Location:</p>
+            <p className="gray">Hamtramck, Michigan, United States</p>
+          </div>
+
+          {/* ship to */}
+          <div className="item-condition">
+            <p className="title">Ship to:</p>
+            <p className="gray">United Kingdom and many other countries</p>
           </div>
 
           {/* payment */}
@@ -289,6 +294,8 @@ const ItemDetails = () => {
             })}
           </div>
         </div>
+
+        <Reviews />
       </div>
 
       <Footer />

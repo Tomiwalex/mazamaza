@@ -1,5 +1,8 @@
 .item-details{
     background: #eeeeee;
+    p{
+        margin: 0;
+    }
     h3{
         color: #25252E;
     }
@@ -108,7 +111,8 @@
         }
 
         button{
-            padding: 10px 0;
+            padding: 11px 0;
+            margin: 15px 0;
             width: 100%;
             border-radius: 6px;
             color: white;
@@ -279,6 +283,13 @@
                     }
                 }
             }
+        }
+    }
+
+    .reviews{
+        background: transparent;
+        .review{
+            padding: 0;
         }
     }
 }
