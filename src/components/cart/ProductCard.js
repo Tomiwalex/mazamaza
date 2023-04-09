@@ -3,8 +3,10 @@ import logo from "../../images/logo-img.svg";
 import itemimg from "../../images/shop1.png";
 import products from "../../json/products.json";
 import { AppContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = () => {
+  const navigate = useNavigate();
   const { handleAddtoCart } = useContext(AppContext);
   const [items, setItems] = useState(products);
   return (
@@ -15,7 +17,13 @@ const ProductCard = () => {
           return (
             <div className="item">
               <Suspense fallback={logo}>
-                <img src={itemimg} alt="product-image" />
+                <img
+                  onClick={() => {
+                    navigate("../itemdetails");
+                  }}
+                  src={itemimg}
+                  alt="product-image"
+                />
               </Suspense>
 
               <p className="item-name">{item.name}</p>

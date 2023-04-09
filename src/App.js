@@ -12,6 +12,7 @@ import SignUpSuccessful from "./pages/SignUpSuccessful";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import CartItem from "./components/cart/CartItem";
+import ItemDetails from "./pages/ItemDetails";
 
 export const AppContext = createContext();
 
@@ -109,7 +110,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product" element={<Product />} />
-            <Route path="*" element={<h1>Page Not Found</h1>} />
+            <Route path="/itemdetails" element={<ItemDetails />} />
           </Routes>
         </Router>
       ) : (

@@ -1,59 +1,48 @@
 import React, { useContext, useState } from "react";
-import productimg from "../../images/productimg.png";
-import deleteimg from "../../images/delete-icon.png";
 import { AppContext } from "../../App";
+import CartItemTemplate from "./CartItemTemplate";
 
 const CartItem = () => {
-  const [count, setCount] = useState(0);
   const { cartItem } = useContext(AppContext);
-
-  const increaseCount = () => {
-    setCount(count + 1);
-  };
-
-  const decreaseCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
 
   return (
     <div>
       {cartItem.length ? (
         cartItem.map((item, index) => {
           return (
-            <div key={index} className="cart-item">
-              <img className="product-image" src={productimg} />
-
-              <div className="cart-details">
-                <p className="product-name">{item.name}</p>
-                <p className="product-price">{item.price}</p>
-                <p className="product-condition">
-                  Condition: <span>{item.condition}</span>
-                </p>
-
-                <div className="product-counter">
-                  <span onClick={() => decreaseCount()} className="minus">
-                    -
-                  </span>
-
-                  <span className="count">{count}</span>
-
-                  <span onClick={() => increaseCount()} className="plus">
-                    +
-                  </span>
-                </div>
-
-                <p className="delete-product f-jc-sb">
-                  <img src={deleteimg} />
-                  Delete
-                </p>
-              </div>
+            <div key={index}>
+              <CartItemTemplate
+                itemName={item.name}
+                itemPrice={item.price}
+                itemCondition={item.condition}
+              />
             </div>
           );
         })
       ) : (
-        <h1>No Item Added yet</h1>
+        <div
+          style={{
+            width: "250px",
+            height: "250px",
+            position: "relative",
+            borderRadius: "50%",
+            margin: "20% auto",
+            background: "rgb(253 197 13 / 11%)",
+            color: "#afafaf",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              position: "absolute",
+              width: "288px",
+              top: "88px",
+              left: "-18px",
+            }}
+          >
+            No Item Added yet
+          </h1>
+        </div>
       )}
     </div>
   );
