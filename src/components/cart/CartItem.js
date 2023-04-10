@@ -15,6 +15,7 @@ const CartItem = () => {
                 itemName={item.name}
                 itemPrice={item.price}
                 itemCondition={item.condition}
+                cartId={item.cartId}
               />
             </div>
           );

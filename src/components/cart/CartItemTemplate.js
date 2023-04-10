@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import productimg from "../../images/productimg.png";
 import deleteimg from "../../images/delete-icon.png";
+import { useContext } from "react";
+import { AppContext } from "../../App";
 
-const CartItemTemplate = ({ itemName, itemPrice, itemCondition }) => {
+const CartItemTemplate = ({ itemName, itemPrice, itemCondition, cartId }) => {
+  const { handleCartItemDelete } = useContext(AppContext);
+
   const increaseCount = () => {
     setCount(count + 1);
   };
@@ -38,7 +42,10 @@ const CartItemTemplate = ({ itemName, itemPrice, itemCondition }) => {
           </span>
         </div>
 
-        <p className="delete-product f-jc-sb">
+        <p
+          onClick={() => handleCartItemDelete(cartId)}
+          className="delete-product f-jc-sb"
+        >
           <img src={deleteimg} />
           Delete
         </p>

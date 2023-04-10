@@ -5,6 +5,9 @@ import Header1 from "../components/Header1";
 import Header2 from "../components/Header2";
 import { AppContext } from "../App";
 import { useContext } from "react";
+import CartItemTemplate from "../components/cart/CartItemTemplate";
+import { Link } from "react-router-dom";
+import CartSummary from "../components/cart/CartSummary";
 
 const Cart = () => {
   const { cartItem } = useContext(AppContext);
@@ -25,40 +28,22 @@ const Cart = () => {
           </div>
 
           {/* The cart summary */}
+          {/* /* This is a conditional rendering statement that checks if the length of the `cartItem`
+          array is greater than 0. If it is, it will render the `div` element with the class name
+          `cart-summary` which contains the summary of the items in the cart, including the
+          subtotal, shipping cost, discount, estimated tax, and total. It also includes a clickable
+          button that will take the user to the checkout page when clicked. If the `cartItem` array
+          is empty, nothing will be rendered. */}
           {cartItem.length > 0 && (
-            <div className="cart-summary">
-              <h3>Cart Summary</h3>
-              <hr />
-
-              <div className="sub-total f-jc-sb">
-                <p>Subtotal</p>
-                <p className="sub-total-price"> US $24,040</p>
-              </div>
-
-              <div className="shipping f-jc-sb">
-                <p>Shipping</p>
-                <p className="shipping-price"> US $24.04</p>
-              </div>
-
-              <div className="discount shipping f-jc-sb">
-                <p>Discount</p>
-                <p className="discount-price"> US $2,040</p>
-              </div>
-
-              <div className="estimated-tax shipping f-jc-sb">
-                <p>Estimated Tax</p>
-                <p className="tax-price">-</p>
-              </div>
-
-              <hr />
-
-              <div className="total f-jc-sb">
-                <h3>Total</h3>
-                <h3>US $11,234.56</h3>
-              </div>
-
-              <button>Proceed to checkout</button>
-            </div>
+            <CartSummary
+              linkTo={"/checkout"}
+              buttonName={"Proceed to checkout"}
+              subTotalPrice={"US $2,400.00"}
+              shippingPrice={"US $100.00"}
+              discountPrice={"US $500.00"}
+              tax={"-"}
+              total={"US $$,2000.00"}
+            />
           )}
         </div>
       </div>

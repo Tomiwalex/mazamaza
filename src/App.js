@@ -13,6 +13,7 @@ import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import CartItem from "./components/cart/CartItem";
 import ItemDetails from "./pages/ItemDetails";
+import Checkout from "./pages/Checkout";
 
 export const AppContext = createContext();
 
@@ -38,9 +39,22 @@ function App() {
 
   // function for handling the add to cart feature
   const handleAddtoCart = (item) => {
-    const newList = [...cartItem, item];
+    const newItem = {
+      ...item,
+      cartId:
+        cartItem.length === 0 ? 1 : cartItem[cartItem.length - 1].cartId + 1,
+    };
+    const newList = [...cartItem, newItem];
     setCartItem(newList);
     alert("Added to Cart");
+  };
+
+  // function for deleting cart item
+  const handleCartItemDelete = (cartId) => {
+    const newList = cartItem.filter((item) => {
+      return item.cartId !== cartId;
+    });
+    setCartItem(newList);
   };
 
   // state for storing searched item
@@ -96,6 +110,7 @@ function App() {
         cartItem,
         setCartItem,
         handleAddtoCart,
+        handleCartItemDelete,
       }}
     >
       {signedIn ? (
@@ -111,6 +126,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/product" element={<Product />} />
             <Route path="/itemdetails" element={<ItemDetails />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Router>
       ) : (
