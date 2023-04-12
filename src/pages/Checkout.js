@@ -4,6 +4,7 @@ import Header2 from "../components/Header2";
 import Categorypop from "../components/Categorypop";
 import Footer from "../components/Footer";
 import CartSummary from "../components/cart/CartSummary";
+import dialCodes from "../json/countryCodes.json";
 
 const Checkout = () => {
   return (
@@ -73,8 +74,11 @@ const Checkout = () => {
               <legend>Phone number</legend>
 
               <select>
-                <option value="+234">+234</option>
-                <option value="+44">+44</option>
+                {dialCodes.map((code, index) => {
+                  return (
+                    <option value={code.dial_code}>{code.dial_code}</option>
+                  );
+                })}
               </select>
 
               <input type="text" required />
@@ -85,7 +89,7 @@ const Checkout = () => {
           </form>
         </div>
 
-        {/* the cart summary pass the button props and the link to destination */}
+        {/* the cart summary pass the button, link to destination, subtotalprice, shippingprice, discountprice, tax, total, */}
         <CartSummary
           subTotalPrice={"US $2,400.00"}
           shippingPrice={"US $100.00"}

@@ -312,7 +312,7 @@ p {
   right: 0;
   top: 60px;
   bottom: 0;
-  z-index: 2;
+  z-index: 5;
   overflow: auto;
   transition: all 300ms ease-in-out;
 }

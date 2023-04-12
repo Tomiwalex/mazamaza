@@ -9,6 +9,7 @@ import downIcon from "../images/chevron-down.svg";
 import PriceRange from "../components/cart/PriceRange";
 import Details from "../components/cart/Details";
 import ProductCard from "../components/cart/ProductCard";
+import countryCodes from "../json/countryCodes.json";
 
 const Product = () => {
   const { searchItem, setSearchItem } = useContext(AppContext);
@@ -87,9 +88,17 @@ const Product = () => {
                 <span>Shipping to:</span>
 
                 <select className="select-country">
-                  <option value="uk">UK</option>
+                  {countryCodes.map((country, index) => {
+                    return (
+                      <option key={index} value={country.name}>
+                        {/* // {country.flag} */}
+                        {country.name}
+                      </option>
+                    );
+                  })}
+                  {/* <option value="uk">UK</option>
                   <option value="nigeria">Nigeria</option>
-                  <option value="ghana">Ghana</option>
+                  <option value="ghana">Ghana</option> */}
                 </select>
               </div>
             </div>
