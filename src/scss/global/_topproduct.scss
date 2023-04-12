@@ -31,13 +31,17 @@
     .top-product-content{
         padding: 25px;
         flex-wrap: wrap;
+        @include breakpoint-up(medium){
+            justify-content:unset;
+            column-gap:10px;
+        }
         .product{
             flex-basis: 47%;
             height: 250px;
             
             @include breakpoint-up(medium){
                 flex-basis: 32%;
-                height:300px;
+                height:auto;
             }
 
             @include breakpoint-up(large){

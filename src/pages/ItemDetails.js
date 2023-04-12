@@ -184,7 +184,12 @@ const ItemDetails = () => {
           </div>
         </div>
 
-        {/* item specification */}
+        {/* /* This code is rendering the item specification section of an item details page. It includes a
+        header with the title "Item specification" and several `div` elements, each containing a `p`
+        element with a `title` class and a `p` element with a `content` class. Each `title` element
+        describes a specific aspect of the item (e.g. "Condition", "Platform", "Format", etc.),
+        while the corresponding `content` element provides more detailed information about that
+        aspect.  */}
         <div className="item-specification">
           <h3>Item specification</h3>
           <div>

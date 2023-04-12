@@ -665,6 +665,13 @@ p {
   padding: 25px;
   flex-wrap: wrap;
 }
+@media (min-width: 40em) {
+  .top-products .top-product-content {
+    justify-content: unset;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+  }
+}
 .top-products .top-product-content .product {
   flex-basis: 47%;
   height: 250px;
@@ -672,7 +679,7 @@ p {
 @media (min-width: 40em) {
   .top-products .top-product-content .product {
     flex-basis: 32%;
-    height: 300px;
+    height: auto;
   }
 }
 @media (min-width: 64em) {

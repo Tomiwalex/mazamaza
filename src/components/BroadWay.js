@@ -3,9 +3,12 @@ import popularShop from "../json/popularShops.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 const BroadWay = () => {
   const navigate = useNavigate();
+  const { setProductHeading } = useContext(AppContext);
 
   return (
     <div className="popular-shops" style={{ background: "rgb(240, 255, 243)" }}>
@@ -13,7 +16,10 @@ const BroadWay = () => {
         <div className="shop">
           <div className="top-product-header f-jc-sb">
             <h2>Broad Way</h2>
-            <Link to="/product">
+            <Link
+              onClick={() => setProductHeading("Broad Way")}
+              to="/featuredproduct"
+            >
               <p>See more {">"}</p>
             </Link>
           </div>
@@ -43,7 +49,9 @@ const BroadWay = () => {
                       key={index}
                     >
                       <div className="popular-shop">
-                        <img src={require("../images/shop2.png")} />
+                        <Link to="/itemdetails">
+                          <img src={require("../images/shop2.png")} />
+                        </Link>
                         <p>{shop["shop-name"]}</p>
                       </div>
                     </SwiperSlide>

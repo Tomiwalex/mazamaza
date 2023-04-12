@@ -10,14 +10,21 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 const FashionHair = () => {
+  const { setProductHeading } = useContext(AppContext);
+
   return (
     <div className="fashion-hair">
       <div className="top-product-header ">
         <div className="container f-jc-sb">
           <h2>Fashion Fair</h2>
-          <Link to="/product">
+          <Link
+            onClick={() => setProductHeading("Fashion Fair")}
+            to="/featuredproduct"
+          >
             <p>See more {">"}</p>
           </Link>
         </div>
@@ -50,7 +57,9 @@ const FashionHair = () => {
                   <SwiperSlide key={index}>
                     <div className="content">
                       <div className="img">
-                        <img src={productImg} />
+                        <Link to="/itemdetails">
+                          <img src={productImg} />
+                        </Link>
                       </div>
 
                       <div className="text">

@@ -9,14 +9,21 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export const FashionTrend = () => {
+  const { setProductHeading } = useContext(AppContext);
+
   return (
     <div className="trending-products top-products slider-type-1">
       <div style={{ background: "none" }} className="top-product-header ">
         <div className="container f-jc-sb" style={{ color: "black" }}>
           <h2>Fashion Trend</h2>
-          <Link to="/product">
+          <Link
+            onClick={() => setProductHeading("Fashion Trend")}
+            to="/featuredproduct"
+          >
             <p>See more {">"}</p>
           </Link>
         </div>
@@ -49,7 +56,9 @@ export const FashionTrend = () => {
                 <SwiperSlide key={index}>
                   <div className="content">
                     <div className="img">
-                      <img src={productImg} />
+                      <Link to="/itemdetails">
+                        <img src={productImg} />
+                      </Link>
                     </div>
 
                     <div className="text">

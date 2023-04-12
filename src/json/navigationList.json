@@ -30,13 +30,31 @@
   {
     "sublistTag": "art",
     "heading": "Art",
-    "sublist": ["Painting", "Sculpture", "Major arts"]
+    "sublist": [
+      "Painting",
+      "Sculpture",
+      "Major arts",
+      "Fin Art",
+      "Contemporary Art",
+      "Pop Art",
+      "Visual Art",
+      "Photography",
+      "Modern Art",
+      "Abstract Art",
+      "Decorative Art",
+      "Digital Art"
+    ]
   },
 
   {
     "sublistTag": "footwear",
     "heading": "Footwear",
-    "sublist": ["Women Footwear", "Men Footwear", "Children footwear"]
+    "sublist": [
+      "Women Footwear",
+      "Men Footwear",
+      "Children footwear",
+      "Unisex Footwear"
+    ]
   },
 
   {
@@ -85,7 +103,12 @@
   {
     "sublistTag": "fashion",
     "heading": "Fashion",
-    "sublist": ["Women Fashion", "Men Fashion", "Children Fashion"]
+    "sublist": [
+      "Women Fashion",
+      "Men Fashion",
+      "Children Fashion",
+      "Unisex Fashion"
+    ]
   },
 
   {

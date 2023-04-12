@@ -14,6 +14,7 @@ import Product from "./pages/Product";
 import CartItem from "./components/cart/CartItem";
 import ItemDetails from "./pages/ItemDetails";
 import Checkout from "./pages/Checkout";
+import FeaturedProductPage from "./pages/FeaturedProductPage";
 
 export const AppContext = createContext();
 
@@ -37,6 +38,9 @@ function App() {
   // state for storing cart items
   const [cartItem, setCartItem] = useState([]);
 
+  // state for storing the general product page heading
+  const [productHeading, setProductHeading] = useState("");
+
   // function for handling the add to cart feature
   const handleAddtoCart = (item) => {
     const newItem = {
@@ -56,6 +60,8 @@ function App() {
     });
     setCartItem(newList);
   };
+
+  //
 
   // state for storing searched item
   const [searchItem, setSearchItem] = useState("");
@@ -111,6 +117,8 @@ function App() {
         setCartItem,
         handleAddtoCart,
         handleCartItemDelete,
+        productHeading,
+        setProductHeading,
       }}
     >
       {signedIn ? (
@@ -127,6 +135,7 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/itemdetails" element={<ItemDetails />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/featuredproduct" element={<FeaturedProductPage />} />
           </Routes>
         </Router>
       ) : (
