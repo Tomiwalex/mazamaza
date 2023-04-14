@@ -15,6 +15,7 @@ import CartItem from "./components/cart/CartItem";
 import ItemDetails from "./pages/ItemDetails";
 import Checkout from "./pages/Checkout";
 import FeaturedProductPage from "./pages/FeaturedProductPage";
+import ContactUs from "./pages/ContactUs";
 
 export const AppContext = createContext();
 
@@ -136,6 +137,7 @@ function App() {
             <Route path="/itemdetails" element={<ItemDetails />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/featuredproduct" element={<FeaturedProductPage />} />
+            <Route path="/contactus" element={<ContactUs />} />
           </Routes>
         </Router>
       ) : (
