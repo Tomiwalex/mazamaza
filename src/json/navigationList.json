@@ -115,7 +115,18 @@
   {
     "sublistTag": "printFabrics",
     "heading": "Print Fabrics",
-    "sublist": ["Ankara", "Adire", "Isi Agu", "Lace", "Aso-Oke", "Kente"]
+    "sublist": [
+      "Ankara",
+      "Adire",
+      "Isi Agu",
+      "Lace",
+      "Aso-Oke",
+      "Kente",
+      "Brocades",
+      "Silk",
+      "Dashiki",
+      "Boubou"
+    ]
   },
 
   {

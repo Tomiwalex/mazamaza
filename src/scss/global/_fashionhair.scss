@@ -37,7 +37,10 @@
 
         .hair-content{
             .swiper{
-                row-gap: 20px;
+                .swiper-wrapper{
+                    flex-direction: row;
+                    row-gap: 20px;
+                }
                 .swiper-slide{
                     .content{
                         width: 95%;

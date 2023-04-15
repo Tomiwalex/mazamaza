@@ -1130,7 +1130,8 @@ p {
 .fashion-hair .container {
   padding: 20px;
 }
-.fashion-hair .container .hair-content .swiper {
+.fashion-hair .container .hair-content .swiper .swiper-wrapper {
+  flex-direction: row;
   row-gap: 20px;
 }
 .fashion-hair .container .hair-content .swiper .swiper-slide .content {
