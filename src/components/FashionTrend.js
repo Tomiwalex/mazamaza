@@ -1,5 +1,4 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 import products from "../json/products.json";
 import productImg from "../images/productimg.png";
 import { Link } from "react-router-dom";

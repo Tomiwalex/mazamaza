@@ -1,6 +1,6 @@
 .header1{
     background: white;
-    position: fixed;
+    // position: fixed;
     z-index: 5;
     top: 0;
     left: 0;
@@ -141,15 +141,15 @@
 // style for the second nav bar || header
 .header2{
     background: #f1f1f1;
-    position: fixed;
     z-index: 5;
     left: 0;
     right: 0;
     top: 60px;
     bottom: 0;
     overflow: auto;
+    position: absolute;
     @include breakpoint-up(medium){
-        // position: unset;
+        position: unset;
         background: $yellow;
         bottom: auto;
     }
@@ -209,6 +209,10 @@
 
         
     }
+}
+
+.header-fixed{
+    position: fixed;
 }
 
 // STYLE FOR THE CATEGORYPOPUP
@@ -359,3 +363,4 @@
         }
     }
 }
+

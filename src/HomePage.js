@@ -1,5 +1,5 @@
 import React from "react";
-import './scss/general.css'
+import "./scss/general.css";
 import Hero from "./components/Hero";
 import TopProduct from "./components/TopProduct";
 import Categorypop from "./components/Categorypop";
@@ -26,41 +26,42 @@ import Hero4 from "./components/Heros/Hero4";
 import Hero5 from "./components/Heros/Hero5";
 import Header1 from "./components/Header1";
 import Header2 from "./components/Header2";
-
-
+import Announcement from "./components/Announcement";
 
 const HomePage = () => {
-
   return (
     <div>
-       <Header1/> {/*This is the first navigation bar in the page */}
-       <Header2/>{/*This is the product navigation bar in the page */}
-       <Categorypop/>{/*the category section pop up */}
-       <Hero/>
-       <TopProduct/>
-       <TrendingProduct/>
-       <Hero2/>
-       <PopularProduct/>
-       <PopularShops/>
-       <Hero4/>
-       <FeaturedCategory/>
-       <FashionHair/>
-       <Hero3/>
-       <NewArrivals/>
-       <BestSellers/>
-       <FashionTrend/>
-       <Hero1/>
-       <BroadWay/>
-       <SuperShop/>
-       <BestBuy/>
-       <HumanBraids/>
-       <SweetHome/>
-       <Reviews/>
-       <LatestBlog/>
-       <Hero5/>
-       <Footer/>
+      <Announcement />
+      <Header1 /> {/*This is the first navigation bar in the page */}
+      <Header2 />
+      {/*This is the product navigation bar in the page */}
+      <Categorypop />
+      {/*the category section pop up */}
+      <Hero />
+      <TopProduct />
+      <TrendingProduct />
+      <Hero2 />
+      <PopularProduct />
+      <PopularShops />
+      <Hero4 />
+      <FeaturedCategory />
+      <FashionHair />
+      <Hero3 />
+      <NewArrivals />
+      <BestSellers />
+      <FashionTrend />
+      <Hero1 />
+      <BroadWay />
+      <SuperShop />
+      <BestBuy />
+      <HumanBraids />
+      <SweetHome />
+      <Reviews />
+      <LatestBlog />
+      <Hero5 />
+      <Footer />
     </div>
   );
-}
+};
 
 export default HomePage;

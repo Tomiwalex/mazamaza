@@ -111,7 +111,6 @@ p {
 }
 .header1 {
   background: white;
-  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -237,16 +236,17 @@ p {
 
 .header2 {
   background: #f1f1f1;
-  position: fixed;
   z-index: 5;
   left: 0;
   right: 0;
   top: 60px;
   bottom: 0;
   overflow: auto;
+  position: absolute;
 }
 @media (min-width: 40em) {
   .header2 {
+    position: unset;
     background: #FDC50D;
     bottom: auto;
   }
@@ -302,6 +302,10 @@ p {
     margin: 0 2px;
     display: inline-block;
   }
+}
+
+.header-fixed {
+  position: fixed;
 }
 
 .categoryspopup {
@@ -2465,6 +2469,50 @@ p {
   border: 1px solid #0C9B18;
 }
 
+.announcement-bar {
+  overflow: hidden;
+  height: 45px;
+  position: relative;
+  text-align: center;
+  margin-top: -60px;
+}
+.announcement-bar .announcement-text-1, .announcement-bar .announcement-text-2 {
+  margin: 14px 45px;
+  color: rgb(0, 53, 0);
+  display: inline-block;
+  font-size: 17px;
+}
+@media (min-width: 64em) {
+  .announcement-bar .announcement-text-1, .announcement-bar .announcement-text-2 {
+    font-size: 22px;
+  }
+}
+.announcement-bar img {
+  animation: bounce 4s ease-in-out infinite;
+  position: relative;
+  margin: -13px;
+}
+
+@keyframes bounce {
+  0% {
+    bottom: 20px;
+  }
+  10% {
+    bottom: -3px;
+  }
+  20% {
+    bottom: 5px;
+  }
+  50% {
+    bottom: -1px;
+  }
+  80% {
+    bottom: 1px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
 .footers {
   background: linear-gradient(86.28deg, #F6FEE0 -2.83%, #ADEDD5 118.05%);
 }
