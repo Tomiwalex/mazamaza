@@ -14,6 +14,7 @@ import axios from "axios";
 
 const SellerSignUp = () => {
   const { setSignedIn,user } = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
 
   // state for displaying the required field forms for buyer and seller
@@ -119,7 +120,7 @@ const SellerSignUp = () => {
               </p>
             </div>
 
-            <input type="submit" value="Request approval" />
+            <input type="submit" value={isLoading?'Processing':"Register as Seller"} disabled={isLoading}/>
           </form>
 
           <p className="gray">
