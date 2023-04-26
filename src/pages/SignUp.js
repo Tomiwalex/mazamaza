@@ -24,7 +24,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "https://mazamaza-backend.onrender.com/api/users/signup",
+        "https://mazamaza.onrender.com/api/users/signup",
         Object.fromEntries(formData.entries()),
         {
           // headers: {

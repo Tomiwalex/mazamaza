@@ -54,7 +54,7 @@ function App() {
 
     try {
       console.log(searchItem)
-      const response  = await axios.put(`http://localhost:4000/api/cart/addToCart?productId=${item._id}`,{
+      const response  = await axios.put(`https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,{
         headers:{
           'x-auth-token':localStorage.getItem('authToken')
         }
@@ -105,7 +105,7 @@ function App() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
-        "https://mazamaza-backend.onrender.com/api/users/user",
+        "https://mazamaza.onrender.com/api/users/user",
         {
           headers: {
             "x-auth-token": `${token}`,

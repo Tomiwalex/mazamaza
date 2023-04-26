@@ -18,7 +18,7 @@ const SignIn = () => {
     console.log(Object.fromEntries(formData.entries()),e.target);
   
     try {
-      const response = await axios.post('https://mazamaza-backend.onrender.com/api/users/login', Object.fromEntries(formData.entries()));
+      const response = await axios.post('https://mazamaza.onrender.com/api/users/login', Object.fromEntries(formData.entries()));
       if (response) {
         console.log(response.data);
         localStorage.setItem('authToken',response.data.token)
