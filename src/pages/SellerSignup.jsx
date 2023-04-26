@@ -21,8 +21,6 @@ const SellerSignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.append('firstName',user.firstName)
-    formData.append('lastName',user.lastName)
     console.log(Object.fromEntries(formData.entries()), e.target);
 
     try {
