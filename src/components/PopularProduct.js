@@ -18,7 +18,7 @@ const PopularProduct = () => {
             <h2>Popular Products</h2>
 
             <Link
-              onClick={() => setProductHeading("/Popular Products")}
+              onClick={() => setProductHeading("Popular Products")}
               to="/featuredproduct"
             >
               <p>See more {">"}</p>{" "}

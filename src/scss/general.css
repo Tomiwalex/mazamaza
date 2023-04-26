@@ -111,7 +111,6 @@ p {
 }
 .header1 {
   background: white;
-  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -237,16 +236,17 @@ p {
 
 .header2 {
   background: #f1f1f1;
-  position: fixed;
   z-index: 5;
   left: 0;
   right: 0;
   top: 60px;
   bottom: 0;
   overflow: auto;
+  position: absolute;
 }
 @media (min-width: 40em) {
   .header2 {
+    position: unset;
     background: #FDC50D;
     bottom: auto;
   }
@@ -304,10 +304,15 @@ p {
   }
 }
 
+.header-fixed {
+  position: fixed;
+}
+
 .categoryspopup {
   background: #f1f1f1;
   position: fixed;
   left: 0;
+  color: rgb(58, 58, 58);
   border: 5px;
   right: 0;
   top: 60px;
@@ -369,6 +374,84 @@ p {
     visibility: visible;
     opacity: 1;
   }
+}
+
+.contact {
+  padding: 20px;
+  padding-top: 60px;
+  background: #F4F5F9;
+  flex-wrap: wrap;
+}
+@media (min-width: 40em) {
+  .contact div {
+    flex-basis: 50%;
+  }
+}
+.contact h2 {
+  color: #1d4100;
+  font-weight: 600;
+  font-size: 27px;
+}
+.contact h3 {
+  font-size: 20px;
+  color: #555555;
+  font-weight: 500;
+}
+.contact p {
+  line-height: 1.3;
+  color: #585866;
+  font-weight: 400;
+  font-size: 14px;
+}
+.contact form {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+@media (min-width: 40em) {
+  .contact form {
+    flex-basis: 50%;
+    max-width: 400px;
+  }
+}
+.contact form input, .contact form textarea {
+  width: calc(100% - 20px);
+  max-width: 400px;
+  background: #F4F5F9;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #585866;
+  padding: 16px 10px;
+  margin: 35px 0;
+  text-decoration: none;
+  display: block;
+  transition: all 300ms ease-in-out;
+  border: 1px solid #E4E4EE;
+  outline: none;
+}
+.contact form input:hover, .contact form textarea:hover {
+  background: rgba(0, 128, 0, 0.055);
+}
+.contact form input::-moz-placeholder, .contact form textarea::-moz-placeholder {
+  color: #B2B2C2;
+  font-size: 15px;
+  font-weight: 400;
+}
+.contact form input::placeholder, .contact form textarea::placeholder {
+  color: #B2B2C2;
+  font-size: 15px;
+  font-weight: 400;
+}
+.contact form input[type=submit], .contact form textarea[type=submit] {
+  background: #0C9B18;
+  color: white;
+  width: 100%;
+  display: block;
+  max-width: 410px;
+}
+.contact form input[type=submit]:hover, .contact form textarea[type=submit]:hover {
+  transform: scale(0.98);
 }
 
 .ham {
@@ -1051,8 +1134,9 @@ p {
 .fashion-hair .container {
   padding: 20px;
 }
-.fashion-hair .container .hair-content .swiper {
-  height: 700px;
+.fashion-hair .container .hair-content .swiper .swiper-wrapper {
+  flex-direction: row;
+  row-gap: 20px;
 }
 .fashion-hair .container .hair-content .swiper .swiper-slide .content {
   width: 95%;
@@ -2385,6 +2469,50 @@ p {
   border: 1px solid #0C9B18;
 }
 
+.announcement-bar {
+  overflow: hidden;
+  height: 45px;
+  position: relative;
+  text-align: center;
+  margin-top: -60px;
+}
+.announcement-bar .announcement-text-1, .announcement-bar .announcement-text-2 {
+  margin: 14px 45px;
+  color: rgb(0, 53, 0);
+  display: inline-block;
+  font-size: 17px;
+}
+@media (min-width: 64em) {
+  .announcement-bar .announcement-text-1, .announcement-bar .announcement-text-2 {
+    font-size: 22px;
+  }
+}
+.announcement-bar img {
+  animation: bounce 4s ease-in-out infinite;
+  position: relative;
+  margin: -13px;
+}
+
+@keyframes bounce {
+  0% {
+    bottom: 20px;
+  }
+  10% {
+    bottom: -3px;
+  }
+  20% {
+    bottom: 5px;
+  }
+  50% {
+    bottom: -1px;
+  }
+  80% {
+    bottom: 1px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
 .footers {
   background: linear-gradient(86.28deg, #F6FEE0 -2.83%, #ADEDD5 118.05%);
 }

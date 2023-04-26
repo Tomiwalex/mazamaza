@@ -1,14 +1,14 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 import products from "../json/products.json";
 import productImg from "../images/productimg.png";
 import { Link } from "react-router-dom";
+import { Suspense } from "react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/grid";
-import "swiper/css/navigation";
-import { Grid, Navigation } from "swiper";
+// // Import Swiper styles
+// import "swiper/css";
+// import "swiper/css/grid";
+// import "swiper/css/navigation";
+// import { Grid, Navigation } from "swiper";
 import { useContext } from "react";
 import { AppContext } from "../App";
 
@@ -30,46 +30,31 @@ export const FashionTrend = () => {
       </div>
 
       <div className="container">
-        <>
-          <Swiper
-            navigation={true}
-            slidesPerView={1}
-            grid={{
-              rows: 2,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 3,
-              },
-              768: {
-                slidesPerView: 4,
-              },
-              // 1024: {
-              //   slidesPerView: ,
-              // },
-            }}
-            modules={[Grid, Navigation]}
-            className="mySwiper"
-          >
-            {products.map((item, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div className="content">
-                    <div className="img">
-                      <Link to="/itemdetails">
-                        <img src={productImg} />
-                      </Link>
-                    </div>
+        <div className="top-product-content f-jc-sb">
+          {products.map((product, index) => {
+            return (
+              <Suspense key={index} fallback={"loading.."}>
+                <div className="product">
+                  <Link to="/itemdetails">
+                    {" "}
+                    <img
+                      className="product-image"
+                      //src={product.image}
+                      //  the real image should be added to the src above
+                      src={productImg}
+                      alt={`img of ${product.name}`}
+                    />
+                  </Link>
 
-                    <div className="text">
-                      <p className="product-name">{item.name}</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </>
+                  <p className="product-name">{product.name}</p>
+
+                  {/* the product's price */}
+                  <p className="product-price">{product.price}</p>
+                </div>
+              </Suspense>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

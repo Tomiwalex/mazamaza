@@ -11,6 +11,7 @@ const Header2 = () => {
     showNavigationSubPage,
     setShowNavigationSubPage,
     setShowOnHover,
+    scrolled,
   } = useContext(AppContext);
 
   const [navigationList, setNavigationList] = useState(navigationLists);
@@ -25,7 +26,10 @@ const Header2 = () => {
   };
 
   return (
-    <div className={hamMenu ? "header2 fade-in" : "header2 fade-out"}>
+    <div
+      style={{ position: scrolled && "fixed" }}
+      className={hamMenu ? "header2 fade-in" : "header2 fade-out"}
+    >
       <div className="container">
         <div className="header">
           {/* MAPPING THROUGH THE NAVIGATION LIST ARRAY */}

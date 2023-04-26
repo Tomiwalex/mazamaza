@@ -53,6 +53,7 @@
             @include breakpoint-up(medium){
                 flex-basis: auto;
             }
+            
             form{
                 @include breakpoint-up(medium){
                     width: 340px;

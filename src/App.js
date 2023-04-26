@@ -15,6 +15,8 @@ import CartItem from "./components/cart/CartItem";
 import ItemDetails from "./pages/ItemDetails";
 import Checkout from "./pages/Checkout";
 import FeaturedProductPage from "./pages/FeaturedProductPage";
+import ContactUs from "./pages/ContactUs";
+import Announcement from "./components/Announcement";
 
 export const AppContext = createContext();
 
@@ -78,7 +80,21 @@ function App() {
     setCartItem(newList);
   };
 
-  //
+  const [scrolled, setScrolled] = useState(false);
+
+  {
+    window.onscroll = () => {
+      if (
+        document.body.scrollTop > 45 ||
+        document.documentElement.scrollTop > 45
+      ) {
+        setScrolled(true);
+        console.log("scroled");
+      } else {
+        setScrolled(false);
+      }
+    };
+  }
 
   // state for storing searched item
   const [searchItem, setSearchItem] = useState("");
@@ -136,10 +152,12 @@ function App() {
         handleCartItemDelete,
         productHeading,
         setProductHeading,
+        scrolled, setScrolled
       }}
     >
       {signedIn ? (
         <Router>
+          {/* <Announcement /> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<HomePage />} />
@@ -152,6 +170,7 @@ function App() {
             <Route path="/itemdetails" element={<ItemDetails />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/featuredproduct" element={<FeaturedProductPage />} />
+            <Route path="/contactus" element={<ContactUs />} />
           </Routes>
         </Router>
       ) : (

@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header1 = () => {
   // handle
   const [mobilesearch, setMobilesearch] = useState(false);
+
   const {
     hamMenu,
     setHamMenu,
@@ -21,12 +22,13 @@ const Header1 = () => {
     searchItem,
     setSearchItem,
     cartItem,
+    scrolled,
   } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   return (
-    <div className="header1">
+    <div className={scrolled ? "header1 header-fixed" : "header1"}>
       <div className="container">
         <div className="header f-jc-sb">
           <Link to="/home">
