@@ -2,8 +2,11 @@
 import products from "../json/products.json";
 import productImg from "../images/productimg.png";
 import { Link } from "react-router-dom";
+import Lottie from "react-lottie";
+import noProduct from "../assets/lottie/noProduct.json";
 import { AppContext } from "../App";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { Suspense } from "react";
 
 // // Import Swiper styles
@@ -13,7 +16,28 @@ import { Suspense } from "react";
 // import { Grid, Navigation } from "swiper";
 
 export const TrendingProduct = () => {
+  const [trendingProducts, setTrendingProducts] = useState([]);
   const { setProductHeading } = useContext(AppContext);
+
+
+  const getTrendingProducts = async () =>{
+    try {
+      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?sort=price`)
+      if (response) {
+
+        setTrendingProducts(response.data.data)
+        console.log(response.data.data)
+      }
+
+    } catch (error) {
+      // alert('could not load products in this category')
+      console.log(error)
+    }
+  }
+
+  useEffect(()=>{
+    getTrendingProducts()
+  },[])
 
   return (
     <div className="trending-products top-products slider-type-1">
@@ -32,7 +56,7 @@ export const TrendingProduct = () => {
 
       <div className="container">
         <div className="top-product-content f-jc-sb">
-          {products.map((product, index) => {
+          {trendingProducts?.length>0?trendingProducts?.map((product, index) => {
             return (
               <Suspense key={index} fallback={"loading.."}>
                 <div className="product">
@@ -54,7 +78,28 @@ export const TrendingProduct = () => {
                 </div>
               </Suspense>
             );
-          })}
+          }):
+          <div
+          className=" w-full flex item-center justify-center bg-white"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            width: "100%",
+            background: "white",
+          }}
+        >
+          <Lottie
+            options={{
+              animationData: noProduct,
+              loop: true,
+            }}
+            width={200}
+          />
+          <p className="m-4">No product in this category</p>
+        </div>
+          }
         </div>
       </div>
     </div>
