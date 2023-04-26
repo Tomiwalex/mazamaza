@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../scss/general.css";
 import logo from "../images/logo-img.svg";
@@ -17,15 +17,25 @@ const SellerSignUp = () => {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    if (!user) {
+      alert('You are not signed in. please sign in')
+      navigate('/signin')
+    }
+  })
+
   // state for displaying the required field forms for buyer and seller
   //   const [signupForm, setSignupForm] = useState("buyer");
   const handleSignUp = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    formData.append('firstName',user.firstName)
+    formData.append('lastName',user.lastName)
     console.log(Object.fromEntries(formData.entries()), e.target);
 
     try {
       const token = localStorage.getItem("authToken");
+      setIsLoading(true)
 
       const response = await axios.post(
         "https://mazamaza.onrender.com/api/seller/register",
@@ -38,12 +48,14 @@ const SellerSignUp = () => {
       );
       if (response) {
         console.log(response.data);
+        setIsLoading(false)
         alert(`${response.data.message} \n your seller account has been created and added to queue for registration by the admin`)
 
         navigate("signin");
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false)
       alert(error.response?.data?.message)
 
     }
