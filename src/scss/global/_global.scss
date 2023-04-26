@@ -3,6 +3,9 @@
 $green: #0C9B18;
 $light-green: #6ACC1A;
 $yellow:#FDC50D;
+$gray:#585866;
+// $yellow:#fdc50d88;
+
 
 body{
     margin: 0;
@@ -19,15 +22,21 @@ body{
     a, p, h1, input, span{
         cursor: pointer;
     }
+
+    a{
+        text-decoration: none;
+        color: unset;
+    }
 }
 
 //style for class container
 .container{
-    max-width: 1220px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
 .f{
+    display: flex;
     &-jc-c{
         display: flex;
         justify-content: center;
@@ -37,6 +46,11 @@ body{
     &-jc-sb{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    &-ai-c{
+        display: flex;
         align-items: center;
     }
 }

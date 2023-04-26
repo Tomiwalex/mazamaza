@@ -1,7 +1,16 @@
 .heros{
     overflow: hidden;
     background: linear-gradient(180deg, #DCDBD7 0%, #D7D3D0 100%);
-    max-height: 451px;
+    .swiper-slide{
+        width:100%;
+        img{
+            width: 100%;
+        }
+    }
+    
+    @include breakpoint-up(medium){
+        height: unset;
+    }
     @include breakpoint-up(large){
         padding-top: 15px;
     }
@@ -10,10 +19,15 @@
         @include breakpoint-up(large){
             position: relative;
             bottom: 40px;
+            width:18px;
+            height: 18px;
         }
     }
     .swiper-pagination-bullet{
         @include breakpoint-up(large){
+            width:15px;
+            height: 15px;
+            border-radius: 1px solid white;
             position: relative;
             bottom: 40px;
         }
@@ -38,14 +52,17 @@
             }
 
             button{
-                padding: 13px 10px;
+                padding: 7px 5px;
                 font-weight: 600;
-                font-size: 15px;
+                font-size: 12px;
                 color: #25252E;
                 border-radius: 6px;
                 border: none;
                 column-gap: 5px;
                 transition: all 300ms ease-in-out;
+                img{
+                    width: 9px;
+                }
                 &:hover{
                     color: white;
                     background: $yellow;
@@ -53,6 +70,8 @@
                 @include breakpoint-up(large){
                     padding: 20px 45px;
                     font-size: 16px;
+                    padding: 13px 10px;
+
                 }
             }
         }

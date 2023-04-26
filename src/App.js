@@ -10,21 +10,78 @@ import SellerSignUp from "./pages/SellerSignup";
 import axios from "axios";
 import SignUpSuccessful from "./pages/SignUpSuccessful";
 import Cart from "./pages/Cart";
+import Product from "./pages/Product";
+import CartItem from "./components/cart/CartItem";
+import ItemDetails from "./pages/ItemDetails";
+import Checkout from "./pages/Checkout";
+import FeaturedProductPage from "./pages/FeaturedProductPage";
 
 export const AppContext = createContext();
 
 function App() {
   // state for toggling menu in mobile view
   const [hamMenu, setHamMenu] = useState(false);
+
   const [navigationSubPage, setNavigationSubPage] = useState([]);
   const [showNavigationSubPage, setShowNavigationSubPage] = useState(false);
+
   // state to hide and display the sub list when the categories is hovered on
   const [showOnHover, setShowOnHover] = useState(false);
+
   //  to tweaking signin and signed out
   const [signedIn, setSignedIn] = useState(true);
+
   //  to set the sign in option to b requested
   const [signInOption, setSignInOption] = useState("email");
   const [user, setuser] = useState();
+
+  // state for storing cart items
+  const [cartItem, setCartItem] = useState([]);
+
+  // state for storing the general product page heading
+  const [productHeading, setProductHeading] = useState("");
+
+  // function for handling the add to cart feature
+  const handleAddtoCart = async (item) => {
+    // const newItem = {
+    //   ...item,
+    //   cartId:
+    //     cartItem.length === 0 ? 1 : cartItem[cartItem.length - 1].cartId + 1,
+    // };
+    // const newList = [...cartItem, newItem];
+
+    try {
+      console.log(searchItem)
+      const response  = await axios.put(`http://localhost:4000/api/cart/addToCart?productId=${item._id}`,{
+        headers:{
+          'x-auth-token':localStorage.getItem('authToken')
+        }
+      })
+      if (response) {
+        console.log(response.data.cart)
+        setCartItem(response.data.cart);
+        alert("Added to Cart");
+      }
+
+    } catch (error) {
+      alert('could not load products in this category')
+      console.log(error)
+    }
+
+  };
+
+  // function for deleting cart item
+  const handleCartItemDelete = (cartId) => {
+    const newList = cartItem.filter((item) => {
+      return item.cartId !== cartId;
+    });
+    setCartItem(newList);
+  };
+
+  //
+
+  // state for storing searched item
+  const [searchItem, setSearchItem] = useState("");
 
   // useCheckToken((e)=>setSignedIn(true),(e)=>setSignedIn(false))
 
@@ -55,6 +112,7 @@ function App() {
   return (
     <AppContext.Provider
       value={{
+        hamMenu,
         setHamMenu,
         setuser,
         user,
@@ -70,6 +128,14 @@ function App() {
         setSignInOption,
         signedIn,
         setSignedIn,
+        searchItem,
+        setSearchItem,
+        cartItem,
+        setCartItem,
+        handleAddtoCart,
+        handleCartItemDelete,
+        productHeading,
+        setProductHeading,
       }}
     >
       {signedIn ? (
@@ -78,13 +144,14 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-
             <Route path="/seller-signup" element={<SellerSignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-
             <Route path="/cart" element={<Cart />} />
-            <Route path="*" element={<h1>Page Not Found</h1>} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/itemdetails" element={<ItemDetails />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/featuredproduct" element={<FeaturedProductPage />} />
           </Routes>
         </Router>
       ) : (
@@ -93,7 +160,6 @@ function App() {
             <Route path="/" element={<SelectProcess />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-
             <Route path="/signupsuccessful" element={<SignUpSuccessful />} />
           </Routes>
         </Router>

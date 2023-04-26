@@ -14,7 +14,9 @@
 
         .cart-content{
             max-width: 670px;
-            margin: auto;
+            @include breakpoint-up(large){
+                margin: auto;
+            }
             .cart-item{
                 margin: 25px auto;
                 width: calc(100% - 10px);
@@ -26,7 +28,7 @@
                 border: 1px solid rgba(228, 228, 228, 0.329);
                 @include breakpoint-up(large){
                     height: 180px;
-                    width: 100%;
+                    width: 97%;
                     column-gap: 10px;
                 }
 
@@ -116,63 +118,66 @@
                 }
             }
         }
+    }
+}
 
-        .cart-summary{
-            background: white;
-            border-radius: 6px;
-            width:100%;
-            padding: 20px;
-           
-            @include breakpoint-up(medium){
-                max-width: 400px;
-                margin: auto;
-            }
+// style for the cart summary
+.cart-summary{
+    background: white;
+    border-radius: 6px;
+    width:100%;
+    padding: 20px;
+   
+    @include breakpoint-up(medium){
+        max-width: 400px;
+    }
+    @include breakpoint-up(large){
+        margin: auto;
+    }
 
-            hr{
-                border: 1px solid #e3e3e359;
-            }
-            h3{
-                font-weight: 600;
-                font-size: 18px;
-                margin: 0;
-                margin-bottom: 20px;
-                color: #25252E;
-                @include breakpoint-up(medium){
-                    font-size: 22px;
-                }
-            }
-            .sub-total{
-                font-weight: 600;
-                font-size: 18px;
-                color: #81818F;
-                @include breakpoint-up(medium){
-                    font-size: 20px;
-                }
-            }
-
-            .shipping{
-                font-weight: 400;
-                font-size: 14px;
-                color: #81818F;
-                p{
-                    margin: 10px 0;
-                }
-                @include breakpoint-up(medium){
-                    font-size: 16px;
-                }
-            }
-
-            button{
-                background: $green;
-                color: white;
-                padding: 10px;
-                width: 100%;
-                border-radius: 6px;
-                outline: none;
-                border: none;
-                font-size: 16px;
-                font-weight: 600;
-            }
+    hr{
+        border: 1px solid #e3e3e359;
+    }
+    h3{
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0;
+        margin-bottom: 20px;
+        color: #25252E;
+        @include breakpoint-up(medium){
+            font-size: 22px;
         }
+    }
+    .sub-total{
+        font-weight: 600;
+        font-size: 18px;
+        color: #81818F;
+        @include breakpoint-up(medium){
+            font-size: 20px;
+        }
+    }
+
+    .shipping{
+        font-weight: 400;
+        font-size: 14px;
+        color: #81818F;
+        p{
+            margin: 10px 0;
+        }
+        @include breakpoint-up(medium){
+            font-size: 16px;
+        }
+    }
+
+    button{
+        background: $green;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border-radius: 6px;
+        outline: none;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
     }
 }
