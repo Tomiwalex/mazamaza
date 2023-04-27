@@ -35,7 +35,7 @@ export const TrendingProduct = () => {
   useEffect(() => {
 
     convertPrices();
-  }, []);
+  }, [trendingProducts]);
 
   const getTrendingProducts = async () =>{
     try {

@@ -23,7 +23,6 @@ const ProductCard = ({ product }) => {
   }
   useEffect(() => {
     setItems(product)
-
     convertPrices();
   }, [items,product]);
 

@@ -19,7 +19,6 @@ import ContactUs from "./pages/ContactUs";
 import Announcement from "./components/Announcement";
 
 export const AppContext = createContext();
-console.log('time stamp', new Date(1682550232194).toString())
 function App() {
   // state for toggling menu in mobile view
   const [hamMenu, setHamMenu] = useState(false);
@@ -53,10 +52,10 @@ function App() {
     // const newList = [...cartItem, newItem];
 
     try {
-      console.log(searchItem)
+      console.log(window.localStorage.getItem('authToken'))
       const response  = await axios.put(`https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,{
         headers:{
-          'x-auth-token':localStorage.getItem('authToken')
+          'x-auth-token':window.localStorage.getItem('authToken')
         }
       })
       if (response) {
@@ -66,7 +65,7 @@ function App() {
       }
 
     } catch (error) {
-      alert('could not load products in this category')
+      alert('could not add product to cart')
       console.log(error)
     }
 

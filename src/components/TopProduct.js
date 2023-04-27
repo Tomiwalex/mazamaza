@@ -7,11 +7,26 @@ import Lottie from "react-lottie";
 import noProduct from "../assets/lottie/noProduct.json";
 import { useContext } from "react";
 import axios from "axios";
+import { convertCurrency } from "../hooks/convertCurrency";
 
 const TopProduct = () => {
   const [topProducts, setTopProducts] = useState([]);
   const { setProductHeading } = useContext(AppContext);
+  const [convertedPrices, setConvertedPrices] = useState([]);
 
+
+  async function convertPrices() {
+    const converted = await Promise.all(
+      topProducts.map((item) => convertCurrency(item.currency, item.price))
+    );
+    setConvertedPrices(converted);
+    console.log(converted)
+  }
+
+  useEffect(() => {
+
+    convertPrices();
+  }, [topProducts]);
 
   const getTopProducts = async () =>{
     try {
@@ -68,7 +83,7 @@ const TopProduct = () => {
                   <p className="product-name">{product.name}</p>
 
                   {/* the product's price */}
-                  <p className="product-price">{product.price}</p>
+                  <p className="product-price">{convertedPrices[index] || `${ product.currency} ${ product.price}`}</p>
                 </div>
               </Suspense>
             );
