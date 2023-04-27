@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { AppContext } from "../App";
 import { useContext } from "react";
+import itemimg from "../images/shop1.png";
 import { Link } from "react-router-dom";
 
 const PopularShops = () => {
@@ -46,7 +47,7 @@ const PopularShops = () => {
                     <SwiperSlide key={index}>
                       <div className="popular-shop">
                         <Link to="/itemdetails">
-                          <img src={require("../images/shop1.png")} />
+                          <img src={shop.logoUrl || itemimg} />
                         </Link>
                         <p>{shop["shop-name"]}</p>
 

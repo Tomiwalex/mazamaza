@@ -14,14 +14,16 @@ const ProductCard = ({ product }) => {
   const [items, setItems] = useState(product);
   const [convertedPrices, setConvertedPrices] = useState([]);
 
+
+  async function convertPrices() {
+    const converted = await Promise.all(
+      items.map((item) => convertCurrency(item.currency, item.price))
+    );
+    setConvertedPrices(converted);
+  }
   useEffect(() => {
     setItems(product)
-    async function convertPrices() {
-      const converted = await Promise.all(
-        items.map((item) => convertCurrency(item.currency, item.price))
-      );
-      setConvertedPrices(converted);
-    }
+
     convertPrices();
   }, [items,product]);
 
@@ -45,7 +47,7 @@ const ProductCard = ({ product }) => {
 
                 <p className="item-name">{item.name}</p>
 
-                <p className="item-price">{convertedPrices[index]}</p>
+                <p className="item-price">{convertedPrices[index] || `${ item.currency} ${ item.price}`}</p>
 
                 <button onClick={() => handleAddtoCart(item)}>
                   Add to My Bag

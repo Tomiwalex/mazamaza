@@ -60,7 +60,7 @@ const TopProduct = () => {
                       className="product-image"
                       //src={product.image}
                       //  the real image should be added to the src above
-                      src={productImg}
+                      src={product.productImage[0] || productImg}
                       alt={`img of ${product.name}`}
                     />
                   </Link>

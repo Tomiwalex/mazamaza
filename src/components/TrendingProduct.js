@@ -8,6 +8,7 @@ import { AppContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Suspense } from "react";
+import { convertCurrency } from "../hooks/convertCurrency";
 
 // // Import Swiper styles
 // import "swiper/css";
@@ -19,6 +20,22 @@ export const TrendingProduct = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const { setProductHeading } = useContext(AppContext);
 
+
+  const [convertedPrices, setConvertedPrices] = useState([]);
+
+
+  async function convertPrices() {
+    const converted = await Promise.all(
+      trendingProducts.map((item) => convertCurrency(item.currency, item.price))
+    );
+    setConvertedPrices(converted);
+    console.log(converted)
+  }
+
+  useEffect(() => {
+
+    convertPrices();
+  }, []);
 
   const getTrendingProducts = async () =>{
     try {
@@ -66,7 +83,7 @@ export const TrendingProduct = () => {
                       className="product-image"
                       //src={product.image}
                       //  the real image should be added to the src above
-                      src={productImg}
+                      src={product.productImage[0] || productImg}
                       alt={`img of ${product.name}`}
                     />
                   </Link>
@@ -74,7 +91,7 @@ export const TrendingProduct = () => {
                   <p className="product-name">{product.name}</p>
 
                   {/* the product's price */}
-                  <p className="product-price">{product.price}</p>
+                  <p className="product-price">{convertedPrices[index] || `${ product.currency} ${ product.price}`}</p>
                 </div>
               </Suspense>
             );

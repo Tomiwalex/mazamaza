@@ -19,7 +19,7 @@ import ContactUs from "./pages/ContactUs";
 import Announcement from "./components/Announcement";
 
 export const AppContext = createContext();
-
+console.log('time stamp', new Date(1682550232194).toString())
 function App() {
   // state for toggling menu in mobile view
   const [hamMenu, setHamMenu] = useState(false);
