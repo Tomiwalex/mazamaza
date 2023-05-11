@@ -14,7 +14,7 @@ const Announcement = () => {
         >
           <h1 className="announcement-text-1">THE FUTURE RETAIL IS HERE</h1>
 
-          <img src={logo} alt="MAZAMAZA" />
+          <img className="inline-block" src={logo} alt="MAZAMAZA" />
 
           <h1 className="announcement-text-2">
             SELLING ONLY THE BEST THINGS ONLINE

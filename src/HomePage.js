@@ -31,7 +31,6 @@ import Announcement from "./components/Announcement";
 const HomePage = () => {
   return (
     <div>
-      <Announcement />
       <Header1 /> {/*This is the first navigation bar in the page */}
       <Header2 />
       {/*This is the product navigation bar in the page */}

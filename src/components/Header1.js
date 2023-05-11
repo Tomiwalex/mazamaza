@@ -5,13 +5,17 @@ import blogIcon from "../images/blog-icon.svg";
 import wishlistIcon from "../images/wishlist-icon.svg";
 import accountIcon from "../images/account-icon.svg";
 import backIcon from "../images/back-arrow.svg";
+import mailIcon from "../images/mail.svg";
 import { AppContext } from "../App";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header1 = () => {
-  // handle
+  // handle showing the search box on mobile
   const [mobilesearch, setMobilesearch] = useState(false);
+
+  //state for showing and hidding the account icon pop up on click
+  const [accountPopup, setAccountPopup] = useState(false);
 
   const {
     hamMenu,
@@ -23,6 +27,9 @@ const Header1 = () => {
     setSearchItem,
     cartItem,
     scrolled,
+    setScrolled,
+    activeTab,
+    setActiveTab,
   } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -111,57 +118,113 @@ const Header1 = () => {
               </span>
 
               {/* account icon */}
-              <span>
+              <span
+                className="flex gap-x-1"
+                onClick={(e) => setAccountPopup(!accountPopup)}
+              >
                 <img className="img1" src={accountIcon} />{" "}
-                <span
-                  className="h-f-tm"
-                  onClick={(e) => (user ? null : navigate("../signin"))}
-                >
-                  {user?.firstName || "Account"}
-                </span>
+                <span className="h-f-tm">{user?.firstName || "Account"}</span>
               </span>
+
+              {/* the pop up to be toggled when the account icon or button is clicked*/}
+              {accountPopup && (
+                <div
+                  style={{ top: !scrolled && "126px" }}
+                  className="fixed z-[2] text-center md:w-[200px] p-5 left-5 right-5 bg-[white] rounded-l-md shadow-2xl top-20 z-2 min-h-[80px] md:right-5 md:text-left md:left-[unset] md:top-32 lg:right-[140px]"
+                >
+                  {/* my account */}
+                  <Link
+                    onClick={(e) =>
+                      user
+                        ? (navigate("../account"), setActiveTab("account"))
+                        : navigate("../signin")
+                    }
+                    className="block my-2 text-[#212119] text-[16px]"
+                  >
+                    <img
+                      className="w-[20px] mr-[5px] relative bottom-[2px] inline-block"
+                      src={accountIcon}
+                      alt="account"
+                    />
+                    My Account
+                  </Link>
+
+                  {/* my order */}
+                  <Link
+                    to="/account"
+                    onClick={(e) => setActiveTab("order")}
+                    s
+                    className="block my-2 text-[#212119] text-[16px]"
+                  >
+                    <img
+                      className="w-[20px] mr-[5px] relative inline-block"
+                      src={blogIcon}
+                      alt="bag"
+                    />
+                    My Orders
+                  </Link>
+
+                  {/* inbox */}
+                  <Link
+                    to="/account"
+                    onClick={(e) => setActiveTab("inbox")}
+                    className="block my-2 text-[#212119] text-[16px]"
+                  >
+                    <img
+                      className="w-[20px] mr-[5px] relative inline-block"
+                      src={mailIcon}
+                      alt="inbox"
+                    />
+                    Inbox
+                  </Link>
+
+                  {/* Logout */}
+                  <Link className="block text-yellow text-[16px] my-2 font-semibold transition duration-300 ease-in-out hover:text-[15px]">
+                    Log out
+                  </Link>
+                </div>
+              )}
 
               {/* wishlist icon */}
               <Link to="/product">
-                <span>
+                <span className="flex gap-x-1">
                   <img src={wishlistIcon} />
                   <span className="h-f-tm">Wishlist</span>
                 </span>
               </Link>
 
               {/* cart icon */}
-              <span>
-                <span
-                  style={{
-                    position: "relative",
-                  }}
-                >
-                  <Link to="/cart">
-                    <img src={blogIcon} />
-                    {cartItem.length > 0 && (
-                      <span
-                        className="f-jc-c"
-                        style={{
-                          position: "absolute",
-                          height: "9px",
-                          width: "9px",
-                          top: "-7px",
-                          left: "12px",
-                          fontSize: "9px",
-                          padding: "3px",
-                          color: "black",
-                          borderRadius: "50%",
-                          fontWeight: 500,
-                          background: "#FDC50D",
-                        }}
-                      >
-                        {" "}
-                        {cartItem.length}
-                      </span>
-                    )}
-                    <span className="h-f-tm">My Bag</span>
-                  </Link>
-                </span>
+
+              <span
+                style={{
+                  position: "relative",
+                }}
+              >
+                <Link className="flex gap-x-1" to="/cart">
+                  <img src={blogIcon} />
+                  {cartItem.length > 0 && (
+                    <span
+                      className="f-jc-c"
+                      style={{
+                        position: "absolute",
+                        height: "9px",
+                        width: "9px",
+                        top: "-7px",
+                        left: "12px",
+                        fontSize: "9px",
+                        padding: "3px",
+                        color: "black",
+                        borderRadius: "50%",
+                        fontWeight: 500,
+                        background: "#FDC50D",
+                      }}
+                    >
+                      {" "}
+                      {cartItem.length}
+                    </span>
+                  )}
+                  <span className="h-f-tm">My Bag</span>
+                </Link>
               </span>
             </div>
 
@@ -174,6 +237,7 @@ const Header1 = () => {
                   width="80"
                   onClick={() => {
                     setHamMenu(!hamMenu);
+                    setScrolled(true);
                   }}
                 >
                   <path

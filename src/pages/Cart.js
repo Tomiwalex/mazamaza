@@ -21,7 +21,7 @@ const Cart = () => {
 
       <div className="container">
         <div className="cart">
-          <h2>My Bag</h2>
+          <h2 className="mt-4 font-semibold text-lg">My Bag</h2>
 
           <div className="cart-content">
             <CartItem />

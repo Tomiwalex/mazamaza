@@ -1,6 +1,9 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../App";
 import CartItemTemplate from "./CartItemTemplate";
+import nocart from "../../images/nocart.svg";
+import { Link } from "react-router-dom";
+import { Suspense } from "react";
 
 const CartItem = () => {
   const { cartItem } = useContext(AppContext);
@@ -21,28 +24,26 @@ const CartItem = () => {
           );
         })
       ) : (
-        <div
-          style={{
-            width: "250px",
-            height: "250px",
-            position: "relative",
-            borderRadius: "50%",
-            margin: "20% 17%",
-            background: "rgb(253 197 13 / 4%)",
-            color: "rgb(94 94 94)",
-            textAlign: "center",
-          }}
-        >
-          <h1
-            style={{
-              position: "absolute",
-              width: "288px",
-              top: "88px",
-              left: "-18px",
-            }}
-          >
-            No Item Added yet
-          </h1>
+        // this is the div displaying no cart item
+        <div className="flex items-center justify-center gap-10 flex-wrap lg:flex-nowrap max-w-none mt-9">
+          <Suspense fallback="Loading....">
+            <img
+              className="jello-horizontal w-[60%] lg:w-[70%]"
+              src={nocart}
+              alt="empty-basket"
+            />
+          </Suspense>
+          <div className="text-center lg:text-left m-2">
+            <h1 className="text-black font-semibold text-[40px] mb-4 leading-tight">
+              Oops there is nothing here!
+            </h1>
+            <Link
+              to="/home"
+              className="text-white inline-block bg-[#0C9B18] px-3 py-2 rounded-[6px] text-sm  hover:scale-[0.99] transition duration-300 ease-in-out"
+            >
+              Shop Now ➡
+            </Link>
+          </div>
         </div>
       )}
     </div>

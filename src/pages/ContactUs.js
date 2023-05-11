@@ -35,7 +35,7 @@ const ContactUs = () => {
           <p>IVORY COAST: +2250759888339 , +2250777444150</p>
         </div>
 
-        <form>
+        <form className="w-[100%] mt-6 lg:mt-0">
           <h2>Your Feedback</h2>
           <input name="email" type="email" placeholder="your email" required />
 

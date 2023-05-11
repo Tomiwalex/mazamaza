@@ -81,7 +81,6 @@
             
             a{
                 text-decoration: none;
-                color: black;
             }
 
             span{
@@ -120,11 +119,17 @@
                     top: 3px;
                     
                     @include breakpoint-up(medium){
-                        top: 1px;
+                        top: -2px;
                     }
                 }
                 .img1{
-                    top:4px;
+                    top:3px;
+                    @include breakpoint-up(medium){
+                        top: 2px;
+                    }
+                    @include breakpoint-up(large){
+                        top: -2px;
+                    }
                 }
             }
             .search-icon{
@@ -217,7 +222,6 @@
 
 // STYLE FOR THE CATEGORYPOPUP
 .categoryspopup{
-
     background: #f1f1f1;
     position: fixed;
     left: 0;
