@@ -1,8 +1,9 @@
+import { findAllByTestId } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { useState } from "react";
 
 const VideoPopUp = () => {
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const showVideo = () => {
     setIsShown(true);
@@ -11,7 +12,7 @@ const VideoPopUp = () => {
   useEffect(() => {
     setTimeout(() => {
       showVideo();
-    }, 30000);
+    }, 20000);
   }, []);
 
   return (
