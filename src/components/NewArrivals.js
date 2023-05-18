@@ -8,6 +8,41 @@ import { Link } from "react-router-dom";
 
 const NewArrivals = () => {
   const { setProductHeading } = useContext(AppContext);
+  const [topProducts, setTopProducts] = useState([]);
+  const [convertedPrices, setConvertedPrices] = useState([]);
+
+
+  async function convertPrices() {
+    const converted = await Promise.all(
+      topProducts.map((item) => convertCurrency(item.currency, item.price))
+    );
+    setConvertedPrices(converted);
+    console.log(converted)
+  }
+
+  useEffect(() => {
+
+    convertPrices();
+  }, [topProducts]);
+
+  const getTopProducts = async () =>{
+    try {
+      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?sort=createdAt:asc`)
+      if (response) {
+
+        setTopProducts(response.data.data)
+        console.log(response.data.data)
+      }
+
+    } catch (error) {
+      // alert('could not load products in this category')
+      console.log(error)
+    }
+  }
+
+  useEffect(()=>{
+    getTopProducts()
+  },[])
 
   return (
     <div className="popular-shops" style={{ background: "#F0FFF3" }}>
