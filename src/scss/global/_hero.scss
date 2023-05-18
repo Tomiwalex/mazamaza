@@ -12,8 +12,9 @@
         height: unset;
     }
     @include breakpoint-up(large){
-        padding-top: 15px;
+        padding-top: 0;
     }
+    
     .swiper-pagination-bullet-active{
         background: white;
         @include breakpoint-up(large){

@@ -4,7 +4,6 @@ import Header2 from "../components/Header2";
 import Categorypop from "../components/Categorypop";
 import Footer from "../components/Footer";
 import CartSummary from "../components/cart/CartSummary";
-import dialCodes from "../json/countryCodes.json";
 
 const Checkout = () => {
   return (
@@ -13,82 +12,7 @@ const Checkout = () => {
       <Header2 />
       <Categorypop />
       <div className="checkout">
-        <div className="address">
-          <h2>Shipping address</h2>
-
-          <h3>Name Family</h3>
-
-          {/* the buyers address */}
-          <p>
-            2 Savi road, Reading, Berkshire RB3 7LU, <br />
-            United Kingdom <br />
-            Phone: 12 3456 78900
-          </p>
-
-          <p className="green">Change address</p>
-        </div>
-
-        {/* form for changing address */}
-        <div className="add-address">
-          <form>
-            <h2>Shipping address</h2>
-
-            {/* Full name */}
-            <fieldset>
-              <legend>Full name</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* address */}
-            <fieldset>
-              <legend>Address</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* Street Adress */}
-            <fieldset>
-              <legend>Street address</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* town/city */}
-            <fieldset>
-              <legend>Town/City</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* Country */}
-            <fieldset>
-              <legend>Country</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* postcode */}
-            <fieldset>
-              <legend>Postcode</legend>
-              <input type="text" required />
-            </fieldset>
-
-            {/* phone number */}
-            <fieldset className="f">
-              <legend>Phone number</legend>
-
-              <select>
-                {dialCodes.map((code, index) => {
-                  return (
-                    <option value={code.dial_code}>{code.dial_code}</option>
-                  );
-                })}
-              </select>
-
-              <input type="text" required />
-            </fieldset>
-
-            <button>Save</button>
-            <button className="btn2">Cancel</button>
-          </form>
-        </div>
-
+        
         {/* the cart summary pass the button, link to destination, subtotalprice, shippingprice, discountprice, tax, total, */}
         <CartSummary
           subTotalPrice={"US $2,400.00"}

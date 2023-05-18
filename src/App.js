@@ -17,6 +17,8 @@ import Checkout from "./pages/Checkout";
 import FeaturedProductPage from "./pages/FeaturedProductPage";
 import ContactUs from "./pages/ContactUs";
 import Announcement from "./components/Announcement";
+import OrderSuccessful from "./pages/OrderSuccessful";
+import Account from "./pages/Account";
 
 export const AppContext = createContext();
 function App() {
@@ -42,6 +44,9 @@ function App() {
   // state for storing the general product page heading
   const [productHeading, setProductHeading] = useState("");
 
+  // state to toggle the variuos tabs in the account page
+  const [activeTab, setActiveTab] = useState("account");
+
   // function for handling the add to cart feature
   const handleAddtoCart = async (item) => {
     // const newItem = {
@@ -52,25 +57,27 @@ function App() {
     // const newList = [...cartItem, newItem];
 
     try {
-      console.log(window.localStorage.getItem('authToken'))
-      const response  = await axios.put(`https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,{
-        headers:{
-          'x-auth-token':window.localStorage.getItem('authToken')
+      console.log(window.localStorage.getItem("authToken"));
+      const response = await axios.put(
+        `https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,
+        {
+          headers: {
+            "x-auth-token": window.localStorage.getItem("authToken"),
+          },
         }
-      })
+      );
       if (response) {
-        console.log(response.data.cart)
+        console.log(response.data.cart);
         setCartItem(response.data.cart);
         alert("Added to Cart");
       }
-
     } catch (error) {
-      alert('could not add product to cart')
-      console.log(error)
+      alert("could not add product to cart");
+      console.log(error);
     }
-
   };
 
+  // #########################
   // function for deleting cart item
   const handleCartItemDelete = (cartId) => {
     const newList = cartItem.filter((item) => {
@@ -151,12 +158,16 @@ function App() {
         handleCartItemDelete,
         productHeading,
         setProductHeading,
-        scrolled, setScrolled
+        scrolled,
+        setScrolled,
+        activeTab,
+        setActiveTab,
       }}
     >
       {signedIn ? (
         <Router>
           {/* <Announcement /> */}
+          <Announcement />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<HomePage />} />
@@ -170,6 +181,8 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/featuredproduct" element={<FeaturedProductPage />} />
             <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/Ordersuccess" element={<OrderSuccessful />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
         </Router>
       ) : (

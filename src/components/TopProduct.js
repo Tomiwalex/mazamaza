@@ -14,38 +14,36 @@ const TopProduct = () => {
   const { setProductHeading } = useContext(AppContext);
   const [convertedPrices, setConvertedPrices] = useState([]);
 
-
   async function convertPrices() {
     const converted = await Promise.all(
       topProducts.map((item) => convertCurrency(item.currency, item.price))
     );
     setConvertedPrices(converted);
-    console.log(converted)
+    console.log(converted);
   }
 
   useEffect(() => {
-
     convertPrices();
   }, [topProducts]);
 
-  const getTopProducts = async () =>{
+  const getTopProducts = async () => {
     try {
-      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?sort=rating`)
+      const response = await axios.get(
+        `https://mazamaza.onrender.com/api/product/filter?sort=rating`
+      );
       if (response) {
-
-        setTopProducts(response.data.data)
-        console.log(response.data.data)
+        setTopProducts(response.data.data);
+        console.log(response.data.data);
       }
-
     } catch (error) {
       // alert('could not load products in this category')
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  useEffect(()=>{
-    getTopProducts()
-  },[])
+  useEffect(() => {
+    getTopProducts();
+  }, []);
 
   return (
     <div className="top-products">
@@ -64,54 +62,58 @@ const TopProduct = () => {
 
       <div className="container">
         <div className="top-product-content f-jc-sb">
-          {topProducts.length>0?
-          topProducts.map((product, index) => {
-            return (
-              <Suspense key={index} fallback={"loading.."}>
-                <div className="product">
-                  <Link to="/itemdetails">
-                    {" "}
-                    <img
-                      className="product-image"
-                      //src={product.image}
-                      //  the real image should be added to the src above
-                      src={product.productImage[0] || productImg}
-                      alt={`img of ${product.name}`}
-                    />
-                  </Link>
+          {topProducts.length > 0 ? (
+            topProducts.map((product, index) => {
+              return (
+                <Suspense key={index} fallback={"loading.."}>
+                  <div className="product">
+                    <Link to="/itemdetails">
+                      {" "}
+                      <img
+                        className="product-image h-[200px] object-cover"
+                        //src={product.image}
+                        //  the real image should be added to the src above
+                        src={product.productImage[0] || productImg}
+                        alt={`img of ${product.name}`}
+                      />
+                    </Link>
 
-                  <p className="product-name">{product.name}</p>
+                    <p className="product-name">{product.name}</p>
 
-                  {/* the product's price */}
-                  <p className="product-price">{convertedPrices[index] || `${ product.currency} ${ product.price}`}</p>
-                </div>
-              </Suspense>
-            );
-          }):
-          <div
-          className=" w-full flex item-center justify-center bg-white"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            width: "100%",
-            background: "white",
-          }}
-        >
-          <Lottie
-            options={{
-              animationData: noProduct,
-              loop: true,
-            }}
-            width={200}
-          />
-          <p className="m-4">No product in this category</p>
-        </div>
-          }
+                    {/* the product's price */}
+                    <p className="product-price">
+                      {convertedPrices[index] ||
+                        `${product.currency} ${product.price}`}
+                    </p>
+                  </div>
+                </Suspense>
+              );
+            })
+          ) : (
+            <div
+              className=" w-full flex item-center justify-center bg-white"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                width: "100%",
+                background: "white",
+              }}
+            >
+              <Lottie
+                options={{
+                  animationData: noProduct,
+                  loop: true,
+                }}
+                width={200}
+              />
+              <p className="m-4">No product in this category</p>
+            </div>
+          )}
         </div>
       </div>
-      
+
       <a href="http://" target="_blank" rel="noopener noreferrer"></a>
     </div>
   );

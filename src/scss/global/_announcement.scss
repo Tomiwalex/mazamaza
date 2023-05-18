@@ -1,22 +1,19 @@
 .announcement-bar{
-    // background:green;
-    // color: white;
+    background: #0c9b180d;
     overflow: hidden;
     height: 45px;
     position: relative;
     text-align: center;
     margin-top: -60px;
     .announcement{    
-        // marquee{
-        //     display: flex;
-        // }
         &-text-1, &-text-2{
             margin: 14px 45px;
             color: rgb(0, 53, 0);
             display: inline-block;
             font-size: 17px;
+            font-weight: 600;
             @include breakpoint-up(large){
-                font-size: 22px;
+                font-size: 21px;
             }
         }
     }
