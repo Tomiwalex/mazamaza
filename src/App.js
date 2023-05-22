@@ -37,6 +37,7 @@ function App() {
   //  to set the sign in option to b requested
   const [signInOption, setSignInOption] = useState("email");
   const [user, setuser] = useState();
+  
 
   // state for storing cart items
   const [cartItem, setCartItem] = useState([]);
@@ -57,33 +58,75 @@ function App() {
     // const newList = [...cartItem, newItem];
 
     try {
-      console.log(window.localStorage.getItem("authToken"));
+      const token = localStorage.getItem("authToken");
+
       const response = await axios.put(
-        `https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,
+        `http://localhost:4000/api/cart/addToCart?productId=${item._id}`,
+        {},
         {
           headers: {
-            "x-auth-token": window.localStorage.getItem("authToken"),
+            "x-auth-token": `${token}`,
           },
         }
       );
       if (response) {
         console.log(response.data.cart);
         setCartItem(response.data.cart);
-        alert("Added to Cart");
+        alert(response.data.message || "Added to Cart");
       }
     } catch (error) {
-      alert("could not add product to cart");
+      alert(error.response.data.message || "could not add product to cart");
       console.log(error);
     }
   };
 
-  // #########################
+  // function for handling updating cart item quantity feature
+  const handleChangeProductQuantity = async (productId, orderQuantity) => {
+    console.log(productId,orderQuantity)
+    try {
+      const token = localStorage.getItem("authToken");
+
+      const response = await axios.put(
+        `http://localhost:4000/api/cart/changeQuantityFromCart?productId=${productId}`,
+        { orderQuantity: orderQuantity },
+        {
+          headers: {
+            "x-auth-token": `${token}`,
+          },
+        }
+      );
+      if (response) {
+        getCartItems();
+        alert(response.data.message || "Updated Cart sucessfully");
+      }
+    } catch (error) {
+      alert(error.response.data.message || "could not update cart");
+      console.log(error);
+    }
+  };
+
   // function for deleting cart item
-  const handleCartItemDelete = (cartId) => {
-    const newList = cartItem.filter((item) => {
-      return item.cartId !== cartId;
-    });
-    setCartItem(newList);
+  const handleCartItemDelete = async (productId) => {
+    try {
+      const token = localStorage.getItem("authToken");
+
+      const response = await axios.get(
+        `http://localhost:4000/api/cart/removeFromCart?productId=${productId}`,
+        {
+          headers: {
+            "x-auth-token": `${token}`,
+          },
+        }
+      );
+      if (response) {
+        console.log(response.data.cart);
+        getCartItems();
+        alert(response.data.message || "Item removed Cart");
+      }
+    } catch (error) {
+      alert(error.response.data.message || "could not add product to cart");
+      console.log(error);
+    }
   };
 
   const [scrolled, setScrolled] = useState(false);
@@ -95,29 +138,35 @@ function App() {
         document.documentElement.scrollTop > 45
       ) {
         setScrolled(true);
-        console.log("scroled");
       } else {
         setScrolled(false);
       }
     };
   }
-
   // state for storing searched item
   const [searchItem, setSearchItem] = useState("");
+  const [searchName, setSearchName] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  const [searchSubcategory, setSearchSubcategory] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [cartTotal, setCartTotal] = useState();
 
-  // useCheckToken((e)=>setSignedIn(true),(e)=>setSignedIn(false))
+
+
+  useCheckToken(
+    (e) => setSignedIn(true),
+    (e) => setSignedIn(false)
+  );
 
   const getUser = async () => {
     const token = localStorage.getItem("authToken");
     try {
-      const response = await axios.get(
-        "https://mazamaza.onrender.com/api/users/user",
-        {
-          headers: {
-            "x-auth-token": `${token}`,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:4000/api/users/user", {
+        headers: {
+          "x-auth-token": `${token}`,
+        },
+      });
       if (response) {
         setuser(response.data);
         console.log(user);
@@ -127,8 +176,29 @@ function App() {
     }
   };
 
+  const getCartItems = async () => {
+    const token = localStorage.getItem("authToken");
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/cart/userCartInfo",
+        {
+          headers: {
+            "x-auth-token": `${token}`,
+          },
+        }
+      );
+      if (response) {
+        setCartItem(response.data.cart);
+        console.log(cartItem);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUser();
+    getCartItems();
   }, [signedIn]);
 
   return (
@@ -136,8 +206,21 @@ function App() {
       value={{
         hamMenu,
         setHamMenu,
+        setSearchName,
+        searchName,
+        cartTotal,
+        setCartTotal,
+        searchCategory,
+        setSearchCategory,
+        setSearchSubcategory,
+        searchSubcategory,
+        minPrice,
+        setMinPrice,
+        maxPrice,
+        setMaxPrice,
         setuser,
         user,
+        getCartItems,
         setNavigationSubPage,
         setShowNavigationSubPage,
         setShowOnHover,
@@ -158,43 +241,37 @@ function App() {
         handleCartItemDelete,
         productHeading,
         setProductHeading,
+        handleChangeProductQuantity,
         scrolled,
         setScrolled,
         activeTab,
         setActiveTab,
       }}
     >
-      {signedIn ? (
-        <Router>
-          {/* <Announcement /> */}
-          <Announcement />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/seller-signup" element={<SellerSignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/itemdetails" element={<ItemDetails />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/featuredproduct" element={<FeaturedProductPage />} />
-            <Route path="/contactus" element={<ContactUs />} />
-            <Route path="/Ordersuccess" element={<OrderSuccessful />} />
-            <Route path="/account" element={<Account />} />
-          </Routes>
-        </Router>
-      ) : (
-        <Router>
-          <Routes>
-            <Route path="/" element={<SelectProcess />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signupsuccessful" element={<SignUpSuccessful />} />
-          </Routes>
-        </Router>
-      )}
+      <Router>
+        {/* <Announcement /> */}
+        <Announcement />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/seller-signup" element={<SellerSignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/itemdetails" element={<ItemDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/featuredproduct" element={<FeaturedProductPage />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/Ordersuccess" element={<OrderSuccessful />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/" element={<SelectProcess />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signupsuccessful" element={<SignUpSuccessful />} />
+        </Routes>
+      </Router>
     </AppContext.Provider>
   );
 }

@@ -39,7 +39,7 @@ export const TrendingProduct = () => {
 
   const getTrendingProducts = async () =>{
     try {
-      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?sort=price`)
+      const response  = await axios.get(`http://localhost:4000/api/product/filter?sort=price`)
       if (response) {
 
         setTrendingProducts(response.data.data)
@@ -77,7 +77,7 @@ export const TrendingProduct = () => {
             return (
               <Suspense key={index} fallback={"loading.."}>
                 <div className="product">
-                  <Link to="/itemdetails">
+                  <Link to="/itemdetails" state={product}>
                     {" "}
                     <img
                       className="product-image"

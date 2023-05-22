@@ -13,7 +13,7 @@ import countryCodes from "../json/countryCodes.json";
 import axios from "axios";
 
 const Product = () => {
-  const { searchItem, setSearchItem } = useContext(AppContext);
+  const { searchName,searchCategory,maxPrice,minPrice} = useContext(AppContext);
   const [products, setProducts] = useState([])
   const [sort, setSort] = useState('price')
 
@@ -26,8 +26,8 @@ const Product = () => {
 
   const getProducts = async () =>{
     try {
-      console.log(searchItem)
-      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?category=${searchItem}&sort=${sort}`)
+      console.log(searchName)
+      const response  = await axios.get(`http://localhost:4000/api/product/filter?category=${searchCategory}&sort=${sort}&name=${searchName}&maxPrice=${maxPrice}&minPrice=${minPrice}`)
       if (response) {
 
         setProducts(response.data.data)
@@ -42,7 +42,7 @@ const Product = () => {
 
   useEffect(()=>{
     getProducts()
-  },[searchItem,sort])
+  },[searchName,searchName,maxPrice,minPrice,sort,searchCategory])
   return (
     <div className="products">
       <Header1 />
@@ -68,7 +68,7 @@ const Product = () => {
 
             {/* for details you need to pass the detailTitle props and detailList prop, the detailList prop should be an array */}
             <Details
-              detailTitle={"Bag"}
+              detailTitle={"Categories"}
               detailList={[
                 "Gucci",
                 "Vercace",
@@ -82,7 +82,7 @@ const Product = () => {
               ]}
             />
             <Details
-              detailTitle={"Clothes"}
+              detailTitle={"Brands"}
               detailList={[
                 "Gucci",
                 "Vercace",
@@ -101,7 +101,7 @@ const Product = () => {
         <div className="content">
           {/* the head contains filtering options */}
           <div className="content-head f-jc-sb">
-            <p>search result for '{searchItem}'</p>
+            <p>search result for '{searchName}' in {searchCategory?.toUpperCase()||'All categories'}</p>
 
             <div className="sort f-jc-sb"> 
               <div className="f-jc-sb">

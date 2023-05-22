@@ -14,6 +14,8 @@ const ProductCard = ({ product }) => {
   const [items, setItems] = useState(product);
   const [convertedPrices, setConvertedPrices] = useState([]);
 
+  const {signedIn} = useContext(AppContext)
+
 
   async function convertPrices() {
     const converted = await Promise.all(
@@ -37,7 +39,7 @@ const ProductCard = ({ product }) => {
                 <Suspense fallback={logo}>
                   <img
                     onClick={() => {
-                      navigate("../itemdetails");
+                      navigate("../itemdetails",{state:item});
                     }}
                     src={item.productImage[0] || itemimg}
                     alt="product-image"
@@ -48,7 +50,7 @@ const ProductCard = ({ product }) => {
 
                 <p className="item-price">{convertedPrices[index] || `${ item.currency} ${ item.price}`}</p>
 
-                <button onClick={() => handleAddtoCart(item)}>
+                <button onClick={() => signedIn?  handleAddtoCart(item):navigate('/signIn')}>
                   Add to My Bag
                 </button>
               </div>
@@ -73,7 +75,7 @@ const ProductCard = ({ product }) => {
               }}
               width={200}
             />
-            <p className="m-4">No product in this category</p>
+            <p className="m-4">No product match your search</p>
           </div>
         )}
       </div>

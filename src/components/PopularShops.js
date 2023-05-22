@@ -16,7 +16,7 @@ const PopularShops = () => {
   const getPopularShops = async () => {
     try {
       const response = await axios.get(
-        `https://mazamaza.onrender.com/api/seller/shops/filter?sort=rating`,
+        `http://localhost:4000/api/seller/shops/filter?sort=rating`,
         {
           headers: {
             "x-auth-token": localStorage.getItem("authToken"),
@@ -75,9 +75,9 @@ const PopularShops = () => {
                       <SwiperSlide key={index}>
                         <div className="popular-shop">
                           <Link to="/itemdetails">
-                            <img src={shop.logoUrl || itemimg} />
+                            <img src={shop.shopLogoUrl || itemimg} onError={e=>{e.currentTarget.src=itemimg}} />
                           </Link>
-                          <p>{shop["shop-name"]}</p>
+                          <p>{shop?.seller?.shopName.toUpperCase()}</p>
 
                           {/* {p * shop.star} */}
                         </div>

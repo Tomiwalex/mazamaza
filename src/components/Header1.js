@@ -9,6 +9,8 @@ import mailIcon from "../images/mail.svg";
 import { AppContext } from "../App";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import navigationLists from "../json/navigationList.json";
+
 
 const Header1 = () => {
   // handle showing the search box on mobile
@@ -16,6 +18,7 @@ const Header1 = () => {
 
   //state for showing and hidding the account icon pop up on click
   const [accountPopup, setAccountPopup] = useState(false);
+  
 
   const {
     hamMenu,
@@ -25,11 +28,16 @@ const Header1 = () => {
     user,
     searchItem,
     setSearchItem,
+    searchName,
+    setSearchName,
+    searchCategory,
+    setSearchCategory,
     cartItem,
     scrolled,
     setScrolled,
     activeTab,
     setActiveTab,
+    signedIn
   } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -60,10 +68,11 @@ const Header1 = () => {
             <form onSubmit={(e) => navigate("../product")}>
               <input
                 onSubmit={(e) => {
+                  e.preventDefault()
                   navigate("../product");
                   setSearchItem(e.target.value);
                 }}
-                onChange={(e) => setSearchItem(e.target.value)}
+                onChange={(e) => setSearchName(e.target.value)}
                 onFocus={(e) => (e.target.placeholder = "Typing...")}
                 onBlur={(e) => (e.target.placeholder = "search..")}
                 type="text"
@@ -72,10 +81,14 @@ const Header1 = () => {
             </form>
 
             {/* selecting categories */}
-            <select>
-              <option value={"all"}>All</option>
-              <option value={"cloth"}>cloth</option>
-              <option value={"all"}>shoe</option>
+            <select onChange={e=>setSearchCategory(e.target.value)} className=" max-w-[100px] w-fit" >
+            <option value={""}>{"All Categories"}</option>
+
+             {
+              navigationLists.map((navigation,i)=>(
+                <option key={i} value={navigation.sublistTag}>{navigation.heading}</option>
+              ))
+             }
             </select>
           </div>
 
@@ -89,7 +102,7 @@ const Header1 = () => {
               <span
                 className="h-f-dm"
                 onClick={(e) => {
-                  navigate("seller-signup");
+                  navigate("/seller-signup");
                 }}
               >
                 Become a Seller
@@ -120,7 +133,7 @@ const Header1 = () => {
               {/* account icon */}
               <span
                 className="flex gap-x-1"
-                onClick={(e) => setAccountPopup(!accountPopup)}
+                onClick={(e) => signedIn? setAccountPopup(!accountPopup):navigate('/signIn')}
               >
                 <img className="img1" src={accountIcon} />{" "}
                 <span className="h-f-tm">{user?.firstName || "Account"}</span>
@@ -135,9 +148,9 @@ const Header1 = () => {
                   {/* my account */}
                   <Link
                     onClick={(e) =>
-                      user
-                        ? (navigate("../account"), setActiveTab("account"))
-                        : navigate("../signin")
+                      signedIn
+                        ? (navigate("/account"), setActiveTab("account"))
+                        : navigate("/signIn")
                     }
                     className="block my-2 text-[#212119] text-[16px]"
                   >
@@ -201,29 +214,17 @@ const Header1 = () => {
                 }}
               >
                 <Link className="flex gap-x-1" to="/cart">
-                  <img src={blogIcon} />
-                  {cartItem.length > 0 && (
+                  {cartItem?.items?.length > 0 && (
                     <span
-                      className="f-jc-c"
-                      style={{
-                        position: "absolute",
-                        height: "9px",
-                        width: "9px",
-                        top: "-7px",
-                        left: "12px",
-                        fontSize: "9px",
-                        padding: "3px",
-                        color: "black",
-                        borderRadius: "50%",
-                        fontWeight: 500,
-                        background: "#FDC50D",
-                      }}
+                      className="f-jc-c bg-yellow text-black flex justify-center items-center p-1 rounded-full w-4 h-4"
                     >
-                      {" "}
-                      {cartItem.length}
+                      {cartItem?.items?.length}
                     </span>
                   )}
+                  <img src={blogIcon} />
+
                   <span className="h-f-tm">My Bag</span>
+
                 </Link>
               </span>
             </div>

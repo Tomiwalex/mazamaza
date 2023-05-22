@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../App";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const CartSummary = ({
   linkTo,
@@ -7,9 +10,11 @@ const CartSummary = ({
   subTotalPrice,
   shippingPrice,
   discountPrice,
-  tax,
   total,
 }) => {
+  const { cartTotal } = useContext(AppContext);
+  const [subTotal, setSubTotal] = useState();
+
   return (
     <div className="cart-summary">
       <h3>Cart Summary</h3>
@@ -17,7 +22,7 @@ const CartSummary = ({
 
       <div className="sub-total f-jc-sb">
         <p>Subtotal</p>
-        <p className="sub-total-price">{subTotalPrice}</p>
+        <p className="sub-total-price">{cartTotal || `NGN ${subTotalPrice}`}</p>
       </div>
 
       <div className="shipping f-jc-sb">
@@ -30,16 +35,16 @@ const CartSummary = ({
         <p className="discount-price">{discountPrice}</p>
       </div>
 
-      <div className="estimated-tax shipping f-jc-sb">
+      {/* <div className="estimated-tax shipping f-jc-sb">
         <p>Estimated Tax</p>
         <p className="tax-price">{tax}</p>
-      </div>
+      </div> */}
 
       <hr />
 
       <div className="total f-jc-sb">
         <h3>Total</h3>
-        <h3>{total}</h3>
+        <h3>{cartTotal || `NGN ${subTotalPrice}`}</h3>
       </div>
 
       {/* /* Creating a clickable link that will take the user to the checkout page when clicked.
@@ -47,8 +52,17 @@ const CartSummary = ({
               element creates a button that the user can click to navigate to the checkout page. The
               `Link` component is provided by the `react-router-dom` library and is used to create
               links between different pages in a React application. */}
-      <Link to={linkTo}>
-        {" "}
+      <Link
+        to={linkTo}
+        state={{
+          linkTo,
+          buttonName,
+          subTotalPrice: cartTotal || `NGN ${subTotalPrice}`,
+          shippingPrice,
+          discountPrice,
+          total,
+        }}
+      >
         <button>{buttonName}</button>
       </Link>
     </div>

@@ -10,13 +10,12 @@ const VideoPopUp = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      showVideo();
-    }, 20000);
+    showVideo();
   }, []);
 
   return (
     <div
+      style={{ display: !isShown && "none" }}
       className={`fixed z-10 bg-[#00000077] top-0 bottom-0 left-0 right-0 flex justify-center items-center text-center flex-wrap ${
         isShown ? "fade-in" : "fade-out"
       }`}

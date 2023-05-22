@@ -6,12 +6,15 @@ import Header2 from "../components/Header2";
 import { AppContext } from "../App";
 import { useContext } from "react";
 import CartItemTemplate from "../components/cart/CartItemTemplate";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartSummary from "../components/cart/CartSummary";
+import { useCheckTokenRedirect } from "../hooks/checkToken";
 
 const Cart = () => {
-  const { cartItem } = useContext(AppContext);
-
+  const { cartItem,signedIn } = useContext(AppContext);
+const navigate = useNavigate()
+!signedIn&&navigate('/signIn')
+  // console.log(cartItem)
   return (
     <div className="carts">
       <Header1 />
@@ -34,15 +37,15 @@ const Cart = () => {
           subtotal, shipping cost, discount, estimated tax, and total. It also includes a clickable
           button that will take the user to the checkout page when clicked. If the `cartItem` array
           is empty, nothing will be rendered. */}
-          {cartItem.length > 0 && (
+          {cartItem?.items?.length > 0 && (
             <CartSummary
               linkTo={"/checkout"}
               buttonName={"Proceed to checkout"}
-              subTotalPrice={"US $2,400.00"}
-              shippingPrice={"US $100.00"}
-              discountPrice={"US $500.00"}
-              tax={"-"}
-              total={"US $$,2000.00"}
+              subTotalPrice={cartItem.totalPrice}
+              shippingPrice={"0"}
+              discountPrice={"0%"}
+              // tax={"-"}
+              total={cartItem.totalPrice}
             />
           )}
         </div>

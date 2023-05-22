@@ -21,7 +21,7 @@ const FeaturedProductPage = () => {
 
   const getProducts = async () =>{
     try {
-      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter/?catergory=${productHeading}&sort=${sort}`)
+      const response  = await axios.get(`http://localhost:4000/api/product/filter/?catergory=${productHeading}&sort=${sort}`)
       if (response) {
 
         setProducts(response.data.data)

@@ -2,16 +2,16 @@ import React from 'react'
 import reviews from '../json/reviews.json'
 import stars from '../images/stars.png'
 
-const Reviews = () => {
+const Reviews = ({reviews}) => {
   return (
-    <div className='reviews'>
+    <div className='reviews w-full'>
         <div className='container'>
             <div className='review'>
                 <h2>Reviews</h2>
 
-                <div className='review-content f-jc-sb'>
+                <div className='review-content f-jc-sb w-full'>
                     {
-                        reviews.map((review, index) => {
+                       reviews?.length>0? reviews?.map((review, index) => {
                             return (
                                 <div key={index} className='content'>
                                     <div className='f-jc-sb'>
@@ -29,7 +29,10 @@ const Reviews = () => {
 
                                 </div>
                             )
-                        })
+                        }):
+                        <p className='text-center text-xl'>
+                            No review yet 
+                        </p>
                     }
 
                 </div>

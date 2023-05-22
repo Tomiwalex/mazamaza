@@ -1,24 +1,66 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../App";
 import CartItemTemplate from "./CartItemTemplate";
 import nocart from "../../images/nocart.svg";
 import { Link } from "react-router-dom";
 import { Suspense } from "react";
+import { convertCurrency } from "../../hooks/convertCurrency";
 
 const CartItem = () => {
-  const { cartItem } = useContext(AppContext);
+  const { cartItem, getCartItems, setCartTotal } = useContext(AppContext);
+  const [convertedPrices, setConvertedPrices] = useState([]);
+
+  async function convertPrices() {
+    try {
+      const converted = await Promise.all(
+        cartItem.map((item) => convertCurrency(item.currency, item.price))
+      );
+      setConvertedPrices(converted);
+  
+    } catch (error) {
+      console.log(error)
+    }
+
+    // console.log(converted);
+  }
+
+  useEffect(() => {
+    convertPrices();
+  }, [cartItem]);
+
+  useEffect(() => {
+    if (convertedPrices?.length > 0) {
+      const total = convertedPrices.reduce((a, b) => {
+        return a + b.split(" ")[1];
+      });
+      console.log(total);
+      setCartTotal(`${convertedPrices[0].split(" ")[0]} ${total}`);
+    }
+  }, [convertedPrices,cartItem]);
+  useEffect(() => {
+    getCartItems();
+  }, []);
 
   return (
     <div>
-      {cartItem.length ? (
-        cartItem.map((item, index) => {
+      {cartItem?.items?.length > 0 ? (
+        cartItem?.items?.map((item, index) => {
+          // console.log(item);
           return (
             <div key={index}>
               <CartItemTemplate
-                itemName={item.name}
-                itemPrice={item.price}
-                itemCondition={item.condition}
-                cartId={item.cartId}
+                itemName={item?.product?.name}
+                itemPrice={
+                  convertedPrices[index] ||
+                  `${item?.product?.currency} ${item?.product?.price}`
+                }
+                itemImageUrl={
+                  item?.product?.productImage?.length > 0
+                    ? item?.product?.productImage[0]
+                    : null
+                }
+                itemQuantity={item.quantity}
+                cartId={item?.product?._id}
               />
             </div>
           );

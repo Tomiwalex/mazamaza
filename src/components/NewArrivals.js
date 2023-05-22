@@ -1,53 +1,52 @@
-import React from "react";
-import popularShop from "../json/popularShops.json";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { convertCurrency } from "../hooks/convertCurrency";
 
 const NewArrivals = () => {
   const { setProductHeading } = useContext(AppContext);
-  const [topProducts, setTopProducts] = useState([]);
+  const [newArrivals, setnewArrivals] = useState([]);
   const [convertedPrices, setConvertedPrices] = useState([]);
-
 
   async function convertPrices() {
     const converted = await Promise.all(
-      topProducts.map((item) => convertCurrency(item.currency, item.price))
+      newArrivals.map((item) => convertCurrency(item.currency, item.price))
     );
     setConvertedPrices(converted);
-    console.log(converted)
+    console.log(converted);
   }
 
   useEffect(() => {
-
     convertPrices();
-  }, [topProducts]);
+  }, [newArrivals]);
 
-  const getTopProducts = async () =>{
+  const getnewArrivals = async () => {
     try {
-      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?sort=createdAt:asc`)
+      const response = await axios.get(
+        `http://localhost:4000/api/product/filter?sort=createdAt:desc`
+      );
       if (response) {
-
-        setTopProducts(response.data.data)
-        console.log(response.data.data)
+        setnewArrivals(response.data.data);
+        console.log(response.data.data);
       }
-
     } catch (error) {
       // alert('could not load products in this category')
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  useEffect(()=>{
-    getTopProducts()
-  },[])
+  useEffect(() => {
+    getnewArrivals();
+  }, []);
 
   return (
-    <div className="popular-shops" style={{ background: "#F0FFF3" }}>
+    <div className="popular-items" style={{ background: "#F0FFF3" }}>
       <div className="container">
-        <div className="shop">
+        <div className="item">
           <div className="top-product-header f-jc-sb">
             <h2>New Arrivals</h2>
 
@@ -59,7 +58,7 @@ const NewArrivals = () => {
             </Link>
           </div>
 
-          <div className="shop-content">
+          <div className="item-content">
             <>
               <Swiper
                 slidesPerView={2}
@@ -76,14 +75,17 @@ const NewArrivals = () => {
                 }}
                 className="mySwiper"
               >
-                {/* getting the popularshop list from popularshops.json and mapping through the array */}
-                {popularShop.map((shop, index) => {
+                {/* getting the popularitem list from popularitems.json and mapping through the array */}
+                {newArrivals.slice(0,20).map((item, index) => {
                   return (
                     <SwiperSlide key={index}>
-                      <div className="popular-shop">
-                        <img src={require("../images/shop2.png")} />
-                        <p>{shop["shop-name"]}</p>
+                      <Link to="/itemdetails" state={item}>
+                      <div className="popular-item">
+                        <img src={item.productImage[0]} />
+                        <p>{item.name}</p>
                       </div>
+                      </Link>
+
                     </SwiperSlide>
                   );
                 })}

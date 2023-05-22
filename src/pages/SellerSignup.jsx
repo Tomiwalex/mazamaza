@@ -38,7 +38,7 @@ const SellerSignUp = () => {
       setIsLoading(true)
 
       const response = await axios.post(
-        "https://mazamaza.onrender.com/api/seller/register",
+        "http://localhost:4000/api/seller/register",
         Object.fromEntries(formData.entries()),
         {
           headers: {
