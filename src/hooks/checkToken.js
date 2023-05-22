@@ -7,7 +7,7 @@ export async function useCheckTokenRedirect() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/users/verifyToken",
+        "https://mazamaza.onrender.com/api/users/verifyToken",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export async function useCheckTokenRedirect() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/users/verifyToken",
+        "https://mazamaza.onrender.com/api/users/verifyToken",
         {
           headers: {
             'x-auth-token': `${token}`,

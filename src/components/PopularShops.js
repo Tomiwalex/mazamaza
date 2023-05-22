@@ -16,7 +16,7 @@ const PopularShops = () => {
   const getPopularShops = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/seller/shops/filter?sort=rating`,
+        `https://mazamaza.onrender.com/api/seller/shops/filter?sort=rating`,
         {
           headers: {
             "x-auth-token": localStorage.getItem("authToken"),

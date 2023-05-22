@@ -27,7 +27,7 @@ const Product = () => {
   const getProducts = async () =>{
     try {
       console.log(searchName)
-      const response  = await axios.get(`http://localhost:4000/api/product/filter?category=${searchCategory}&sort=${sort}&name=${searchName}&maxPrice=${maxPrice}&minPrice=${minPrice}`)
+      const response  = await axios.get(`https://mazamaza.onrender.com/api/product/filter?category=${searchCategory}&sort=${sort}&name=${searchName}&maxPrice=${maxPrice}&minPrice=${minPrice}`)
       if (response) {
 
         setProducts(response.data.data)

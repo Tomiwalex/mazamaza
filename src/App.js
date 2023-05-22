@@ -61,7 +61,7 @@ function App() {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.put(
-        `http://localhost:4000/api/cart/addToCart?productId=${item._id}`,
+        `https://mazamaza.onrender.com/api/cart/addToCart?productId=${item._id}`,
         {},
         {
           headers: {
@@ -87,7 +87,7 @@ function App() {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.put(
-        `http://localhost:4000/api/cart/changeQuantityFromCart?productId=${productId}`,
+        `https://mazamaza.onrender.com/api/cart/changeQuantityFromCart?productId=${productId}`,
         { orderQuantity: orderQuantity },
         {
           headers: {
@@ -111,7 +111,7 @@ function App() {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.get(
-        `http://localhost:4000/api/cart/removeFromCart?productId=${productId}`,
+        `https://mazamaza.onrender.com/api/cart/removeFromCart?productId=${productId}`,
         {
           headers: {
             "x-auth-token": `${token}`,
@@ -162,7 +162,7 @@ function App() {
   const getUser = async () => {
     const token = localStorage.getItem("authToken");
     try {
-      const response = await axios.get("http://localhost:4000/api/users/user", {
+      const response = await axios.get("https://mazamaza.onrender.com/api/users/user", {
         headers: {
           "x-auth-token": `${token}`,
         },
@@ -180,7 +180,7 @@ function App() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/cart/userCartInfo",
+        "https://mazamaza.onrender.com/api/cart/userCartInfo",
         {
           headers: {
             "x-auth-token": `${token}`,
